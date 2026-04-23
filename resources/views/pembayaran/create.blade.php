@@ -10,7 +10,7 @@
             <a href="{{ route('pesanan.show', $pesanan) }}" class="btn btn-light rounded-circle me-3">
                 <i class="bi bi-arrow-left"></i>
             </a>
-            <h3 class="fw-semibold mb-0">Konfirmasi Pembayaran</h3>
+            <h3 class="fs-5 fw-semibold mb-0">Konfirmasi Pembayaran</h3>
         </div>
 
         <div class="row g-4">
@@ -21,7 +21,7 @@
                         <h5 class="fw-semibold mb-4">Instruksi Pembayaran</h5>
                         <div class="alert alert-primary border-0 mb-4">
                             <div class="small mb-1">Total yang harus dibayar:</div>
-                            <h3 class="fw-semibold mb-0">Rp {{ number_format($pesanan->total_harga, 0, ',', '.') }}</h3>
+                            <h3 class="fs-5 fw-semibold mb-0">Rp {{ number_format($pesanan->total_harga, 0, ',', '.') }}</h3>
                         </div>
 
                         <div class="mb-4">

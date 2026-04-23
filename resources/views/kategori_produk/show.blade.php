@@ -10,7 +10,7 @@
             <a href="{{ route('kategori-produk.index') }}" class="btn btn-light rounded-circle me-3">
                 <i class="bi bi-arrow-left"></i>
             </a>
-            <h3 class="fw-semibold mb-0">Detail Kategori: {{ $kategoriProduk->nama_kategori }}</h3>
+            <h3 class="fs-5 fw-semibold mb-0">Detail Kategori: {{ $kategoriProduk->nama_kategori }}</h3>
             <div class="ms-auto">
                 <a href="{{ route('kategori-produk.edit', $kategoriProduk) }}" class="btn btn-primary px-4">
                     <i class="bi bi-pencil me-2"></i>Edit Kategori
@@ -32,7 +32,7 @@
                     </div>
                     <div class="mb-0 pt-3 border-top">
                         <label class="text-muted small text-uppercase fw-semibold d-block mb-1">Total Produk</label>
-                        <h3 class="fw-semibold mb-0">{{ $kategoriProduk->produk->count() }}</h3>
+                        <h3 class="fs-5 fw-semibold mb-0">{{ $kategoriProduk->produk->count() }}</h3>
                         <small class="text-muted">Produk terdaftar dalam kategori ini</small>
                     </div>
                 </div>

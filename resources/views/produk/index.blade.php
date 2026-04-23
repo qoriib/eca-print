@@ -5,7 +5,7 @@
 
 @section('content')
 <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 gap-3">
-    <h3 class="fw-semibold mb-0">Manajemen Produk</h3>
+    <h3 class="fs-5 fw-semibold mb-0">Manajemen Produk</h3>
     @if(Auth::user()->role === 'admin')
     <a href="{{ route('produk.create') }}" class="btn btn-primary">
         <i class="bi bi-plus-lg me-2"></i>Tambah Produk

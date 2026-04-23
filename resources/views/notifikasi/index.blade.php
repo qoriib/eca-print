@@ -7,7 +7,7 @@
 <div class="row justify-content-center">
     <div class="col-lg-9">
         <div class="d-flex justify-content-between align-items-center mb-4">
-            <h3 class="fw-semibold mb-0">Notifikasi</h3>
+            <h3 class="fs-5 fw-semibold mb-0">Notifikasi</h3>
             @if($notifikasi->where('is_read', false)->count() > 0)
                 <form action="{{ route('notifikasi.read-all') }}" method="POST">
                     @csrf

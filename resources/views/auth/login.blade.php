@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="text-center mb-5">
-    <h3 class="fw-semibold text-dark">Selamat Datang</h3>
+    <h3 class="fs-5 fw-semibold text-dark">Selamat Datang</h3>
     <p class="text-muted small">Silakan masuk ke akun Anda</p>
 </div>
 

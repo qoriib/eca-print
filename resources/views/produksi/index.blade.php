@@ -5,7 +5,7 @@
 
 @section('content')
 <div class="d-flex justify-content-between align-items-center mb-4">
-    <h3 class="fw-semibold">Antrian Produksi</h3>
+    <h3 class="fs-5 fw-semibold">Antrian Produksi</h3>
     <div class="d-flex gap-2">
         <form action="{{ route('produksi.index') }}" method="GET" class="d-flex gap-2">
             <select name="status" class="form-select" onchange="this.form.submit()">

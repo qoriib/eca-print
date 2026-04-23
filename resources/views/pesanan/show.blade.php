@@ -11,7 +11,7 @@
                 <i class="bi bi-arrow-left"></i>
             </a>
             <div>
-                <h3 class="fw-semibold mb-1">Pesanan {{ $pesanan->kode_pesanan }}</h3>
+                <h3 class="fs-5 fw-semibold mb-1">Pesanan {{ $pesanan->kode_pesanan }}</h3>
                 <small class="text-muted">Dibuat pada {{ $pesanan->tanggal_pesan->format('d M Y, H:i') }}</small>
             </div>
             

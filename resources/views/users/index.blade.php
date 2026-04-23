@@ -5,7 +5,7 @@
 
 @section('content')
 <div class="d-flex justify-content-between align-items-center mb-4">
-    <h3 class="fw-semibold">Manajemen Pengguna</h3>
+    <h3 class="fs-5 fw-semibold">Manajemen Pengguna</h3>
     <a href="{{ route('users.create') }}" class="btn btn-primary">
         <i class="bi bi-person-plus me-2"></i>Tambah Pengguna
     </a>
@@ -26,18 +26,18 @@
                 </thead>
                 <tbody>
                     @forelse($users as $user)
-                    <tr>
+                    <tr class="text-nowrap">
                         <td class="ps-4">
                             <div class="d-flex align-items-center">
                                 <img src="https://ui-avatars.com/api/?name={{ urlencode($user->name) }}&background=random" class="rounded-circle me-3" width="40">
                                 <div>
                                     <div class="fw-semibold">{{ $user->name }}</div>
-                                    <small class="text-muted">Terdaftar: {{ $user->created_at->format('d/m/Y') }}</small>
+                                    <small class="text-muted">Terdaftar: <span class="font-monospace">{{ $user->created_at->format('d/m/Y') }}</span></small>
                                 </div>
                             </div>
                         </td>
                         <td>{{ $user->email }}</td>
-                        <td>{{ $user->no_telepon ?? '-' }}</td>
+                        <td class="font-monospace">{{ $user->no_telepon ?? '-' }}</td>
                         <td>
                             @php
                                 $badges = [

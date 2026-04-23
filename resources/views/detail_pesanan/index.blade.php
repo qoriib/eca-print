@@ -8,7 +8,7 @@
     <a href="{{ route('pesanan.show', $pesanan) }}" class="btn btn-light rounded-circle me-3">
         <i class="bi bi-arrow-left"></i>
     </a>
-    <h3 class="fw-semibold mb-0">Detail Item Pesanan: {{ $pesanan->kode_pesanan }}</h3>
+    <h3 class="fs-5 fw-semibold mb-0">Detail Item Pesanan: {{ $pesanan->kode_pesanan }}</h3>
 </div>
 
 <div class="card">

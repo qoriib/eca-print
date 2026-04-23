@@ -10,7 +10,7 @@
             <a href="{{ route('produk.index') }}" class="btn btn-light rounded-circle me-3">
                 <i class="bi bi-arrow-left"></i>
             </a>
-            <h3 class="fw-semibold mb-0">Detail Produk</h3>
+            <h3 class="fs-5 fw-semibold mb-0">Detail Produk</h3>
             @if(Auth::user()->role === 'admin')
             <div class="ms-auto">
                 <a href="{{ route('produk.edit', $produk) }}" class="btn btn-primary px-4">
@@ -45,7 +45,7 @@
 
                         <div class="mb-4 bg-light p-4">
                             <label class="text-muted small text-uppercase fw-semibold d-block mb-1">Harga Satuan</label>
-                            <h3 class="fw-semibold text-primary mb-0">Rp {{ number_format($produk->harga_satuan, 0, ',', '.') }} <small class="text-muted fs-6 fw-normal">/ {{ $produk->satuan }}</small></h3>
+                            <h3 class="fs-5 fw-semibold text-primary mb-0">Rp {{ number_format($produk->harga_satuan, 0, ',', '.') }} <small class="text-muted fs-6 fw-normal">/ {{ $produk->satuan }}</small></h3>
                         </div>
 
                         <div class="mb-4">
