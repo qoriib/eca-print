@@ -10,7 +10,7 @@
             <a href="{{ route('produk.index') }}" class="btn btn-light rounded-circle me-3">
                 <i class="bi bi-arrow-left"></i>
             </a>
-            <h3 class="fw-bold mb-0">Detail Produk</h3>
+            <h3 class="fw-semibold mb-0">Detail Produk</h3>
             @if(Auth::user()->role === 'admin')
             <div class="ms-auto">
                 <a href="{{ route('produk.edit', $produk) }}" class="btn btn-primary rounded-pill px-4">
@@ -32,24 +32,24 @@
                 <div class="col-md-7">
                     <div class="card-body p-4 p-md-5">
                         <div class="mb-4">
-                            <span class="badge bg-primary-subtle text-primary rounded-pill px-3 mb-2 text-uppercase fw-bold">{{ $produk->kategoriProduk->nama_kategori }}</span>
-                            <h2 class="fw-bold mb-1">{{ $produk->nama_produk }}</h2>
+                            <span class="badge bg-primary-subtle text-primary rounded-pill px-3 mb-2 text-uppercase fw-semibold">{{ $produk->kategoriProduk->nama_kategori }}</span>
+                            <h2 class="fw-semibold mb-1">{{ $produk->nama_produk }}</h2>
                             <div class="text-muted">Status: 
                                 @if($produk->is_aktif)
-                                    <span class="text-success fw-bold"><i class="bi bi-check-circle-fill me-1"></i>Aktif</span>
+                                    <span class="text-success fw-semibold"><i class="bi bi-check-circle-fill me-1"></i>Aktif</span>
                                 @else
-                                    <span class="text-danger fw-bold"><i class="bi bi-x-circle-fill me-1"></i>Non-aktif</span>
+                                    <span class="text-danger fw-semibold"><i class="bi bi-x-circle-fill me-1"></i>Non-aktif</span>
                                 @endif
                             </div>
                         </div>
 
                         <div class="mb-4 bg-light p-4">
-                            <label class="text-muted small text-uppercase fw-bold d-block mb-1">Harga Satuan</label>
-                            <h3 class="fw-bold text-primary mb-0">Rp {{ number_format($produk->harga_satuan, 0, ',', '.') }} <small class="text-muted fs-6 fw-normal">/ {{ $produk->satuan }}</small></h3>
+                            <label class="text-muted small text-uppercase fw-semibold d-block mb-1">Harga Satuan</label>
+                            <h3 class="fw-semibold text-primary mb-0">Rp {{ number_format($produk->harga_satuan, 0, ',', '.') }} <small class="text-muted fs-6 fw-normal">/ {{ $produk->satuan }}</small></h3>
                         </div>
 
                         <div class="mb-4">
-                            <label class="text-muted small text-uppercase fw-bold d-block mb-2">Deskripsi Produk</label>
+                            <label class="text-muted small text-uppercase fw-semibold d-block mb-2">Deskripsi Produk</label>
                             <div class="text-dark" style="line-height: 1.6;">
                                 {!! nl2br(e($produk->deskripsi ?? 'Tidak ada deskripsi untuk produk ini.')) !!}
                             </div>
@@ -63,7 +63,7 @@
                                     </div>
                                     <div>
                                         <div class="text-muted small">Satuan</div>
-                                        <div class="fw-bold text-capitalize">{{ $produk->satuan }}</div>
+                                        <div class="fw-semibold text-capitalize">{{ $produk->satuan }}</div>
                                     </div>
                                 </div>
                             </div>
@@ -74,7 +74,7 @@
                                     </div>
                                     <div>
                                         <div class="text-muted small">Kategori</div>
-                                        <div class="fw-bold">{{ $produk->kategoriProduk->nama_kategori }}</div>
+                                        <div class="fw-semibold">{{ $produk->kategoriProduk->nama_kategori }}</div>
                                     </div>
                                 </div>
                             </div>

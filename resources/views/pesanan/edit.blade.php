@@ -10,7 +10,7 @@
             <a href="{{ route('pesanan.show', $pesanan) }}" class="btn btn-light rounded-circle me-3">
                 <i class="bi bi-arrow-left"></i>
             </a>
-            <h3 class="fw-bold mb-0">Edit Pesanan: {{ $pesanan->kode_pesanan }}</h3>
+            <h3 class="fw-semibold mb-0">Edit Pesanan: {{ $pesanan->kode_pesanan }}</h3>
         </div>
 
         <div class="alert alert-info border-0 shadow-sm mb-4">
@@ -24,19 +24,19 @@
                     @method('PUT')
                     
                     <div class="mb-4">
-                        <label for="tanggal_deadline" class="form-label fw-bold">Harapan Tanggal Selesai</label>
+                        <label for="tanggal_deadline" class="form-label fw-semibold">Harapan Tanggal Selesai</label>
                         <input type="date" name="tanggal_deadline" id="tanggal_deadline" class="form-control" 
                                value="{{ old('tanggal_deadline', $pesanan->tanggal_deadline ? $pesanan->tanggal_deadline->format('Y-m-d') : '') }}"
                                min="{{ date('Y-m-d') }}">
                     </div>
 
                     <div class="mb-4">
-                        <label for="catatan_pelanggan" class="form-label fw-bold">Catatan Untuk Admin</label>
+                        <label for="catatan_pelanggan" class="form-label fw-semibold">Catatan Untuk Admin</label>
                         <textarea name="catatan_pelanggan" id="catatan_pelanggan" class="form-control" rows="4">{{ old('catatan_pelanggan', $pesanan->catatan_pelanggan) }}</textarea>
                     </div>
 
                     <div class="d-grid gap-2 mt-5">
-                        <button type="submit" class="btn btn-primary btn-lg rounded-pill fw-bold">Perbarui Pesanan</button>
+                        <button type="submit" class="btn btn-primary btn-lg rounded-pill fw-semibold">Perbarui Pesanan</button>
                         <a href="{{ route('pesanan.show', $pesanan) }}" class="btn btn-light btn-lg rounded-pill">Batal</a>
                     </div>
                 </form>

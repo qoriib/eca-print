@@ -5,7 +5,7 @@
 
 @section('content')
 <div class="d-flex justify-content-between align-items-center mb-4">
-    <h3 class="fw-bold">Antrian Produksi</h3>
+    <h3 class="fw-semibold">Antrian Produksi</h3>
     <div class="d-flex gap-2">
         <form action="{{ route('produksi.index') }}" method="GET" class="d-flex gap-2">
             <select name="status" class="form-select rounded-pill" onchange="this.form.submit()">
@@ -37,13 +37,13 @@
                     @forelse($produksi as $item)
                     <tr>
                         <td class="ps-4">
-                            <div class="fw-bold text-primary">{{ $item->pesanan->kode_pesanan }}</div>
+                            <div class="fw-semibold text-primary">{{ $item->pesanan->kode_pesanan }}</div>
                             <small class="text-muted">{{ $item->pesanan->detailPesanan->count() }} Item Cetakan</small>
                         </td>
                         <td>{{ $item->pesanan->user->name }}</td>
                         <td>
                             @if($item->pesanan->tanggal_deadline)
-                                <span class="{{ $item->pesanan->tanggal_deadline < today() ? 'text-danger fw-bold' : '' }}">
+                                <span class="{{ $item->pesanan->tanggal_deadline < today() ? 'text-danger fw-semibold' : '' }}">
                                     {{ $item->pesanan->tanggal_deadline->format('d/m/Y') }}
                                 </span>
                             @else

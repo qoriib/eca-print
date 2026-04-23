@@ -11,7 +11,7 @@
                     <div class="d-flex justify-content-between">
                         <div>
                             <h6 class="text-uppercase mb-2" style="opacity: 0.8;">Antrian Produksi</h6>
-                            <h2 class="fw-bold mb-0">{{ $data['antrian_produksi'] }}</h2>
+                            <h2 class="fw-semibold mb-0">{{ $data['antrian_produksi'] }}</h2>
                         </div>
                         <i class="bi bi-clock-history fs-1" style="opacity: 0.3;"></i>
                     </div>
@@ -24,7 +24,7 @@
                     <div class="d-flex justify-content-between">
                         <div>
                             <h6 class="text-uppercase mb-2" style="opacity: 0.8;">Sedang Saya Kerjakan</h6>
-                            <h2 class="fw-bold mb-0">{{ $data['sedang_proses'] }}</h2>
+                            <h2 class="fw-semibold mb-0">{{ $data['sedang_proses'] }}</h2>
                         </div>
                         <i class="bi bi-play-circle fs-1" style="opacity: 0.3;"></i>
                     </div>
@@ -37,7 +37,7 @@
                     <div class="d-flex justify-content-between">
                         <div>
                             <h6 class="text-uppercase mb-2" style="opacity: 0.8;">Selesai Hari Ini</h6>
-                            <h2 class="fw-bold mb-0">{{ $data['selesai_hari_ini'] }}</h2>
+                            <h2 class="fw-semibold mb-0">{{ $data['selesai_hari_ini'] }}</h2>
                         </div>
                         <i class="bi bi-check2-circle fs-1" style="opacity: 0.3;"></i>
                     </div>
@@ -48,7 +48,7 @@
 
     <div class="card">
         <div class="card-header bg-white border-0 py-3 d-flex justify-content-between align-items-center">
-            <h5 class="fw-bold mb-0">Daftar Pekerjaan Produksi</h5>
+            <h5 class="fw-semibold mb-0">Daftar Pekerjaan Produksi</h5>
         </div>
         <div class="card-body p-0">
             <div class="table-responsive">
@@ -65,7 +65,7 @@
                     <tbody>
                         @forelse($data['daftar_antrian'] as $produksi)
                             <tr>
-                                <td class="ps-4 fw-bold">{{ $produksi->pesanan->kode_pesanan }}</td>
+                                <td class="ps-4 fw-semibold">{{ $produksi->pesanan->kode_pesanan }}</td>
                                 <td>{{ $produksi->pesanan->user->name }}</td>
                                 <td>
                                     @foreach($produksi->pesanan->detailPesanan as $detail)

@@ -10,7 +10,7 @@
             <a href="{{ route('produk.index') }}" class="btn btn-light rounded-circle me-3">
                 <i class="bi bi-arrow-left"></i>
             </a>
-            <h3 class="fw-bold mb-0">Tambah Produk Baru</h3>
+            <h3 class="fw-semibold mb-0">Tambah Produk Baru</h3>
         </div>
 
         <form action="{{ route('produk.store') }}" method="POST" enctype="multipart/form-data">
@@ -22,7 +22,7 @@
                         <div class="card-body p-4 p-md-5">
                             <div class="row g-3">
                                 <div class="col-12">
-                                    <label for="nama_produk" class="form-label fw-bold">Nama Produk</label>
+                                    <label for="nama_produk" class="form-label fw-semibold">Nama Produk</label>
                                     <input type="text" class="form-control @error('nama_produk') is-invalid @enderror" id="nama_produk" name="nama_produk" value="{{ old('nama_produk') }}" required placeholder="Contoh: Brosur A4 Art Paper">
                                     @error('nama_produk')
                                         <div class="invalid-feedback">{{ $message }}</div>
@@ -30,7 +30,7 @@
                                 </div>
 
                                 <div class="col-md-6">
-                                    <label for="kategori_produk_id" class="form-label fw-bold">Kategori</label>
+                                    <label for="kategori_produk_id" class="form-label fw-semibold">Kategori</label>
                                     <select class="form-select @error('kategori_produk_id') is-invalid @enderror" id="kategori_produk_id" name="kategori_produk_id" required>
                                         <option value="" disabled selected>Pilih Kategori</option>
                                         @foreach($kategori as $kat)
@@ -43,7 +43,7 @@
                                 </div>
 
                                 <div class="col-md-6">
-                                    <label for="satuan" class="form-label fw-bold">Satuan</label>
+                                    <label for="satuan" class="form-label fw-semibold">Satuan</label>
                                     <input type="text" class="form-control @error('satuan') is-invalid @enderror" id="satuan" name="satuan" value="{{ old('satuan', 'pcs') }}" required placeholder="pcs, lembar, meter, dll">
                                     @error('satuan')
                                         <div class="invalid-feedback">{{ $message }}</div>
@@ -51,7 +51,7 @@
                                 </div>
 
                                 <div class="col-md-12">
-                                    <label for="harga_satuan" class="form-label fw-bold">Harga Satuan</label>
+                                    <label for="harga_satuan" class="form-label fw-semibold">Harga Satuan</label>
                                     <div class="input-group">
                                         <span class="input-group-text bg-white">Rp</span>
                                         <input type="number" class="form-control @error('harga_satuan') is-invalid @enderror" id="harga_satuan" name="harga_satuan" value="{{ old('harga_satuan') }}" required min="0" placeholder="0">
@@ -62,7 +62,7 @@
                                 </div>
 
                                 <div class="col-12">
-                                    <label for="deskripsi" class="form-label fw-bold">Deskripsi Produk</label>
+                                    <label for="deskripsi" class="form-label fw-semibold">Deskripsi Produk</label>
                                     <textarea class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi" name="deskripsi" rows="5" placeholder="Jelaskan detail produk, spesifikasi, atau minimal order...">{{ old('deskripsi') }}</textarea>
                                     @error('deskripsi')
                                         <div class="invalid-feedback">{{ $message }}</div>
@@ -77,7 +77,7 @@
                 <div class="col-md-4">
                     <div class="card mb-4">
                         <div class="card-body p-4">
-                            <label class="form-label fw-bold d-block mb-3">Gambar Produk</label>
+                            <label class="form-label fw-semibold d-block mb-3">Gambar Produk</label>
                             <div class="text-center mb-3">
                                 <div id="imagePreview" class="bg-light d-flex align-items-center justify-content-center overflow-hidden" style="height: 200px; border: 2px dashed #dee2e6;">
                                     <i class="bi bi-image text-muted fs-1 opacity-25"></i>
@@ -93,17 +93,17 @@
 
                     <div class="card">
                         <div class="card-body p-4">
-                            <label class="form-label fw-bold d-block mb-3">Pengaturan</label>
+                            <label class="form-label fw-semibold d-block mb-3">Pengaturan</label>
                             <div class="form-check form-switch mb-0">
                                 <input class="form-check-input" type="checkbox" role="switch" id="is_aktif" name="is_aktif" value="1" {{ old('is_aktif', true) ? 'checked' : '' }}>
-                                <label class="form-check-label fw-semibold" for="is_aktif">Produk Aktif</label>
+                                <label class="form-check-label fw-medium" for="is_aktif">Produk Aktif</label>
                             </div>
                             <small class="text-muted">Produk yang aktif akan muncul di katalog pesanan pelanggan.</small>
                         </div>
                     </div>
 
                     <div class="d-grid gap-2 mt-4">
-                        <button type="submit" class="btn btn-primary btn-lg rounded-pill fw-bold">Simpan Produk</button>
+                        <button type="submit" class="btn btn-primary btn-lg rounded-pill fw-semibold">Simpan Produk</button>
                         <a href="{{ route('produk.index') }}" class="btn btn-light btn-lg rounded-pill">Batal</a>
                     </div>
                 </div>

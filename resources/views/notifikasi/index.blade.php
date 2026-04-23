@@ -7,7 +7,7 @@
 <div class="row justify-content-center">
     <div class="col-lg-9">
         <div class="d-flex justify-content-between align-items-center mb-4">
-            <h3 class="fw-bold mb-0">Notifikasi</h3>
+            <h3 class="fw-semibold mb-0">Notifikasi</h3>
             @if($notifikasi->where('is_read', false)->count() > 0)
                 <form action="{{ route('notifikasi.read-all') }}" method="POST">
                     @csrf
@@ -36,7 +36,7 @@
                             </div>
                             <div class="ms-3 flex-grow-1">
                                 <div class="d-flex justify-content-between align-items-center mb-1">
-                                    <h6 class="fw-bold mb-0 {{ $notif->is_read ? '' : 'text-dark' }}">
+                                    <h6 class="fw-semibold mb-0 {{ $notif->is_read ? '' : 'text-dark' }}">
                                         {{ $notif->judul }}
                                     </h6>
                                     <small class="text-muted">{{ $notif->created_at->diffForHumans() }}</small>

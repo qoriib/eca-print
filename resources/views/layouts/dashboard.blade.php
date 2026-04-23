@@ -146,7 +146,7 @@
     <div class="sidebar d-flex flex-column shadow-sm" id="sidebar">
         <div class="p-4 d-flex justify-content-between align-items-center">
             <div>
-                <h4 class="fw-bold text-primary mb-0">Eca Print</h4>
+                <h4 class="fw-semibold text-primary mb-0">Eca Print</h4>
                 <small class="text-muted">Panel @yield('role_name')</small>
             </div>
             <button class="btn d-lg-none p-0 text-muted" id="closeSidebar">
@@ -227,7 +227,7 @@
                     <a href="#" class="d-flex align-items-center text-decoration-none dropdown-toggle text-dark"
                         data-bs-toggle="dropdown">
                         <div class="text-end me-3 d-none d-sm-block">
-                            <div class="fw-bold small lh-1">{{ Auth::user()->name }}</div>
+                            <div class="fw-semibold small lh-1">{{ Auth::user()->name }}</div>
                             <small class="navbar-user-role">
                                 {{ Auth::user()->role }}
                             </small>
@@ -237,7 +237,7 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end shadow border-0 mt-2">
                         <li class="px-3 py-2 d-sm-none border-bottom mb-2">
-                            <div class="fw-bold small">{{ Auth::user()->name }}</div>
+                            <div class="fw-semibold small">{{ Auth::user()->name }}</div>
                             <small class="navbar-user-role">{{ Auth::user()->role }}</small>
                         </li>
                         <li>

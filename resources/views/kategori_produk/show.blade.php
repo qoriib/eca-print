@@ -10,7 +10,7 @@
             <a href="{{ route('kategori-produk.index') }}" class="btn btn-light rounded-circle me-3">
                 <i class="bi bi-arrow-left"></i>
             </a>
-            <h3 class="fw-bold mb-0">Detail Kategori: {{ $kategoriProduk->nama_kategori }}</h3>
+            <h3 class="fw-semibold mb-0">Detail Kategori: {{ $kategoriProduk->nama_kategori }}</h3>
             <div class="ms-auto">
                 <a href="{{ route('kategori-produk.edit', $kategoriProduk) }}" class="btn btn-primary rounded-pill px-4">
                     <i class="bi bi-pencil me-2"></i>Edit Kategori
@@ -23,16 +23,16 @@
             <div class="col-md-4">
                 <div class="card p-4">
                     <div class="mb-4">
-                        <label class="text-muted small text-uppercase fw-bold d-block mb-1">Nama Kategori</label>
-                        <h4 class="fw-bold text-primary">{{ $kategoriProduk->nama_kategori }}</h4>
+                        <label class="text-muted small text-uppercase fw-semibold d-block mb-1">Nama Kategori</label>
+                        <h4 class="fw-semibold text-primary">{{ $kategoriProduk->nama_kategori }}</h4>
                     </div>
                     <div class="mb-4">
-                        <label class="text-muted small text-uppercase fw-bold d-block mb-1">Deskripsi</label>
+                        <label class="text-muted small text-uppercase fw-semibold d-block mb-1">Deskripsi</label>
                         <p class="text-muted">{{ $kategoriProduk->deskripsi ?? 'Tidak ada deskripsi' }}</p>
                     </div>
                     <div class="mb-0 pt-3 border-top">
-                        <label class="text-muted small text-uppercase fw-bold d-block mb-1">Total Produk</label>
-                        <h3 class="fw-bold mb-0">{{ $kategoriProduk->produk->count() }}</h3>
+                        <label class="text-muted small text-uppercase fw-semibold d-block mb-1">Total Produk</label>
+                        <h3 class="fw-semibold mb-0">{{ $kategoriProduk->produk->count() }}</h3>
                         <small class="text-muted">Produk terdaftar dalam kategori ini</small>
                     </div>
                 </div>
@@ -42,7 +42,7 @@
             <div class="col-md-8">
                 <div class="card h-100">
                     <div class="card-header bg-white border-0 py-3">
-                        <h5 class="fw-bold mb-0">Daftar Produk Terkait</h5>
+                        <h5 class="fw-semibold mb-0">Daftar Produk Terkait</h5>
                     </div>
                     <div class="card-body p-0">
                         <div class="table-responsive">
@@ -67,7 +67,7 @@
                                                         <i class="bi bi-image text-muted"></i>
                                                     </div>
                                                 @endif
-                                                <div class="fw-bold">{{ $produk->nama_produk }}</div>
+                                                <div class="fw-semibold">{{ $produk->nama_produk }}</div>
                                             </div>
                                         </td>
                                         <td>Rp {{ number_format($produk->harga_satuan, 0, ',', '.') }}/{{ $produk->satuan }}</td>

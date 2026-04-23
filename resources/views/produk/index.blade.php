@@ -5,7 +5,7 @@
 
 @section('content')
 <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 gap-3">
-    <h3 class="fw-bold mb-0">Manajemen Produk</h3>
+    <h3 class="fw-semibold mb-0">Manajemen Produk</h3>
     @if(Auth::user()->role === 'admin')
     <a href="{{ route('produk.create') }}" class="btn btn-primary rounded-pill">
         <i class="bi bi-plus-lg me-2"></i>Tambah Produk
@@ -63,10 +63,10 @@
             </div>
             
             <div class="card-body">
-                <small class="text-primary fw-bold text-uppercase" style="font-size: 0.7rem;">{{ $item->kategoriProduk->nama_kategori }}</small>
-                <h5 class="fw-bold mb-2 text-truncate" title="{{ $item->nama_produk }}">{{ $item->nama_produk }}</h5>
+                <small class="text-primary fw-semibold text-uppercase" style="font-size: 0.7rem;">{{ $item->kategoriProduk->nama_kategori }}</small>
+                <h5 class="fw-semibold mb-2 text-truncate" title="{{ $item->nama_produk }}">{{ $item->nama_produk }}</h5>
                 <div class="d-flex justify-content-between align-items-center">
-                    <h5 class="text-primary fw-bold mb-0">Rp {{ number_format($item->harga_satuan, 0, ',', '.') }}</h5>
+                    <h5 class="text-primary fw-semibold mb-0">Rp {{ number_format($item->harga_satuan, 0, ',', '.') }}</h5>
                     <small class="text-muted">/ {{ $item->satuan }}</small>
                 </div>
             </div>
@@ -88,7 +88,7 @@
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content border-0 shadow">
                     <div class="modal-header border-0">
-                        <h5 class="modal-title fw-bold">Konfirmasi Hapus</h5>
+                        <h5 class="modal-title fw-semibold">Konfirmasi Hapus</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body text-start">

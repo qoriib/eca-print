@@ -5,7 +5,7 @@
 
 @section('content')
 <div class="d-flex justify-content-between align-items-center mb-4">
-    <h3 class="fw-bold">Daftar Pembayaran</h3>
+    <h3 class="fw-semibold">Daftar Pembayaran</h3>
     <div class="d-flex gap-2">
         <form action="{{ route('pembayaran.index') }}" method="GET" class="d-flex gap-2">
             <select name="status" class="form-select rounded-pill" onchange="this.form.submit()">
@@ -38,13 +38,13 @@
                 <tbody>
                     @forelse($pembayaran as $item)
                     <tr>
-                        <td class="ps-4 fw-bold text-primary">{{ $item->kode_pembayaran }}</td>
+                        <td class="ps-4 fw-semibold text-primary">{{ $item->kode_pembayaran }}</td>
                         <td>{{ $item->pesanan->kode_pesanan }}</td>
                         @if(Auth::user()->role === 'admin')
                         <td>{{ $item->pesanan->user->name }}</td>
                         @endif
                         <td>{{ $item->tanggal_bayar->format('d/m/Y') }}</td>
-                        <td><span class="fw-bold">Rp {{ number_format($item->jumlah_bayar, 0, ',', '.') }}</span></td>
+                        <td><span class="fw-semibold">Rp {{ number_format($item->jumlah_bayar, 0, ',', '.') }}</span></td>
                         <td>
                             @php
                                 $badges = [

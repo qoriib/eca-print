@@ -11,7 +11,7 @@
                 <div class="d-flex justify-content-between">
                     <div>
                         <h6 class="text-uppercase mb-2" style="opacity: 0.8;">Total Pesanan</h6>
-                        <h2 class="fw-bold mb-0">{{ $data['total_pesanan'] }}</h2>
+                        <h2 class="fw-semibold mb-0">{{ $data['total_pesanan'] }}</h2>
                     </div>
                     <i class="bi bi-cart fs-1" style="opacity: 0.3;"></i>
                 </div>
@@ -24,7 +24,7 @@
                 <div class="d-flex justify-content-between">
                     <div>
                         <h6 class="text-uppercase mb-2" style="opacity: 0.8;">Pesanan Aktif</h6>
-                        <h2 class="fw-bold mb-0">{{ $data['pesanan_aktif'] }}</h2>
+                        <h2 class="fw-semibold mb-0">{{ $data['pesanan_aktif'] }}</h2>
                     </div>
                     <i class="bi bi-activity fs-1" style="opacity: 0.3;"></i>
                 </div>
@@ -37,7 +37,7 @@
                 <div class="d-flex justify-content-between">
                     <div>
                         <h6 class="text-uppercase mb-2" style="opacity: 0.8;">Pesanan Selesai</h6>
-                        <h2 class="fw-bold mb-0">{{ $data['pesanan_selesai'] }}</h2>
+                        <h2 class="fw-semibold mb-0">{{ $data['pesanan_selesai'] }}</h2>
                     </div>
                     <i class="bi bi-check-circle fs-1" style="opacity: 0.3;"></i>
                 </div>
@@ -48,7 +48,7 @@
 
 <div class="card mb-4">
     <div class="card-header bg-white border-0 py-3 d-flex justify-content-between align-items-center">
-        <h5 class="fw-bold mb-0">Pesanan Terbaru Saya</h5>
+        <h5 class="fw-semibold mb-0">Pesanan Terbaru Saya</h5>
         <a href="{{ route('pesanan.create') }}" class="btn btn-primary rounded-pill"><i class="bi bi-plus-lg me-2"></i>Buat Pesanan Baru</a>
     </div>
     <div class="card-body p-0">
@@ -66,11 +66,11 @@
                 <tbody>
                     @forelse($data['pesanan_terbaru'] as $pesanan)
                     <tr>
-                        <td class="ps-4 fw-bold text-primary">{{ $pesanan->kode_pesanan }}</td>
+                        <td class="ps-4 fw-semibold text-primary">{{ $pesanan->kode_pesanan }}</td>
                         <td>{{ $pesanan->tanggal_pesan->format('d M Y') }}</td>
                         <td>
                             @foreach($pesanan->detailPesanan as $detail)
-                                <div class="small fw-semibold">{{ $detail->produk->nama_produk }}</div>
+                                <div class="small fw-medium">{{ $detail->produk->nama_produk }}</div>
                                 <div class="text-muted extra-small">{{ $detail->jumlah }} {{ $detail->produk->satuan }}</div>
                             @endforeach
                         </td>
@@ -116,10 +116,10 @@
         <div class="card border-0 bg-primary text-white shadow-sm">
             <div class="card-body p-5 d-flex align-items-center justify-content-between">
                 <div>
-                    <h3 class="fw-bold mb-2">Butuh Bantuan Cetak?</h3>
+                    <h3 class="fw-semibold mb-2">Butuh Bantuan Cetak?</h3>
                     <p class="mb-0 opacity-75">Hubungi customer service kami jika Anda memiliki pertanyaan tentang pesanan atau produk.</p>
                 </div>
-                <a href="https://wa.me/{{ Auth::user()->no_telepon }}" class="btn btn-light btn-lg rounded-pill px-4 fw-bold text-primary">Chat via WhatsApp</a>
+                <a href="https://wa.me/{{ Auth::user()->no_telepon }}" class="btn btn-light btn-lg rounded-pill px-4 fw-semibold text-primary">Chat via WhatsApp</a>
             </div>
         </div>
     </div>

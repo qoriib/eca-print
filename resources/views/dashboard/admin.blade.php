@@ -11,7 +11,7 @@
                     <div class="d-flex justify-content-between">
                         <div>
                             <h6 class="text-uppercase mb-2" style="opacity: 0.8;">Total Pesanan</h6>
-                            <h2 class="fw-bold mb-0">{{ $data['total_pesanan'] }}</h2>
+                            <h2 class="fw-semibold mb-0">{{ $data['total_pesanan'] }}</h2>
                         </div>
                         <i class="bi bi-cart fs-1" style="opacity: 0.3;"></i>
                     </div>
@@ -24,7 +24,7 @@
                     <div class="d-flex justify-content-between">
                         <div>
                             <h6 class="text-uppercase mb-2" style="opacity: 0.8;">Pesanan Baru</h6>
-                            <h2 class="fw-bold mb-0">{{ $data['pesanan_baru'] }}</h2>
+                            <h2 class="fw-semibold mb-0">{{ $data['pesanan_baru'] }}</h2>
                         </div>
                         <i class="bi bi-plus-circle fs-1" style="opacity: 0.3;"></i>
                     </div>
@@ -37,7 +37,7 @@
                     <div class="d-flex justify-content-between">
                         <div>
                             <h6 class="text-uppercase mb-2" style="opacity: 0.8;">Dalam Produksi</h6>
-                            <h2 class="fw-bold mb-0">{{ $data['pesanan_dalam_produksi'] }}</h2>
+                            <h2 class="fw-semibold mb-0">{{ $data['pesanan_dalam_produksi'] }}</h2>
                         </div>
                         <i class="bi bi-gear fs-1" style="opacity: 0.3;"></i>
                     </div>
@@ -50,7 +50,7 @@
                     <div class="d-flex justify-content-between">
                         <div>
                             <h6 class="text-uppercase mb-2" style="opacity: 0.8;">Total Pelanggan</h6>
-                            <h2 class="fw-bold mb-0">{{ $data['total_pelanggan'] }}</h2>
+                            <h2 class="fw-semibold mb-0">{{ $data['total_pelanggan'] }}</h2>
                         </div>
                         <i class="bi bi-people fs-1" style="opacity: 0.3;"></i>
                     </div>
@@ -64,7 +64,7 @@
         <div class="col-lg-8 mb-4">
             <div class="card overflow-hidden">
                 <div class="card-header bg-white border-0 py-3 d-flex justify-content-between align-items-center">
-                    <h5 class="fw-bold mb-0">Pesanan Terbaru</h5>
+                    <h5 class="fw-semibold mb-0">Pesanan Terbaru</h5>
                     <a href="{{ route('pesanan.index') }}" class="btn btn-sm btn-outline-primary rounded-pill">
                         Lihat Semua
                     </a>
@@ -85,7 +85,7 @@
                             <tbody>
                                 @forelse($data['pesanan_terbaru'] as $pesanan)
                                     <tr class="text-nowrap">
-                                        <td class="ps-4 fw-semibold text-primary">{{ $pesanan->kode_pesanan }}</td>
+                                        <td class="ps-4 fw-medium text-primary">{{ $pesanan->kode_pesanan }}</td>
                                         <td>{{ $pesanan->user->name }}</td>
                                         <td class="font-monospace">{{ $pesanan->tanggal_pesan->format('d/m/Y') }}</td>
                                         <td class="font-monospace">Rp {{ number_format($pesanan->total_harga, 0, ',', '.') }}</td>
@@ -128,7 +128,7 @@
         <div class="col-lg-4 mb-4">
             <div class="card">
                 <div class="card-header bg-white border-0 py-3">
-                    <h5 class="fw-bold mb-0">Pembayaran Menunggu</h5>
+                    <h5 class="fw-semibold mb-0">Pembayaran Menunggu</h5>
                 </div>
                 <div class="card-body p-3">
                     @forelse($data['pembayaran_terbaru'] as $bayar)
@@ -139,7 +139,7 @@
                                 </div>
                             </div>
                             <div class="ms-3 flex-grow-1">
-                                <div class="fw-bold small">{{ $bayar->pesanan->kode_pesanan }}</div>
+                                <div class="fw-semibold small">{{ $bayar->pesanan->kode_pesanan }}</div>
                                 <div class="text-muted small">Rp {{ number_format($bayar->jumlah_bayar, 0, ',', '.') }}</div>
                                 <div class="small text-muted">{{ $bayar->pesanan->user->name }}</div>
                             </div>

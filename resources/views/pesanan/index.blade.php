@@ -5,7 +5,7 @@
 
 @section('content')
 <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 gap-3">
-    <h3 class="fw-bold mb-0">Daftar Pesanan</h3>
+    <h3 class="fw-semibold mb-0">Daftar Pesanan</h3>
     @if(Auth::user()->role === 'pelanggan')
     <a href="{{ route('pesanan.create') }}" class="btn btn-primary rounded-pill">
         <i class="bi bi-plus-lg me-2"></i>Buat Pesanan Baru
@@ -60,12 +60,12 @@
                 <tbody>
                     @forelse($pesanan as $item)
                     <tr>
-                        <td class="ps-4 fw-bold text-primary">{{ $item->kode_pesanan }}</td>
+                        <td class="ps-4 fw-semibold text-primary">{{ $item->kode_pesanan }}</td>
                         @if(Auth::user()->role !== 'pelanggan')
                         <td>{{ $item->user->name }}</td>
                         @endif
                         <td>{{ $item->tanggal_pesan->format('d/m/Y') }}</td>
-                        <td><span class="fw-bold">Rp {{ number_format($item->total_harga, 0, ',', '.') }}</span></td>
+                        <td><span class="fw-semibold">Rp {{ number_format($item->total_harga, 0, ',', '.') }}</span></td>
                         <td>
                             @php
                                 $badges = [
@@ -101,7 +101,7 @@
                                 <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content border-0 shadow">
                                         <div class="modal-header border-0">
-                                            <h5 class="modal-title fw-bold">Konfirmasi Hapus</h5>
+                                            <h5 class="modal-title fw-semibold">Konfirmasi Hapus</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body text-start">

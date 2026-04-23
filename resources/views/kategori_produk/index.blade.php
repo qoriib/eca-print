@@ -5,7 +5,7 @@
 
 @section('content')
 <div class="d-flex justify-content-between align-items-center mb-4">
-    <h3 class="fw-bold">Kategori Produk</h3>
+    <h3 class="fw-semibold">Kategori Produk</h3>
     <a href="{{ route('kategori-produk.create') }}" class="btn btn-primary rounded-pill">
         <i class="bi bi-plus-circle me-2"></i>Tambah Kategori
     </a>
@@ -28,7 +28,7 @@
                     @forelse($kategori as $item)
                     <tr>
                         <td class="ps-4 text-muted">{{ ($kategori->currentPage() - 1) * $kategori->perPage() + $loop->iteration }}</td>
-                        <td><span class="fw-bold">{{ $item->nama_kategori }}</span></td>
+                        <td><span class="fw-semibold">{{ $item->nama_kategori }}</span></td>
                         <td>{{ Str::limit($item->deskripsi, 50) ?? '-' }}</td>
                         <td class="text-center">
                             <span class="badge bg-light text-primary border rounded-pill px-3">
@@ -54,7 +54,7 @@
                                 <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content border-0 shadow">
                                         <div class="modal-header border-0">
-                                            <h5 class="modal-title fw-bold">Konfirmasi Hapus</h5>
+                                            <h5 class="modal-title fw-semibold">Konfirmasi Hapus</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body text-start">

@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="text-center mb-5">
-    <h3 class="fw-bold text-dark">Buat Akun</h3>
+    <h3 class="fw-semibold text-dark">Buat Akun</h3>
     <p class="text-muted small">Bergabunglah untuk mulai memesan cetakan</p>
 </div>
 

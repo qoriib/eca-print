@@ -10,7 +10,7 @@
             <a href="{{ route('users.index') }}" class="btn btn-light rounded-circle me-3">
                 <i class="bi bi-arrow-left"></i>
             </a>
-            <h3 class="fw-bold mb-0">Detail Profil Pengguna</h3>
+            <h3 class="fw-semibold mb-0">Detail Profil Pengguna</h3>
             <div class="ms-auto">
                 <a href="{{ route('users.edit', $user) }}" class="btn btn-primary rounded-pill px-4">
                     <i class="bi bi-pencil me-2"></i>Edit Profil
@@ -25,7 +25,7 @@
                     <div class="mb-3">
                         <img src="https://ui-avatars.com/api/?name={{ urlencode($user->name) }}&size=128&background=random" class="rounded-circle shadow-sm" width="120">
                     </div>
-                    <h4 class="fw-bold mb-1">{{ $user->name }}</h4>
+                    <h4 class="fw-semibold mb-1">{{ $user->name }}</h4>
                     <p class="text-muted mb-3">{{ $user->email }}</p>
                     <span class="badge {{ $user->role === 'admin' ? 'bg-danger' : ($user->role === 'operator' ? 'bg-primary' : 'bg-success') }} rounded-pill px-4 py-2 text-capitalize fs-6">
                         {{ $user->role }}
@@ -33,12 +33,12 @@
                     <hr class="my-4">
                     <div class="text-start">
                         <div class="mb-3">
-                            <label class="text-muted small text-uppercase fw-bold">Nomor Telepon</label>
-                            <div class="fw-semibold">{{ $user->no_telepon ?? 'Tidak ada data' }}</div>
+                            <label class="text-muted small text-uppercase fw-semibold">Nomor Telepon</label>
+                            <div class="fw-medium">{{ $user->no_telepon ?? 'Tidak ada data' }}</div>
                         </div>
                         <div class="mb-0">
-                            <label class="text-muted small text-uppercase fw-bold">Alamat</label>
-                            <div class="fw-semibold">{{ $user->alamat ?? 'Tidak ada data' }}</div>
+                            <label class="text-muted small text-uppercase fw-semibold">Alamat</label>
+                            <div class="fw-medium">{{ $user->alamat ?? 'Tidak ada data' }}</div>
                         </div>
                     </div>
                 </div>
@@ -48,7 +48,7 @@
             <div class="col-md-8">
                 <div class="card h-100">
                     <div class="card-header bg-white border-0 py-3">
-                        <h5 class="fw-bold mb-0">Riwayat Pesanan</h5>
+                        <h5 class="fw-semibold mb-0">Riwayat Pesanan</h5>
                     </div>
                     <div class="card-body p-0">
                         <div class="table-responsive">
@@ -65,7 +65,7 @@
                                 <tbody>
                                     @forelse($user->pesanan as $pesanan)
                                     <tr>
-                                        <td class="ps-4 fw-bold text-primary">{{ $pesanan->kode_pesanan }}</td>
+                                        <td class="ps-4 fw-semibold text-primary">{{ $pesanan->kode_pesanan }}</td>
                                         <td>{{ $pesanan->tanggal_pesan->format('d/m/Y') }}</td>
                                         <td>Rp {{ number_format($pesanan->total_harga, 0, ',', '.') }}</td>
                                         <td>

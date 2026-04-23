@@ -5,7 +5,7 @@
 
 @section('content')
 <div class="d-flex justify-content-between align-items-center mb-4">
-    <h3 class="fw-bold">Manajemen Pengguna</h3>
+    <h3 class="fw-semibold">Manajemen Pengguna</h3>
     <a href="{{ route('users.create') }}" class="btn btn-primary rounded-pill">
         <i class="bi bi-person-plus me-2"></i>Tambah Pengguna
     </a>
@@ -31,7 +31,7 @@
                             <div class="d-flex align-items-center">
                                 <img src="https://ui-avatars.com/api/?name={{ urlencode($user->name) }}&background=random" class="rounded-circle me-3" width="40">
                                 <div>
-                                    <div class="fw-bold">{{ $user->name }}</div>
+                                    <div class="fw-semibold">{{ $user->name }}</div>
                                     <small class="text-muted">Terdaftar: {{ $user->created_at->format('d/m/Y') }}</small>
                                 </div>
                             </div>
@@ -72,7 +72,7 @@
                                 <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content border-0 shadow">
                                         <div class="modal-header border-0">
-                                            <h5 class="modal-title fw-bold">Konfirmasi Hapus</h5>
+                                            <h5 class="modal-title fw-semibold">Konfirmasi Hapus</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body text-start">

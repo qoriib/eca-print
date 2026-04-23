@@ -8,7 +8,7 @@
     <a href="{{ route('pesanan.show', $pesanan) }}" class="btn btn-light rounded-circle me-3">
         <i class="bi bi-arrow-left"></i>
     </a>
-    <h3 class="fw-bold mb-0">Detail Item Pesanan: {{ $pesanan->kode_pesanan }}</h3>
+    <h3 class="fw-semibold mb-0">Detail Item Pesanan: {{ $pesanan->kode_pesanan }}</h3>
 </div>
 
 <div class="card">
@@ -30,14 +30,14 @@
                     @foreach($pesanan->detailPesanan as $detail)
                     <tr>
                         <td class="ps-4">
-                            <div class="fw-bold">{{ $detail->produk->nama_produk }}</div>
+                            <div class="fw-semibold">{{ $detail->produk->nama_produk }}</div>
                             <small class="text-muted">@Rp {{ number_format($detail->harga_satuan, 0, ',', '.') }}</small>
                         </td>
                         <td>{{ $detail->ukuran ?? '-' }}</td>
                         <td>{{ $detail->bahan ?? '-' }}</td>
                         <td>{{ $detail->finishing ?? '-' }}</td>
                         <td>{{ $detail->jumlah }} {{ $detail->produk->satuan }}</td>
-                        <td><span class="fw-bold text-primary">Rp {{ number_format($detail->subtotal, 0, ',', '.') }}</span></td>
+                        <td><span class="fw-semibold text-primary">Rp {{ number_format($detail->subtotal, 0, ',', '.') }}</span></td>
                         <td class="text-end pe-4">
                             @if($pesanan->status === 'menunggu_konfirmasi')
                                 <form action="{{ route('detail-pesanan.destroy', $detail) }}" method="POST" class="d-inline">

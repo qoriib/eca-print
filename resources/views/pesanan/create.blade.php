@@ -10,7 +10,7 @@
             <a href="{{ route('pesanan.index') }}" class="btn btn-light rounded-circle me-3">
                 <i class="bi bi-arrow-left"></i>
             </a>
-            <h3 class="fw-bold mb-0">Form Pemesanan Cetak</h3>
+            <h3 class="fw-semibold mb-0">Form Pemesanan Cetak</h3>
         </div>
 
         <form action="{{ route('pesanan.store') }}" method="POST" enctype="multipart/form-data">
@@ -23,12 +23,12 @@
                         <!-- Item Template (Item Pertama) -->
                         <div class="card mb-4 item-card">
                             <div class="card-header bg-white border-0 py-3 d-flex justify-content-between align-items-center">
-                                <h6 class="fw-bold mb-0">Item #1</h6>
+                                <h6 class="fw-semibold mb-0">Item #1</h6>
                             </div>
                             <div class="card-body p-4">
                                 <div class="row g-3">
                                     <div class="col-md-12">
-                                        <label class="form-label fw-bold small">Pilih Produk</label>
+                                        <label class="form-label fw-semibold small">Pilih Produk</label>
                                         <select name="items[0][produk_id]" class="form-select produk-select" required>
                                             <option value="" disabled selected>Pilih produk yang ingin dicetak</option>
                                             @foreach($produk as $p)
@@ -39,31 +39,31 @@
                                         </select>
                                     </div>
                                     <div class="col-md-4">
-                                        <label class="form-label fw-bold small">Jumlah (Qty)</label>
+                                        <label class="form-label fw-semibold small">Jumlah (Qty)</label>
                                         <div class="input-group">
                                             <input type="number" name="items[0][jumlah]" class="form-control item-qty" min="1" value="1" required>
                                             <span class="input-group-text bg-white satuan-label">unit</span>
                                         </div>
                                     </div>
                                     <div class="col-md-8">
-                                        <label class="form-label fw-bold small">Ukuran (Opsional)</label>
+                                        <label class="form-label fw-semibold small">Ukuran (Opsional)</label>
                                         <input type="text" name="items[0][ukuran]" class="form-control" placeholder="Contoh: A4, 2x3 meter, 9x5 cm">
                                     </div>
                                     <div class="col-md-6">
-                                        <label class="form-label fw-bold small">Bahan (Opsional)</label>
+                                        <label class="form-label fw-semibold small">Bahan (Opsional)</label>
                                         <input type="text" name="items[0][bahan]" class="form-control" placeholder="Contoh: Art Paper 260gr, Flexy 280gr">
                                     </div>
                                     <div class="col-md-6">
-                                        <label class="form-label fw-bold small">Finishing (Opsional)</label>
+                                        <label class="form-label fw-semibold small">Finishing (Opsional)</label>
                                         <input type="text" name="items[0][finishing]" class="form-control" placeholder="Contoh: Laminating Glossy, Mata Ayam">
                                     </div>
                                     <div class="col-12">
-                                        <label class="form-label fw-bold small">Upload Desain (Opsional)</label>
+                                        <label class="form-label fw-semibold small">Upload Desain (Opsional)</label>
                                         <input type="file" name="items[0][file_desain]" class="form-control" accept=".jpg,.jpeg,.png,.pdf,.ai,.cdr">
                                         <small class="text-muted">Format: JPG, PNG, PDF, AI, CDR (Maks. 10MB)</small>
                                     </div>
                                     <div class="col-12">
-                                        <label class="form-label fw-bold small">Keterangan Tambahan</label>
+                                        <label class="form-label fw-semibold small">Keterangan Tambahan</label>
                                         <textarea name="items[0][keterangan]" class="form-control" rows="2" placeholder="Catatan khusus untuk item ini..."></textarea>
                                     </div>
                                 </div>
@@ -81,29 +81,29 @@
                     <div class="sticky-top" style="top: 2rem; z-index: 1;">
                         <div class="card mb-4">
                             <div class="card-body p-4">
-                                <h5 class="fw-bold mb-4 text-center">Ringkasan Pesanan</h5>
+                                <h5 class="fw-semibold mb-4 text-center">Ringkasan Pesanan</h5>
                                 
                                 <div class="mb-4">
-                                    <label for="tanggal_deadline" class="form-label fw-bold small">Tanggal Deadline (Harapan Selesai)</label>
+                                    <label for="tanggal_deadline" class="form-label fw-semibold small">Tanggal Deadline (Harapan Selesai)</label>
                                     <input type="date" name="tanggal_deadline" id="tanggal_deadline" class="form-control" min="{{ date('Y-m-d') }}">
                                     <small class="text-muted">Kami akan berusaha menyelesaikannya tepat waktu.</small>
                                 </div>
 
                                 <div class="mb-4">
-                                    <label for="catatan_pelanggan" class="form-label fw-bold small">Catatan Pesanan (Global)</label>
+                                    <label for="catatan_pelanggan" class="form-label fw-semibold small">Catatan Pesanan (Global)</label>
                                     <textarea name="catatan_pelanggan" id="catatan_pelanggan" class="form-control" rows="3" placeholder="Pesan untuk admin..."></textarea>
                                 </div>
 
                                 <div class="bg-light p-3 rounded-3 mb-4">
                                     <div class="d-flex justify-content-between mb-2">
                                         <span class="text-muted">Estimasi Total</span>
-                                        <span class="fw-bold" id="total-estimasi">Rp 0</span>
+                                        <span class="fw-semibold" id="total-estimasi">Rp 0</span>
                                     </div>
                                     <small class="text-muted d-block text-center mt-2" style="font-size: 0.7rem;">*Harga final akan dikonfirmasi oleh Admin.</small>
                                 </div>
 
                                 <div class="d-grid gap-2">
-                                    <button type="submit" class="btn btn-primary btn-lg rounded-pill fw-bold">Proses Pesanan</button>
+                                    <button type="submit" class="btn btn-primary btn-lg rounded-pill fw-semibold">Proses Pesanan</button>
                                     <a href="{{ route('pesanan.index') }}" class="btn btn-light rounded-pill">Batal</a>
                                 </div>
                             </div>
