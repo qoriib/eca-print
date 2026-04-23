@@ -118,7 +118,7 @@
                                     </thead>
                                     <tbody>
                                         @foreach($pesanan->detailPesanan as $detail)
-                                            <tr>
+                                            <tr class="text-nowrap">
                                                 <td class="ps-4">
                                                     <div class="fw-semibold">{{ $detail->produk->nama_produk }}</div>
                                                     <small class="text-muted">{{ $detail->jumlah }}
@@ -134,9 +134,12 @@
                                                         <div>Finishing: {{ $detail->finishing }}</div> @endif
                                                     </div>
                                                 </td>
-                                                <td>Rp {{ number_format($detail->harga_satuan, 0, ',', '.') }}</td>
-                                                <td><span class="fw-semibold">Rp
-                                                        {{ number_format($detail->subtotal, 0, ',', '.') }}</span></td>
+                                                <td class="font-monospace">Rp {{ number_format($detail->harga_satuan, 0, ',', '.') }}</td>
+                                                <td>
+                                                    <span class="fw-semibold font-monospace">
+                                                        Rp {{ number_format($detail->subtotal, 0, ',', '.') }}
+                                                    </span>
+                                                </td>
                                             </tr>
                                             @if($detail->file_desain)
                                                 <tr class="bg-light-subtle">
@@ -154,8 +157,9 @@
                                         <tr>
                                             <td colspan="3" class="text-end fw-semibold">Total Pembayaran:</td>
                                             <td class="ps-3">
-                                                <h5 class="fw-semibold text-primary mb-0">Rp
-                                                    {{ number_format($pesanan->total_harga, 0, ',', '.') }}</h5>
+                                                <h5 class="fw-semibold font-monospace text-primary mb-0">
+                                                    Rp {{ number_format($pesanan->total_harga, 0, ',', '.') }}
+                                                </h5>
                                             </td>
                                         </tr>
                                     </tfoot>
@@ -216,7 +220,7 @@
                             <div class="mb-3">
                                 <div class="text-muted small text-uppercase fw-semibold mb-1">Target Selesai</div>
                                 <h4
-                                    class="fw-semibold {{ $pesanan->tanggal_deadline && $pesanan->tanggal_deadline < today() ? 'text-danger' : 'text-primary' }}">
+                                    class="fw-semibold font-monospace {{ $pesanan->tanggal_deadline && $pesanan->tanggal_deadline < today() ? 'text-danger' : 'text-primary' }}">
                                     {{ $pesanan->tanggal_deadline ? $pesanan->tanggal_deadline->format('d M Y') : 'Belum Ditentukan' }}
                                 </h4>
                             </div>
