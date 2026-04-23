@@ -69,7 +69,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('detail-pesanan/{detailPesanan}',     [DetailPesananController::class, 'destroy'])->name('detail-pesanan.destroy');
 
     // === PEMBAYARAN ===
-    Route::resource('pembayaran', PembayaranController::class)->except(['edit', 'update']);
+    Route::resource('pembayaran', PembayaranController::class)->only(['index', 'show', 'destroy']);
     Route::get('pesanan/{pesanan}/pembayaran/create', [PembayaranController::class, 'create'])->name('pembayaran.create');
     Route::post('pesanan/{pesanan}/pembayaran',       [PembayaranController::class, 'store'])->name('pembayaran.store');
 

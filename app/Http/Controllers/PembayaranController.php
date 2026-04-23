@@ -40,6 +40,11 @@ class PembayaranController extends Controller
 
     public function store(Request $request, Pesanan $pesanan)
     {
+        // Pastikan pesanan milik pelanggan yg login
+        if (Auth::user()->role === 'pelanggan' && $pesanan->user_id !== Auth::id()) {
+            abort(403);
+        }
+
         $request->validate([
             'jumlah_bayar' => 'required|numeric|min:1',
             'jenis_pembayaran' => 'required|in:dp,pelunasan,full',

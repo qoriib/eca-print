@@ -21,7 +21,7 @@
                             <h5 class="fw-semibold mb-4">Instruksi Pembayaran</h5>
                             <div class="alert alert-primary border-0 mb-4">
                                 <div class="small mb-1">Total yang harus dibayar:</div>
-                                <h3 class="fs-5 fw-semibold mb-0">Rp {{ number_format($pesanan->total_harga, 0, ',', '.') }}
+                                <h3 class="fs-5 fw-semibold font-monospace mb-0">Rp {{ number_format($pesanan->total_harga, 0, ',', '.') }}
                                 </h3>
                             </div>
 
@@ -30,14 +30,14 @@
                                 <div class="d-flex align-items-center p-3 bg-light rounded mb-2">
                                     <div class="fw-semibold">Bank BCA</div>
                                     <div class="ms-auto text-end">
-                                        <div class="fw-semibold">1234567890</div>
+                                        <div class="fw-semibold font-monospace">1234567890</div>
                                         <small class="text-muted">a.n Eca Print Mandiri</small>
                                     </div>
                                 </div>
                                 <div class="d-flex align-items-center p-3 bg-light rounded">
                                     <div class="fw-semibold">Bank Mandiri</div>
                                     <div class="ms-auto text-end">
-                                        <div class="fw-semibold">0987654321</div>
+                                        <div class="fw-semibold font-monospace">0987654321</div>
                                         <small class="text-muted">a.n Eca Print Mandiri</small>
                                     </div>
                                 </div>

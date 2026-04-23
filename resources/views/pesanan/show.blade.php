@@ -89,7 +89,7 @@
                             </div>
 
                             @if($pesanan->status === 'dibatalkan')
-                                <div class="alert alert-danger border-0 rounded d-flex align-items-center mb-0">
+                                <div class="alert alert-danger border-0 rounded-3 d-flex align-items-center mb-0">
                                     <i class="bi bi-x-circle-fill me-3 fs-4"></i>
                                     <div>
                                         <div class="fw-semibold">Pesanan Dibatalkan</div>
@@ -242,14 +242,15 @@
                         <div class="card-body p-4">
                             <h6 class="fw-semibold mb-3">Status Pembayaran</h6>
                             @if($pesanan->pembayaran)
-                                <div class="d-flex align-items-center p-3 bg-light rounded">
-                                    <div class="bg-success-subtle text-success p-2 me-3">
+                                <div class="d-flex align-items-center p-3 bg-light ">
+                                    <div class="bg-success-subtle text-success py-2 px-3 rounded me-3">
                                         <i class="bi bi-cash-stack"></i>
                                     </div>
                                     <div>
                                         <div class="fw-semibold small">Sudah Dibayar</div>
-                                        <div class="text-muted extra-small">Rp
-                                            {{ number_format($pesanan->pembayaran->jumlah_bayar, 0, ',', '.') }}</div>
+                                        <div class="text-muted font-monospace extra-small">
+                                            Rp {{ number_format($pesanan->pembayaran->jumlah_bayar, 0, ',', '.') }}
+                                        </div>
                                     </div>
                                     <a href="{{ route('pembayaran.show', $pesanan->pembayaran) }}"
                                         class="ms-auto btn btn-sm btn-link p-0 text-decoration-none">Lihat</a>
