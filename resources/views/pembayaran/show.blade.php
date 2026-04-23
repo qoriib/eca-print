@@ -37,7 +37,7 @@
                                 <tr>
                                     <td class="text-muted ps-0">Pesanan</td>
                                     <td class="fw-semibold text-end">
-                                        <a href="{{ route('pesanan.show', $pembayaran->pesanan) }}" class="text-decoration-none">
+                                        <a href="{{ route('pesanan.show', $pembayaran->pesanan) }}" class="text-decoration-none font-monospace">
                                             {{ $pembayaran->pesanan->kode_pesanan }} <i class="bi bi-box-arrow-up-right small ms-1"></i>
                                         </a>
                                     </td>
@@ -48,7 +48,7 @@
                                 </tr>
                                 <tr>
                                     <td class="text-muted ps-0">Tanggal Bayar</td>
-                                    <td class="fw-semibold text-end">{{ $pembayaran->tanggal_bayar->format('d M Y') }}</td>
+                                    <td class="fw-semibold font-monospace text-end">{{ $pembayaran->tanggal_bayar->format('d M Y') }}</td>
                                 </tr>
                                 <tr>
                                     <td class="text-muted ps-0">Metode</td>

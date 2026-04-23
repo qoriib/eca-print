@@ -36,7 +36,7 @@ Route::middleware('auth')->group(function () {
         Route::resource('users',           UserController::class);
         Route::resource('kategori-produk', KategoriProdukController::class);
         Route::post('pembayaran/{pembayaran}/konfirmasi', [PembayaranController::class, 'konfirmasi'])->name('pembayaran.konfirmasi');
-        Route::patch('pesanan/{pesanan}/update-status',   [PesananController::class, 'update'])->name('pesanan.update');
+
     });
 
     // === OPERATOR & ADMIN ===

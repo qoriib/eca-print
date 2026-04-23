@@ -151,7 +151,6 @@ class PesananController extends Controller
 
     public function update(Request $request, Pesanan $pesanan)
     {
-        // Hanya admin yang bisa update status
         if (Auth::user()->role === 'admin') {
             $request->validate([
                 'status' => 'required|in:menunggu_konfirmasi,dikonfirmasi,dalam_produksi,selesai_produksi,siap_diambil,selesai,dibatalkan',
@@ -159,18 +158,38 @@ class PesananController extends Controller
                 'tanggal_deadline' => 'nullable|date',
             ]);
 
+            $oldStatus = $pesanan->status;
             $pesanan->update($request->only('status', 'catatan_admin', 'tanggal_deadline'));
 
             // Notifikasi ke pelanggan saat status berubah
-            Notifikasi::create([
-                'user_id' => $pesanan->user_id,
-                'judul' => 'Status Pesanan Diperbarui',
-                'pesan' => "Pesanan {$pesanan->kode_pesanan} kini berstatus: " . ucwords(str_replace('_', ' ', $pesanan->status)),
-                'tipe' => 'info',
-            ]);
+            if ($oldStatus !== $pesanan->status) {
+                Notifikasi::create([
+                    'user_id' => $pesanan->user_id,
+                    'judul' => 'Status Pesanan Diperbarui',
+                    'pesan' => "Pesanan {$pesanan->kode_pesanan} kini berstatus: " . ucwords(str_replace('_', ' ', $pesanan->status)),
+                    'tipe' => 'info',
+                ]);
+            }
 
             return redirect()->route('pesanan.show', $pesanan)
                 ->with('success', 'Status pesanan berhasil diperbarui.');
+        } 
+        
+        if (Auth::user()->role === 'pelanggan' && $pesanan->user_id === Auth::id()) {
+            // Hanya boleh edit jika masih menunggu konfirmasi
+            if ($pesanan->status !== 'menunggu_konfirmasi') {
+                return back()->with('error', 'Pesanan tidak dapat diubah karena sudah diproses.');
+            }
+
+            $request->validate([
+                'tanggal_deadline' => 'nullable|date|after_or_equal:today',
+                'catatan_pelanggan' => 'nullable|string',
+            ]);
+
+            $pesanan->update($request->only('tanggal_deadline', 'catatan_pelanggan'));
+
+            return redirect()->route('pesanan.show', $pesanan)
+                ->with('success', 'Informasi pesanan berhasil diperbarui.');
         }
 
         abort(403);
