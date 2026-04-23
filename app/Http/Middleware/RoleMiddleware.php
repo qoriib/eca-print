@@ -13,8 +13,12 @@ class RoleMiddleware
      *
      * @param  Closure(Request): (Response)  $next
      */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next, ...$roles): Response
     {
+        if (!$request->user() || !in_array($request->user()->role, $roles)) {
+            abort(403, 'Anda tidak memiliki akses ke halaman ini.');
+        }
+
         return $next($request);
     }
 }

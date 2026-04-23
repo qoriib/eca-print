@@ -23,11 +23,13 @@ Route::middleware('guest')->group(function () {
 
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
 
-// === DASHBOARD ===
+// === DASHBOARD & SHARED ===
 Route::middleware('auth')->group(function () {
-    Route::get('/dashboard/admin',     [DashboardController::class, 'admin'])->name('dashboard.admin');
-    Route::get('/dashboard/operator',  [DashboardController::class, 'operator'])->name('dashboard.operator');
-    Route::get('/dashboard/pelanggan', [DashboardController::class, 'pelanggan'])->name('dashboard.pelanggan');
+    
+    // Dashboard redirects are handled in AuthController, but we protect the routes here too
+    Route::get('/dashboard/admin',     [DashboardController::class, 'admin'])->middleware('role:admin')->name('dashboard.admin');
+    Route::get('/dashboard/operator',  [DashboardController::class, 'operator'])->middleware('role:operator,admin')->name('dashboard.operator');
+    Route::get('/dashboard/pelanggan', [DashboardController::class, 'pelanggan'])->middleware('role:pelanggan')->name('dashboard.pelanggan');
 
     // === ADMIN ONLY ===
     Route::middleware('role:admin')->group(function () {
@@ -37,10 +39,24 @@ Route::middleware('auth')->group(function () {
         Route::patch('pesanan/{pesanan}/update-status',   [PesananController::class, 'update'])->name('pesanan.update');
     });
 
-    // === PRODUK (admin & operator bisa lihat) ===
-    Route::resource('produk', ProdukController::class);
+    // === OPERATOR & ADMIN ===
+    Route::middleware('role:operator,admin')->group(function () {
+        Route::resource('produksi', ProduksiController::class)->only(['index', 'show', 'update']);
+        Route::post('produksi/{produksi}/ambil', [ProduksiController::class, 'ambilPekerjaan'])->name('produksi.ambil');
+    });
 
-    // === PESANAN ===
+    // === PRODUK (Semua bisa lihat, Admin bisa kelola) ===
+    Route::get('/produk', [ProdukController::class, 'index'])->name('produk.index');
+    Route::get('/produk/{produk}', [ProdukController::class, 'show'])->name('produk.show');
+    Route::middleware('role:admin')->group(function () {
+        Route::get('/produk/create', [ProdukController::class, 'create'])->name('produk.create');
+        Route::post('/produk', [ProdukController::class, 'store'])->name('produk.store');
+        Route::get('/produk/{produk}/edit', [ProdukController::class, 'edit'])->name('produk.edit');
+        Route::put('/produk/{produk}', [ProdukController::class, 'update'])->name('produk.update');
+        Route::delete('/produk/{produk}', [ProdukController::class, 'destroy'])->name('produk.destroy');
+    });
+
+    // === PESANAN (Pelanggan buat, Admin/Operator lihat) ===
     Route::resource('pesanan', PesananController::class);
     Route::post('pesanan/{pesanan}/batalkan', [PesananController::class, 'batalkan'])->name('pesanan.batalkan');
 
@@ -49,10 +65,6 @@ Route::middleware('auth')->group(function () {
     Route::post('pesanan/{pesanan}/detail',             [DetailPesananController::class, 'store'])->name('detail-pesanan.store');
     Route::put( 'detail-pesanan/{detailPesanan}',       [DetailPesananController::class, 'update'])->name('detail-pesanan.update');
     Route::delete('detail-pesanan/{detailPesanan}',     [DetailPesananController::class, 'destroy'])->name('detail-pesanan.destroy');
-
-    // === PRODUKSI ===
-    Route::resource('produksi', ProduksiController::class)->only(['index', 'show', 'update']);
-    Route::post('produksi/{produksi}/ambil', [ProduksiController::class, 'ambilPekerjaan'])->name('produksi.ambil');
 
     // === PEMBAYARAN ===
     Route::resource('pembayaran', PembayaranController::class)->except(['edit', 'update']);
