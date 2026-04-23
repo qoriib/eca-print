@@ -7,7 +7,7 @@
 <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 gap-3">
     <h3 class="fw-semibold mb-0">Manajemen Produk</h3>
     @if(Auth::user()->role === 'admin')
-    <a href="{{ route('produk.create') }}" class="btn btn-primary rounded-pill">
+    <a href="{{ route('produk.create') }}" class="btn btn-primary">
         <i class="bi bi-plus-lg me-2"></i>Tambah Produk
     </a>
     @endif
@@ -48,9 +48,9 @@
         <div class="card h-100 border-0 shadow-sm overflow-hidden position-relative stat-card">
             <div class="position-absolute top-0 end-0 m-3 z-3">
                 @if($item->is_aktif)
-                    <span class="badge bg-success rounded-pill px-3">Aktif</span>
+                    <span class="badge bg-success px-3">Aktif</span>
                 @else
-                    <span class="badge bg-danger rounded-pill px-3">Non-aktif</span>
+                    <span class="badge bg-danger px-3">Non-aktif</span>
                 @endif
             </div>
             
@@ -73,7 +73,7 @@
             
             <div class="card-footer bg-white border-0 p-3 pt-0">
                 <div class="d-grid gap-2 d-flex">
-                    <a href="{{ route('produk.show', $item) }}" class="btn btn-light rounded-pill flex-grow-1">Detail</a>
+                    <a href="{{ route('produk.show', $item) }}" class="btn btn-light flex-grow-1">Detail</a>
                     @if(Auth::user()->role === 'admin')
                     <a href="{{ route('produk.edit', $item) }}" class="btn btn-outline-primary rounded-circle"><i class="bi bi-pencil"></i></a>
                     <button type="button" class="btn btn-outline-danger rounded-circle" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $item->id }}"><i class="bi bi-trash"></i></button>
@@ -95,11 +95,11 @@
                         Apakah Anda yakin ingin menghapus produk <strong>{{ $item->nama_produk }}</strong>?
                     </div>
                     <div class="modal-footer border-0">
-                        <button type="button" class="btn btn-light rounded-pill px-4" data-bs-dismiss="modal">Batal</button>
+                        <button type="button" class="btn btn-light px-4" data-bs-dismiss="modal">Batal</button>
                         <form action="{{ route('produk.destroy', $item) }}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger rounded-pill px-4">Hapus</button>
+                            <button type="submit" class="btn btn-danger px-4">Hapus</button>
                         </form>
                     </div>
                 </div>

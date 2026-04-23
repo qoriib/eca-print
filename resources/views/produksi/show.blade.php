@@ -27,7 +27,7 @@
                             </div>
                             <form action="{{ route('produksi.ambil', $produksi) }}" method="POST" class="d-grid">
                                 @csrf
-                                <button type="submit" class="btn btn-primary rounded-pill fw-semibold">Ambil Pekerjaan</button>
+                                <button type="submit" class="btn btn-primary fw-semibold">Ambil Pekerjaan</button>
                             </form>
                         @else
                             <form action="{{ route('produksi.update', $produksi) }}" method="POST">
@@ -64,7 +64,7 @@
                                 @endif
 
                                 <div class="d-grid">
-                                    <button type="submit" class="btn btn-primary rounded-pill fw-semibold">Perbarui Status</button>
+                                    <button type="submit" class="btn btn-primary fw-semibold">Perbarui Status</button>
                                 </div>
                             </form>
                         @endif
@@ -125,7 +125,7 @@
                                         <td>{{ $item->jumlah }} {{ $item->produk->satuan }}</td>
                                         <td class="text-end pe-4">
                                             @if($item->file_desain)
-                                                <a href="{{ asset('storage/' . $item->file_desain) }}" target="_blank" class="btn btn-sm btn-outline-primary rounded-pill">
+                                                <a href="{{ asset('storage/' . $item->file_desain) }}" target="_blank" class="btn btn-sm btn-outline-primary">
                                                     <i class="bi bi-download me-1"></i> Unduh File
                                                 </a>
                                             @else

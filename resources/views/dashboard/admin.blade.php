@@ -65,7 +65,7 @@
             <div class="card overflow-hidden">
                 <div class="card-header bg-white border-0 py-3 d-flex justify-content-between align-items-center">
                     <h5 class="fw-semibold mb-0">Pesanan Terbaru</h5>
-                    <a href="{{ route('pesanan.index') }}" class="btn btn-sm btn-outline-primary rounded-pill">
+                    <a href="{{ route('pesanan.index') }}" class="btn btn-sm btn-outline-primary">
                         Lihat Semua
                     </a>
                 </div>
@@ -102,7 +102,7 @@
                                                 ];
                                             @endphp
                                             <span
-                                                class="badge {{ $badges[$pesanan->status] ?? 'bg-secondary' }} rounded-pill text-capitalize">
+                                                class="badge {{ $badges[$pesanan->status] ?? 'bg-secondary' }} text-capitalize">
                                                 {{ str_replace('_', ' ', $pesanan->status) }}
                                             </span>
                                         </td>
@@ -144,7 +144,7 @@
                                 <div class="small text-muted">{{ $bayar->pesanan->user->name }}</div>
                             </div>
                             <a href="{{ route('pembayaran.show', $bayar) }}"
-                                class="btn btn-sm btn-primary rounded-pill px-3">Konfirmasi</a>
+                                class="btn btn-sm btn-primary px-3">Konfirmasi</a>
                         </div>
                     @empty
                         <div class="text-center py-4 text-muted">

@@ -17,7 +17,7 @@
             
             <div class="ms-md-auto d-flex gap-2">
                 @if(Auth::user()->role === 'admin')
-                    <button type="button" class="btn btn-primary rounded-pill px-4" data-bs-toggle="modal" data-bs-target="#updateStatusModal">
+                    <button type="button" class="btn btn-primary px-4" data-bs-toggle="modal" data-bs-target="#updateStatusModal">
                         <i class="bi bi-pencil-square me-2"></i>Update Status
                     </button>
                 @endif
@@ -25,14 +25,14 @@
                 @if(Auth::user()->role === 'pelanggan' && $pesanan->status === 'menunggu_konfirmasi')
                     <form action="{{ route('pesanan.batalkan', $pesanan) }}" method="POST">
                         @csrf
-                        <button type="submit" class="btn btn-outline-danger rounded-pill px-4" onclick="return confirm('Apakah Anda yakin ingin membatalkan pesanan ini?')">
+                        <button type="submit" class="btn btn-outline-danger px-4" onclick="return confirm('Apakah Anda yakin ingin membatalkan pesanan ini?')">
                             Batalkan Pesanan
                         </button>
                     </form>
                 @endif
 
                 @if($pesanan->status === 'menunggu_konfirmasi' && Auth::user()->role === 'pelanggan' && !$pesanan->pembayaran)
-                    <a href="{{ route('pembayaran.create', $pesanan) }}" class="btn btn-success rounded-pill px-4">
+                    <a href="{{ route('pembayaran.create', $pesanan) }}" class="btn btn-success px-4">
                         <i class="bi bi-wallet2 me-2"></i>Bayar Sekarang
                     </a>
                 @endif
@@ -229,7 +229,7 @@
                                 <div class="text-warning mb-2"><i class="bi bi-exclamation-circle fs-3"></i></div>
                                 <div class="fw-semibold small">Belum Ada Pembayaran</div>
                                 @if(Auth::user()->role === 'pelanggan')
-                                    <a href="{{ route('pembayaran.create', $pesanan) }}" class="btn btn-sm btn-outline-primary rounded-pill mt-3 px-4">Bayar Sekarang</a>
+                                    <a href="{{ route('pembayaran.create', $pesanan) }}" class="btn btn-sm btn-outline-primary mt-3 px-4">Bayar Sekarang</a>
                                 @endif
                             </div>
                         @endif
@@ -272,8 +272,8 @@
                     </div>
                 </div>
                 <div class="modal-footer border-0">
-                    <button type="button" class="btn btn-light rounded-pill px-4" data-bs-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-primary rounded-pill px-4">Simpan Perubahan</button>
+                    <button type="button" class="btn btn-light px-4" data-bs-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-primary px-4">Simpan Perubahan</button>
                 </div>
             </form>
         </div>

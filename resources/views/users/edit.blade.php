@@ -86,10 +86,10 @@
                     </div>
 
                     <div class="mt-5 d-flex gap-2">
-                        <button type="submit" class="btn btn-primary rounded-pill px-5 py-2 fw-semibold">
+                        <button type="submit" class="btn btn-primary px-5 py-2 fw-semibold">
                             <i class="bi bi-save me-2"></i>Perbarui Pengguna
                         </button>
-                        <a href="{{ route('users.index') }}" class="btn btn-light rounded-pill px-4 py-2">Batal</a>
+                        <a href="{{ route('users.index') }}" class="btn btn-light px-4 py-2">Batal</a>
                     </div>
                 </form>
             </div>

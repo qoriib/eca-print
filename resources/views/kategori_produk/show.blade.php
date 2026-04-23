@@ -12,7 +12,7 @@
             </a>
             <h3 class="fw-semibold mb-0">Detail Kategori: {{ $kategoriProduk->nama_kategori }}</h3>
             <div class="ms-auto">
-                <a href="{{ route('kategori-produk.edit', $kategoriProduk) }}" class="btn btn-primary rounded-pill px-4">
+                <a href="{{ route('kategori-produk.edit', $kategoriProduk) }}" class="btn btn-primary px-4">
                     <i class="bi bi-pencil me-2"></i>Edit Kategori
                 </a>
             </div>
@@ -73,9 +73,9 @@
                                         <td>Rp {{ number_format($produk->harga_satuan, 0, ',', '.') }}/{{ $produk->satuan }}</td>
                                         <td>
                                             @if($produk->is_aktif)
-                                                <span class="badge bg-success-subtle text-success rounded-pill px-3">Aktif</span>
+                                                <span class="badge bg-success-subtle text-success px-3">Aktif</span>
                                             @else
-                                                <span class="badge bg-danger-subtle text-danger rounded-pill px-3">Non-aktif</span>
+                                                <span class="badge bg-danger-subtle text-danger px-3">Non-aktif</span>
                                             @endif
                                         </td>
                                         <td class="text-end pe-4">

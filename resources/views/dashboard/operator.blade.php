@@ -75,22 +75,22 @@
                                 </td>
                                 <td>
                                     @if($produksi->status_produksi === 'antrian')
-                                        <span class="badge bg-danger rounded-pill px-3">Antrian</span>
+                                        <span class="badge bg-danger px-3">Antrian</span>
                                     @else
                                         <span
-                                            class="badge bg-primary rounded-pill px-3 text-capitalize">{{ $produksi->status_produksi }}</span>
+                                            class="badge bg-primary px-3 text-capitalize">{{ $produksi->status_produksi }}</span>
                                     @endif
                                 </td>
                                 <td class="text-end pe-4">
                                     @if($produksi->status_produksi === 'antrian')
                                         <form action="{{ route('produksi.ambil', $produksi) }}" method="POST" class="d-inline">
                                             @csrf
-                                            <button type="submit" class="btn btn-sm btn-primary rounded-pill px-3">Ambil
+                                            <button type="submit" class="btn btn-sm btn-primary px-3">Ambil
                                                 Pekerjaan</button>
                                         </form>
                                     @else
                                         <a href="{{ route('produksi.show', $produksi) }}"
-                                            class="btn btn-sm btn-outline-primary rounded-pill px-3">Update Status</a>
+                                            class="btn btn-sm btn-outline-primary px-3">Update Status</a>
                                     @endif
                                 </td>
                             </tr>

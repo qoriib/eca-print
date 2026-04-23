@@ -8,7 +8,7 @@
     <h3 class="fw-semibold">Antrian Produksi</h3>
     <div class="d-flex gap-2">
         <form action="{{ route('produksi.index') }}" method="GET" class="d-flex gap-2">
-            <select name="status" class="form-select rounded-pill" onchange="this.form.submit()">
+            <select name="status" class="form-select" onchange="this.form.submit()">
                 <option value="">Semua Status</option>
                 <option value="antrian" {{ request('status') == 'antrian' ? 'selected' : '' }}>Antrian</option>
                 <option value="proses" {{ request('status') == 'proses' ? 'selected' : '' }}>Proses</option>
@@ -69,7 +69,7 @@
                                     'selesai' => 'bg-success'
                                 ];
                             @endphp
-                            <span class="badge {{ $badges[$item->status_produksi] }} rounded-pill px-3 text-capitalize">
+                            <span class="badge {{ $badges[$item->status_produksi] }} px-3 text-capitalize">
                                 {{ str_replace('_', ' ', $item->status_produksi) }}
                             </span>
                         </td>
@@ -77,7 +77,7 @@
                             @if($item->status_produksi === 'antrian' && Auth::user()->role === 'operator')
                                 <form action="{{ route('produksi.ambil', $item) }}" method="POST" class="d-inline">
                                     @csrf
-                                    <button type="submit" class="btn btn-sm btn-primary rounded-pill px-3">Ambil</button>
+                                    <button type="submit" class="btn btn-sm btn-primary px-3">Ambil</button>
                                 </form>
                             @endif
                             <a href="{{ route('produksi.show', $item) }}" class="btn btn-sm btn-light rounded-circle ms-1">

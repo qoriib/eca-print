@@ -12,7 +12,7 @@
             </a>
             <h3 class="fw-semibold mb-0">Detail Profil Pengguna</h3>
             <div class="ms-auto">
-                <a href="{{ route('users.edit', $user) }}" class="btn btn-primary rounded-pill px-4">
+                <a href="{{ route('users.edit', $user) }}" class="btn btn-primary px-4">
                     <i class="bi bi-pencil me-2"></i>Edit Profil
                 </a>
             </div>
@@ -27,7 +27,7 @@
                     </div>
                     <h4 class="fw-semibold mb-1">{{ $user->name }}</h4>
                     <p class="text-muted mb-3">{{ $user->email }}</p>
-                    <span class="badge {{ $user->role === 'admin' ? 'bg-danger' : ($user->role === 'operator' ? 'bg-primary' : 'bg-success') }} rounded-pill px-4 py-2 text-capitalize fs-6">
+                    <span class="badge {{ $user->role === 'admin' ? 'bg-danger' : ($user->role === 'operator' ? 'bg-primary' : 'bg-success') }} px-4 py-2 text-capitalize fs-6">
                         {{ $user->role }}
                     </span>
                     <hr class="my-4">
@@ -69,7 +69,7 @@
                                         <td>{{ $pesanan->tanggal_pesan->format('d/m/Y') }}</td>
                                         <td>Rp {{ number_format($pesanan->total_harga, 0, ',', '.') }}</td>
                                         <td>
-                                            <span class="badge bg-light text-dark border rounded-pill text-capitalize">
+                                            <span class="badge bg-light text-dark border text-capitalize">
                                                 {{ str_replace('_', ' ', $pesanan->status) }}
                                             </span>
                                         </td>

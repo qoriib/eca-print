@@ -8,7 +8,7 @@
     <h3 class="fw-semibold">Daftar Pembayaran</h3>
     <div class="d-flex gap-2">
         <form action="{{ route('pembayaran.index') }}" method="GET" class="d-flex gap-2">
-            <select name="status" class="form-select rounded-pill" onchange="this.form.submit()">
+            <select name="status" class="form-select" onchange="this.form.submit()">
                 <option value="">Semua Status</option>
                 <option value="menunggu" {{ request('status') == 'menunggu' ? 'selected' : '' }}>Menunggu Konfirmasi</option>
                 <option value="dikonfirmasi" {{ request('status') == 'dikonfirmasi' ? 'selected' : '' }}>Dikonfirmasi</option>
@@ -53,7 +53,7 @@
                                     'ditolak' => 'bg-danger'
                                 ];
                             @endphp
-                            <span class="badge {{ $badges[$item->status_konfirmasi] }} rounded-pill px-3">
+                            <span class="badge {{ $badges[$item->status_konfirmasi] }} px-3">
                                 {{ ucfirst($item->status_konfirmasi) }}
                             </span>
                         </td>

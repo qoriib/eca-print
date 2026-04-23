@@ -49,7 +49,7 @@
 <div class="card mb-4">
     <div class="card-header bg-white border-0 py-3 d-flex justify-content-between align-items-center">
         <h5 class="fw-semibold mb-0">Pesanan Terbaru Saya</h5>
-        <a href="{{ route('pesanan.create') }}" class="btn btn-primary rounded-pill"><i class="bi bi-plus-lg me-2"></i>Buat Pesanan Baru</a>
+        <a href="{{ route('pesanan.create') }}" class="btn btn-primary"><i class="bi bi-plus-lg me-2"></i>Buat Pesanan Baru</a>
     </div>
     <div class="card-body p-0">
         <div class="table-responsive">
@@ -86,14 +86,14 @@
                                     'dibatalkan' => 'bg-danger'
                                 ];
                             @endphp
-                            <span class="badge {{ $badges[$pesanan->status] ?? 'bg-secondary' }} rounded-pill text-capitalize">
+                            <span class="badge {{ $badges[$pesanan->status] ?? 'bg-secondary' }} text-capitalize">
                                 {{ str_replace('_', ' ', $pesanan->status) }}
                             </span>
                         </td>
                         <td class="text-end pe-4">
                             <a href="{{ route('pesanan.show', $pesanan) }}" class="btn btn-sm btn-light rounded-circle"><i class="bi bi-eye"></i></a>
                             @if($pesanan->status === 'menunggu_konfirmasi')
-                                <a href="{{ route('pembayaran.create', $pesanan) }}" class="btn btn-sm btn-outline-success rounded-pill px-3 ms-2">Bayar</a>
+                                <a href="{{ route('pembayaran.create', $pesanan) }}" class="btn btn-sm btn-outline-success px-3 ms-2">Bayar</a>
                             @endif
                         </td>
                     </tr>

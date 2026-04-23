@@ -7,7 +7,7 @@
 <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 gap-3">
     <h3 class="fw-semibold mb-0">Daftar Pesanan</h3>
     @if(Auth::user()->role === 'pelanggan')
-    <a href="{{ route('pesanan.create') }}" class="btn btn-primary rounded-pill">
+    <a href="{{ route('pesanan.create') }}" class="btn btn-primary">
         <i class="bi bi-plus-lg me-2"></i>Buat Pesanan Baru
     </a>
     @endif
@@ -78,7 +78,7 @@
                                     'dibatalkan' => 'bg-danger'
                                 ];
                             @endphp
-                            <span class="badge {{ $badges[$item->status] ?? 'bg-secondary' }} rounded-pill px-3 text-capitalize">
+                            <span class="badge {{ $badges[$item->status] ?? 'bg-secondary' }} px-3 text-capitalize">
                                 {{ str_replace('_', ' ', $item->status) }}
                             </span>
                         </td>
@@ -111,11 +111,11 @@
                                             </div>
                                         </div>
                                         <div class="modal-footer border-0">
-                                            <button type="button" class="btn btn-light rounded-pill px-4" data-bs-dismiss="modal">Batal</button>
+                                            <button type="button" class="btn btn-light px-4" data-bs-dismiss="modal">Batal</button>
                                             <form action="{{ route('pesanan.destroy', $item) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-danger rounded-pill px-4">Hapus</button>
+                                                <button type="submit" class="btn btn-danger px-4">Hapus</button>
                                             </form>
                                         </div>
                                     </div>

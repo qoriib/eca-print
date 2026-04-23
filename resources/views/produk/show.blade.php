@@ -13,7 +13,7 @@
             <h3 class="fw-semibold mb-0">Detail Produk</h3>
             @if(Auth::user()->role === 'admin')
             <div class="ms-auto">
-                <a href="{{ route('produk.edit', $produk) }}" class="btn btn-primary rounded-pill px-4">
+                <a href="{{ route('produk.edit', $produk) }}" class="btn btn-primary px-4">
                     <i class="bi bi-pencil me-2"></i>Edit Produk
                 </a>
             </div>
@@ -32,7 +32,7 @@
                 <div class="col-md-7">
                     <div class="card-body p-4 p-md-5">
                         <div class="mb-4">
-                            <span class="badge bg-primary-subtle text-primary rounded-pill px-3 mb-2 text-uppercase fw-semibold">{{ $produk->kategoriProduk->nama_kategori }}</span>
+                            <span class="badge bg-primary-subtle text-primary px-3 mb-2 text-uppercase fw-semibold">{{ $produk->kategoriProduk->nama_kategori }}</span>
                             <h2 class="fw-semibold mb-1">{{ $produk->nama_produk }}</h2>
                             <div class="text-muted">Status: 
                                 @if($produk->is_aktif)

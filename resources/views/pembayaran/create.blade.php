@@ -119,7 +119,7 @@
                             </div>
 
                             <div class="mt-5 d-grid">
-                                <button type="submit" class="btn btn-primary btn-lg rounded-pill fw-semibold">Kirim Konfirmasi Pembayaran</button>
+                                <button type="submit" class="btn btn-primary btn-lg fw-semibold">Kirim Konfirmasi Pembayaran</button>
                             </div>
                         </form>
                     </div>

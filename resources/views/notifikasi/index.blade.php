@@ -11,7 +11,7 @@
             @if($notifikasi->where('is_read', false)->count() > 0)
                 <form action="{{ route('notifikasi.read-all') }}" method="POST">
                     @csrf
-                    <button type="submit" class="btn btn-outline-primary rounded-pill btn-sm">
+                    <button type="submit" class="btn btn-outline-primary btn-sm">
                         <i class="bi bi-check-all me-1"></i>Tandai Semua Dibaca
                     </button>
                 </form>

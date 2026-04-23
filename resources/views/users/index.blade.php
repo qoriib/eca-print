@@ -6,7 +6,7 @@
 @section('content')
 <div class="d-flex justify-content-between align-items-center mb-4">
     <h3 class="fw-semibold">Manajemen Pengguna</h3>
-    <a href="{{ route('users.create') }}" class="btn btn-primary rounded-pill">
+    <a href="{{ route('users.create') }}" class="btn btn-primary">
         <i class="bi bi-person-plus me-2"></i>Tambah Pengguna
     </a>
 </div>
@@ -46,7 +46,7 @@
                                     'pelanggan' => 'bg-success'
                                 ];
                             @endphp
-                            <span class="badge {{ $badges[$user->role] }} rounded-pill text-capitalize px-3">
+                            <span class="badge {{ $badges[$user->role] }} text-capitalize px-3">
                                 {{ $user->role }}
                             </span>
                         </td>
@@ -84,11 +84,11 @@
                                             @endif
                                         </div>
                                         <div class="modal-footer border-0">
-                                            <button type="button" class="btn btn-light rounded-pill px-4" data-bs-dismiss="modal">Batal</button>
+                                            <button type="button" class="btn btn-light px-4" data-bs-dismiss="modal">Batal</button>
                                             <form action="{{ route('users.destroy', $user) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-danger rounded-pill px-4">Hapus</button>
+                                                <button type="submit" class="btn btn-danger px-4">Hapus</button>
                                             </form>
                                         </div>
                                     </div>

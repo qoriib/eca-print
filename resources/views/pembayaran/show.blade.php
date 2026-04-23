@@ -27,7 +27,7 @@
                                     'ditolak' => 'bg-danger'
                                 ];
                             @endphp
-                            <span class="badge {{ $badges[$pembayaran->status_konfirmasi] }} rounded-pill px-4 py-2 fs-6">
+                            <span class="badge {{ $badges[$pembayaran->status_konfirmasi] }} px-4 py-2 fs-6">
                                 {{ ucfirst($pembayaran->status_konfirmasi) }}
                             </span>
                         </div>
@@ -81,17 +81,17 @@
                                     <label class="form-label small fw-semibold">Pilih Aksi</label>
                                     <div class="d-flex gap-2">
                                         <input type="radio" class="btn-check" name="status_konfirmasi" id="konfirmasi_acc" value="dikonfirmasi" checked>
-                                        <label class="btn btn-outline-success rounded-pill flex-grow-1" for="konfirmasi_acc">Terima Pembayaran</label>
+                                        <label class="btn btn-outline-success flex-grow-1" for="konfirmasi_acc">Terima Pembayaran</label>
 
                                         <input type="radio" class="btn-check" name="status_konfirmasi" id="konfirmasi_reject" value="ditolak">
-                                        <label class="btn btn-outline-danger rounded-pill flex-grow-1" for="konfirmasi_reject">Tolak</label>
+                                        <label class="btn btn-outline-danger flex-grow-1" for="konfirmasi_reject">Tolak</label>
                                     </div>
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label small fw-semibold">Catatan Konfirmasi (Opsional)</label>
                                     <textarea name="catatan" class="form-control" rows="3" placeholder="Alasan penolakan atau catatan tambahan..."></textarea>
                                 </div>
-                                <button type="submit" class="btn btn-primary w-100 rounded-pill py-2 fw-semibold">Simpan Konfirmasi</button>
+                                <button type="submit" class="btn btn-primary w-100 py-2 fw-semibold">Simpan Konfirmasi</button>
                             </form>
                         </div>
                         @endif
@@ -122,7 +122,7 @@
                                 <div class="text-center">
                                     <i class="bi bi-file-earmark-pdf fs-1 text-danger mb-3"></i>
                                     <div class="fw-semibold mb-3">Dokumen PDF</div>
-                                    <a href="{{ asset('storage/' . $pembayaran->bukti_pembayaran) }}" target="_blank" class="btn btn-primary rounded-pill px-4">
+                                    <a href="{{ asset('storage/' . $pembayaran->bukti_pembayaran) }}" target="_blank" class="btn btn-primary px-4">
                                         <i class="bi bi-eye me-2"></i>Lihat Dokumen
                                     </a>
                                 </div>
@@ -136,7 +136,7 @@
                     </div>
                     @if($pembayaran->bukti_pembayaran)
                     <div class="card-footer bg-white border-0 p-3 text-center">
-                        <a href="{{ asset('storage/' . $pembayaran->bukti_pembayaran) }}" download class="btn btn-sm btn-outline-secondary rounded-pill px-4">
+                        <a href="{{ asset('storage/' . $pembayaran->bukti_pembayaran) }}" download class="btn btn-sm btn-outline-secondary px-4">
                             <i class="bi bi-download me-2"></i>Unduh Bukti Bayar
                         </a>
                     </div>

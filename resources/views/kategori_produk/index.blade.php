@@ -6,7 +6,7 @@
 @section('content')
 <div class="d-flex justify-content-between align-items-center mb-4">
     <h3 class="fw-semibold">Kategori Produk</h3>
-    <a href="{{ route('kategori-produk.create') }}" class="btn btn-primary rounded-pill">
+    <a href="{{ route('kategori-produk.create') }}" class="btn btn-primary">
         <i class="bi bi-plus-circle me-2"></i>Tambah Kategori
     </a>
 </div>
@@ -31,7 +31,7 @@
                         <td><span class="fw-semibold">{{ $item->nama_kategori }}</span></td>
                         <td>{{ Str::limit($item->deskripsi, 50) ?? '-' }}</td>
                         <td class="text-center">
-                            <span class="badge bg-light text-primary border rounded-pill px-3">
+                            <span class="badge bg-light text-primary border px-3">
                                 {{ $item->produk_count }} Produk
                             </span>
                         </td>
@@ -66,12 +66,12 @@
                                             @endif
                                         </div>
                                         <div class="modal-footer border-0">
-                                            <button type="button" class="btn btn-light rounded-pill px-4" data-bs-dismiss="modal">Batal</button>
+                                            <button type="button" class="btn btn-light px-4" data-bs-dismiss="modal">Batal</button>
                                             @if($item->produk_count == 0)
                                             <form action="{{ route('kategori-produk.destroy', $item) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-danger rounded-pill px-4">Hapus</button>
+                                                <button type="submit" class="btn btn-danger px-4">Hapus</button>
                                             </form>
                                             @endif
                                         </div>

@@ -71,7 +71,7 @@
                         </div>
                     </div>
 
-                    <button type="button" id="add-item" class="btn btn-outline-primary rounded-pill w-100 py-3 border-dashed mb-4">
+                    <button type="button" id="add-item" class="btn btn-outline-primary w-100 py-3 border-dashed mb-4">
                         <i class="bi bi-plus-circle me-2"></i>Tambah Item Cetakan Lainnya
                     </button>
                 </div>
@@ -103,8 +103,8 @@
                                 </div>
 
                                 <div class="d-grid gap-2">
-                                    <button type="submit" class="btn btn-primary btn-lg rounded-pill fw-semibold">Proses Pesanan</button>
-                                    <a href="{{ route('pesanan.index') }}" class="btn btn-light rounded-pill">Batal</a>
+                                    <button type="submit" class="btn btn-primary btn-lg fw-semibold">Proses Pesanan</button>
+                                    <a href="{{ route('pesanan.index') }}" class="btn btn-light">Batal</a>
                                 </div>
                             </div>
                         </div>

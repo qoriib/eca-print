@@ -36,8 +36,8 @@
                     </div>
 
                     <div class="d-grid gap-2 mt-5">
-                        <button type="submit" class="btn btn-primary btn-lg rounded-pill fw-semibold">Perbarui Pesanan</button>
-                        <a href="{{ route('pesanan.show', $pesanan) }}" class="btn btn-light btn-lg rounded-pill">Batal</a>
+                        <button type="submit" class="btn btn-primary btn-lg fw-semibold">Perbarui Pesanan</button>
+                        <a href="{{ route('pesanan.show', $pesanan) }}" class="btn btn-light btn-lg">Batal</a>
                     </div>
                 </form>
             </div>

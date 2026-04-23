@@ -200,7 +200,7 @@
                 <i class="bi bi-bell"></i>
                 Notifikasi
                 @if(isset($unreadCount) && $unreadCount > 0)
-                    <span class="badge rounded-pill bg-danger ms-auto">{{ $unreadCount }}</span>
+                    <span class="badge bg-danger ms-auto">{{ $unreadCount }}</span>
                 @endif
             </a>
         </nav>
@@ -218,7 +218,7 @@
 
     <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container-fluid">
-            <button class="btn btn-light d-lg-none me-2 shadow-sm border" type="button" id="toggleSidebar">
+            <button class="btn btn-light d-lg-none me-2 border" type="button" id="toggleSidebar">
                 <i class="bi bi-list fs-4"></i>
             </button>
 
@@ -233,7 +233,7 @@
                             </small>
                         </div>
                         <img src="https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->name) }}&background=4e73df&color=fff&bold=true"
-                            alt="Profile" class="rounded-circle shadow-sm border" width="38">
+                            alt="Profile" class="rounded border" width="42">
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end shadow border-0 mt-2">
                         <li class="px-3 py-2 d-sm-none border-bottom mb-2">

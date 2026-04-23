@@ -35,10 +35,10 @@
                     </div>
 
                     <div class="d-flex gap-2 mt-5">
-                        <button type="submit" class="btn btn-primary rounded-pill px-5 py-2 fw-semibold">
+                        <button type="submit" class="btn btn-primary px-5 py-2 fw-semibold">
                             <i class="bi bi-save me-2"></i>Simpan Kategori
                         </button>
-                        <a href="{{ route('kategori-produk.index') }}" class="btn btn-light rounded-pill px-4 py-2">Batal</a>
+                        <a href="{{ route('kategori-produk.index') }}" class="btn btn-light px-4 py-2">Batal</a>
                     </div>
                 </form>
             </div>
