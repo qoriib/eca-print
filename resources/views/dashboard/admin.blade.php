@@ -107,7 +107,7 @@
                                             </span>
                                         </td>
                                         <td class="text-end pe-4">
-                                            <a href="{{ route('pesanan.show', $pesanan) }}" class="btn btn-sm btn-light rounded-circle">
+                                            <a href="{{ route('pesanan.show', $pesanan) }}" class="btn btn-sm btn-light">
                                                 <i class="bi bi-eye"></i>
                                             </a>
                                         </td>
@@ -132,7 +132,7 @@
                 </div>
                 <div class="card-body p-3">
                     @forelse($data['pembayaran_terbaru'] as $bayar)
-                        <div class="d-flex align-items-center mb-3 p-3 bg-light rounded-3 border">
+                        <div class="d-flex align-items-center mb-3 p-3 bg-light rounded border">
                             <div class="flex-shrink-0">
                                 <div class="bg-white p-2 rounded shadow-sm">
                                     <i class="bi bi-wallet2 text-primary fs-4"></i>

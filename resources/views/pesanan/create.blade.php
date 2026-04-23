@@ -107,7 +107,7 @@
                                             rows="3" placeholder="Pesan untuk admin..."></textarea>
                                     </div>
 
-                                    <div class="bg-light p-3 rounded-3 mb-4">
+                                    <div class="bg-light p-3 rounded mb-4">
                                         <div class="d-flex justify-content-between mb-2">
                                             <span class="text-muted">Estimasi Total</span>
                                             <span class="fw-semibold" id="total-estimasi">Rp 0</span>

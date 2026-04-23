@@ -39,14 +39,14 @@
                                 <td class="text-end pe-4">
                                     <div class="btn-group">
                                         <a href="{{ route('kategori-produk.show', $item) }}"
-                                            class="btn btn-sm btn-light rounded-circle me-1" title="Detail">
+                                            class="btn btn-sm btn-light me-1" title="Detail">
                                             <i class="bi bi-eye"></i>
                                         </a>
                                         <a href="{{ route('kategori-produk.edit', $item) }}"
-                                            class="btn btn-sm btn-light rounded-circle me-1" title="Edit">
+                                            class="btn btn-sm btn-light me-1" title="Edit">
                                             <i class="bi bi-pencil"></i>
                                         </a>
-                                        <button type="button" class="btn btn-sm btn-light text-danger rounded-circle"
+                                        <button type="button" class="btn btn-sm btn-light text-danger"
                                             data-bs-toggle="modal" data-bs-target="#deleteModal{{ $item->id }}" title="Hapus">
                                             <i class="bi bi-trash"></i>
                                         </button>

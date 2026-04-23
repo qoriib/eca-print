@@ -27,14 +27,14 @@
 
                             <div class="mb-4">
                                 <h6 class="fw-semibold small text-uppercase text-muted">Transfer Bank (Manual)</h6>
-                                <div class="d-flex align-items-center p-3 bg-light rounded-3 mb-2">
+                                <div class="d-flex align-items-center p-3 bg-light rounded mb-2">
                                     <div class="fw-semibold">Bank BCA</div>
                                     <div class="ms-auto text-end">
                                         <div class="fw-semibold">1234567890</div>
                                         <small class="text-muted">a.n Eca Print Mandiri</small>
                                     </div>
                                 </div>
-                                <div class="d-flex align-items-center p-3 bg-light rounded-3">
+                                <div class="d-flex align-items-center p-3 bg-light rounded">
                                     <div class="fw-semibold">Bank Mandiri</div>
                                     <div class="ms-auto text-end">
                                         <div class="fw-semibold">0987654321</div>

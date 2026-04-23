@@ -66,7 +66,7 @@
                         </div>
 
                         @if($pembayaran->catatan)
-                        <div class="mt-4 p-3 bg-light rounded-3">
+                        <div class="mt-4 p-3 bg-light rounded">
                             <label class="small fw-semibold text-muted text-uppercase mb-1 d-block">Catatan Pelanggan</label>
                             <p class="mb-0 small italic">"{{ $pembayaran->catatan }}"</p>
                         </div>
@@ -97,7 +97,7 @@
                         @endif
 
                         @if($pembayaran->dikonfirmasi_oleh)
-                        <div class="mt-4 p-3 bg-success-subtle rounded-3 border border-success">
+                        <div class="mt-4 p-3 bg-success-subtle rounded border border-success">
                             <div class="small fw-semibold text-success mb-1">Dikonfirmasi Oleh:</div>
                             <div class="fw-semibold">{{ $pembayaran->dikonfirmasiOleh->name }}</div>
                             <div class="small text-muted">{{ $pembayaran->updated_at->format('d/m/Y H:i') }}</div>

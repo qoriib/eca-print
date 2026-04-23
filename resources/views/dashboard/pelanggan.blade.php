@@ -91,7 +91,7 @@
                             </span>
                         </td>
                         <td class="text-end pe-4">
-                            <a href="{{ route('pesanan.show', $pesanan) }}" class="btn btn-sm btn-light rounded-circle"><i class="bi bi-eye"></i></a>
+                            <a href="{{ route('pesanan.show', $pesanan) }}" class="btn btn-sm btn-light"><i class="bi bi-eye"></i></a>
                             @if($pesanan->status === 'menunggu_konfirmasi')
                                 <a href="{{ route('pembayaran.create', $pesanan) }}" class="btn btn-sm btn-outline-success px-3 ms-2">Bayar</a>
                             @endif

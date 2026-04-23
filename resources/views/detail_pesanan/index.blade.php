@@ -49,7 +49,7 @@
                                             class="d-inline">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-sm btn-light text-danger rounded-circle"
+                                            <button type="submit" class="btn btn-sm btn-light text-danger"
                                                 onclick="return confirm('Hapus item ini?')">
                                                 <i class="bi bi-trash"></i>
                                             </button>

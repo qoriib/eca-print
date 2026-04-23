@@ -7,7 +7,7 @@
     <div class="row justify-content-center">
         <div class="col-lg-11">
             <div class="d-flex flex-column flex-md-row align-items-md-center mb-4 gap-3">
-                <a href="{{ route('pesanan.index') }}" class="btn btn-light rounded-circle me-md-2">
+                <a href="{{ route('pesanan.index') }}" class="btn btn-light me-md-2">
                     <i class="bi bi-arrow-left"></i>
                 </a>
                 <div>
@@ -89,7 +89,7 @@
                             </div>
 
                             @if($pesanan->status === 'dibatalkan')
-                                <div class="alert alert-danger border-0 rounded-3 d-flex align-items-center mb-0">
+                                <div class="alert alert-danger border-0 rounded d-flex align-items-center mb-0">
                                     <i class="bi bi-x-circle-fill me-3 fs-4"></i>
                                     <div>
                                         <div class="fw-semibold">Pesanan Dibatalkan</div>
@@ -242,8 +242,8 @@
                         <div class="card-body p-4">
                             <h6 class="fw-semibold mb-3">Status Pembayaran</h6>
                             @if($pesanan->pembayaran)
-                                <div class="d-flex align-items-center p-3 bg-light rounded-3">
-                                    <div class="bg-success-subtle text-success p-2 rounded-circle me-3">
+                                <div class="d-flex align-items-center p-3 bg-light rounded">
+                                    <div class="bg-success-subtle text-success p-2 me-3">
                                         <i class="bi bi-cash-stack"></i>
                                     </div>
                                     <div>

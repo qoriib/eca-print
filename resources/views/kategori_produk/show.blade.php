@@ -65,7 +65,7 @@
                                                                 class="rounded-3 me-3" width="45" height="45"
                                                                 style="object-fit: cover;">
                                                         @else
-                                                            <div class="bg-light rounded-3 me-3 d-flex align-items-center justify-content-center"
+                                                            <div class="bg-light rounded me-3 d-flex align-items-center justify-content-center"
                                                                 style="width: 45px; height: 45px;">
                                                                 <i class="bi bi-image text-muted"></i>
                                                             </div>
@@ -85,7 +85,7 @@
                                                 </td>
                                                 <td class="text-end pe-4">
                                                     <a href="{{ route('produk.show', $produk) }}"
-                                                        class="btn btn-sm btn-light rounded-circle">
+                                                        class="btn btn-sm btn-light">
                                                         <i class="bi bi-eye"></i>
                                                     </a>
                                                 </td>

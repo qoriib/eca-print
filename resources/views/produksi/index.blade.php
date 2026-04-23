@@ -84,7 +84,7 @@
                                         </form>
                                     @endif
                                     <a href="{{ route('produksi.show', $item) }}"
-                                        class="btn btn-sm btn-light rounded-circle ms-1">
+                                        class="btn btn-sm btn-light ms-1">
                                         <i class="bi bi-eye"></i>
                                     </a>
                                 </td>

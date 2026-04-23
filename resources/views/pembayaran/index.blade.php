@@ -61,7 +61,7 @@
                                     </span>
                                 </td>
                                 <td class="text-end pe-4">
-                                    <a href="{{ route('pembayaran.show', $item) }}" class="btn btn-sm btn-light rounded-circle">
+                                    <a href="{{ route('pembayaran.show', $item) }}" class="btn btn-sm btn-light">
                                         <i class="bi bi-eye"></i>
                                     </a>
                                 </td>
