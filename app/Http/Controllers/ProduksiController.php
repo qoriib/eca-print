@@ -18,7 +18,7 @@ class ProduksiController extends Controller
         if (Auth::user()->role === 'operator') {
             $query->where(function ($q) {
                 $q->where('operator_id', Auth::id())
-                  ->orWhere('status_produksi', 'antrian');
+                    ->orWhere('status_produksi', 'antrian');
             });
         }
 
@@ -40,16 +40,19 @@ class ProduksiController extends Controller
     public function update(Request $request, Produksi $produksi)
     {
         $request->validate([
-            'status_produksi'   => 'required|in:antrian,proses,quality_check,selesai',
-            'operator_id'       => 'nullable|exists:users,id',
-            'tanggal_mulai'     => 'nullable|date',
-            'tanggal_selesai'   => 'nullable|date|after_or_equal:tanggal_mulai',
-            'catatan_produksi'  => 'nullable|string',
+            'status_produksi' => 'required|in:antrian,proses,quality_check,selesai',
+            'operator_id' => 'nullable|exists:users,id',
+            'tanggal_mulai' => 'nullable|date',
+            'tanggal_selesai' => 'nullable|date|after_or_equal:tanggal_mulai',
+            'catatan_produksi' => 'nullable|string',
         ]);
 
         $data = $request->only(
-            'status_produksi', 'operator_id',
-            'tanggal_mulai', 'tanggal_selesai', 'catatan_produksi'
+            'status_produksi',
+            'operator_id',
+            'tanggal_mulai',
+            'tanggal_selesai',
+            'catatan_produksi'
         );
 
         // Otomatis set tanggal mulai saat mulai proses
@@ -65,16 +68,16 @@ class ProduksiController extends Controller
 
             Notifikasi::create([
                 'user_id' => $produksi->pesanan->user_id,
-                'judul'   => 'Produksi Selesai',
-                'pesan'   => "Pesanan {$produksi->pesanan->kode_pesanan} telah selesai diproduksi dan sedang disiapkan.",
-                'tipe'    => 'sukses',
+                'judul' => 'Produksi Selesai',
+                'pesan' => "Pesanan {$produksi->pesanan->kode_pesanan} telah selesai diproduksi dan sedang disiapkan.",
+                'tipe' => 'sukses',
             ]);
         }
 
         $produksi->update($data);
 
         return redirect()->route('produksi.show', $produksi)
-                         ->with('success', 'Status produksi berhasil diperbarui.');
+            ->with('success', 'Status produksi berhasil diperbarui.');
     }
 
     public function ambilPekerjaan(Produksi $produksi)
@@ -84,14 +87,14 @@ class ProduksiController extends Controller
         }
 
         $produksi->update([
-            'operator_id'      => Auth::id(),
-            'status_produksi'  => 'proses',
-            'tanggal_mulai'    => today(),
+            'operator_id' => Auth::id(),
+            'status_produksi' => 'proses',
+            'tanggal_mulai' => today(),
         ]);
 
         $produksi->pesanan->update(['status' => 'dalam_produksi']);
 
         return redirect()->route('produksi.show', $produksi)
-                         ->with('success', 'Pekerjaan berhasil diambil. Selamat bekerja!');
+            ->with('success', 'Pekerjaan berhasil diambil. Selamat bekerja!');
     }
 }

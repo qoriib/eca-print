@@ -22,13 +22,13 @@ class KategoriProdukController extends Controller
     {
         $request->validate([
             'nama_kategori' => 'required|string|max:100|unique:kategori_produk,nama_kategori',
-            'deskripsi'     => 'nullable|string',
+            'deskripsi' => 'nullable|string',
         ]);
 
         KategoriProduk::create($request->only('nama_kategori', 'deskripsi'));
 
         return redirect()->route('kategori-produk.index')
-                         ->with('success', 'Kategori berhasil ditambahkan.');
+            ->with('success', 'Kategori berhasil ditambahkan.');
     }
 
     public function show(KategoriProduk $kategoriProduk)
@@ -46,13 +46,13 @@ class KategoriProdukController extends Controller
     {
         $request->validate([
             'nama_kategori' => 'required|string|max:100|unique:kategori_produk,nama_kategori,' . $kategoriProduk->id,
-            'deskripsi'     => 'nullable|string',
+            'deskripsi' => 'nullable|string',
         ]);
 
         $kategoriProduk->update($request->only('nama_kategori', 'deskripsi'));
 
         return redirect()->route('kategori-produk.index')
-                         ->with('success', 'Kategori berhasil diperbarui.');
+            ->with('success', 'Kategori berhasil diperbarui.');
     }
 
     public function destroy(KategoriProduk $kategoriProduk)
@@ -64,6 +64,6 @@ class KategoriProdukController extends Controller
         $kategoriProduk->delete();
 
         return redirect()->route('kategori-produk.index')
-                         ->with('success', 'Kategori berhasil dihapus.');
+            ->with('success', 'Kategori berhasil dihapus.');
     }
 }

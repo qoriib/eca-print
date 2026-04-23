@@ -41,24 +41,29 @@ class PembayaranController extends Controller
     public function store(Request $request, Pesanan $pesanan)
     {
         $request->validate([
-            'jumlah_bayar'      => 'required|numeric|min:1',
-            'jenis_pembayaran'  => 'required|in:dp,pelunasan,full',
+            'jumlah_bayar' => 'required|numeric|min:1',
+            'jenis_pembayaran' => 'required|in:dp,pelunasan,full',
             'metode_pembayaran' => 'required|in:transfer,tunai,qris',
-            'tanggal_bayar'     => 'required|date',
-            'bukti_pembayaran'  => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:5120',
-            'catatan'           => 'nullable|string',
+            'tanggal_bayar' => 'required|date',
+            'bukti_pembayaran' => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:5120',
+            'catatan' => 'nullable|string',
         ]);
 
         $kodePembayaran = 'PAY-' . date('Ymd') . '-' . str_pad(
             Pembayaran::whereDate('created_at', today())->count() + 1,
-            3, '0', STR_PAD_LEFT
+            3,
+            '0',
+            STR_PAD_LEFT
         );
 
         $data = $request->only(
-            'jumlah_bayar', 'jenis_pembayaran',
-            'metode_pembayaran', 'tanggal_bayar', 'catatan'
+            'jumlah_bayar',
+            'jenis_pembayaran',
+            'metode_pembayaran',
+            'tanggal_bayar',
+            'catatan'
         );
-        $data['pesanan_id']      = $pesanan->id;
+        $data['pesanan_id'] = $pesanan->id;
         $data['kode_pembayaran'] = $kodePembayaran;
         $data['status_konfirmasi'] = 'menunggu';
 
@@ -74,14 +79,14 @@ class PembayaranController extends Controller
         foreach ($admins as $admin) {
             Notifikasi::create([
                 'user_id' => $admin->id,
-                'judul'   => 'Bukti Pembayaran Baru',
-                'pesan'   => "Pembayaran {$kodePembayaran} untuk pesanan {$pesanan->kode_pesanan} menunggu konfirmasi.",
-                'tipe'    => 'info',
+                'judul' => 'Bukti Pembayaran Baru',
+                'pesan' => "Pembayaran {$kodePembayaran} untuk pesanan {$pesanan->kode_pesanan} menunggu konfirmasi.",
+                'tipe' => 'info',
             ]);
         }
 
         return redirect()->route('pesanan.show', $pesanan)
-                         ->with('success', 'Bukti pembayaran berhasil dikirim, menunggu konfirmasi admin.');
+            ->with('success', 'Bukti pembayaran berhasil dikirim, menunggu konfirmasi admin.');
     }
 
     public function show(Pembayaran $pembayaran)
@@ -94,42 +99,42 @@ class PembayaranController extends Controller
     {
         $request->validate([
             'status_konfirmasi' => 'required|in:dikonfirmasi,ditolak',
-            'catatan'           => 'nullable|string',
+            'catatan' => 'nullable|string',
         ]);
 
         $pembayaran->update([
-            'status_konfirmasi'  => $request->status_konfirmasi,
-            'catatan'            => $request->catatan,
-            'dikonfirmasi_oleh'  => Auth::id(),
+            'status_konfirmasi' => $request->status_konfirmasi,
+            'catatan' => $request->catatan,
+            'dikonfirmasi_oleh' => Auth::id(),
         ]);
 
         // Update status pembayaran pesanan
         if ($request->status_konfirmasi === 'dikonfirmasi') {
-            $pesanan         = $pembayaran->pesanan;
-            $totalDibayar    = $pesanan->pembayaran()
-                                       ->where('status_konfirmasi', 'dikonfirmasi')
-                                       ->sum('jumlah_bayar');
+            $pesanan = $pembayaran->pesanan;
+            $totalDibayar = $pesanan->pembayaran()
+                ->where('status_konfirmasi', 'dikonfirmasi')
+                ->sum('jumlah_bayar');
 
             $statusPembayaran = $totalDibayar >= $pesanan->total_harga ? 'lunas' : 'dp';
             $pesanan->update(['status_pembayaran' => $statusPembayaran]);
 
             Notifikasi::create([
                 'user_id' => $pesanan->user_id,
-                'judul'   => 'Pembayaran Dikonfirmasi',
-                'pesan'   => "Pembayaran {$pembayaran->kode_pembayaran} telah dikonfirmasi. Status: {$statusPembayaran}.",
-                'tipe'    => 'sukses',
+                'judul' => 'Pembayaran Dikonfirmasi',
+                'pesan' => "Pembayaran {$pembayaran->kode_pembayaran} telah dikonfirmasi. Status: {$statusPembayaran}.",
+                'tipe' => 'sukses',
             ]);
         } else {
             Notifikasi::create([
                 'user_id' => $pembayaran->pesanan->user_id,
-                'judul'   => 'Pembayaran Ditolak',
-                'pesan'   => "Pembayaran {$pembayaran->kode_pembayaran} ditolak. Silakan periksa kembali bukti pembayaran.",
-                'tipe'    => 'peringatan',
+                'judul' => 'Pembayaran Ditolak',
+                'pesan' => "Pembayaran {$pembayaran->kode_pembayaran} ditolak. Silakan periksa kembali bukti pembayaran.",
+                'tipe' => 'peringatan',
             ]);
         }
 
         return redirect()->route('pembayaran.show', $pembayaran)
-                         ->with('success', 'Konfirmasi pembayaran berhasil disimpan.');
+            ->with('success', 'Konfirmasi pembayaran berhasil disimpan.');
     }
 
     public function destroy(Pembayaran $pembayaran)

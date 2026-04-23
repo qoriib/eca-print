@@ -17,7 +17,7 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $request->validate([
-            'email'    => 'required|email',
+            'email' => 'required|email',
             'password' => 'required|min:6',
         ]);
 
@@ -29,9 +29,9 @@ class AuthController extends Controller
             $role = Auth::user()->role;
 
             return match ($role) {
-                'admin'     => redirect()->route('dashboard.admin'),
-                'operator'  => redirect()->route('dashboard.operator'),
-                default     => redirect()->route('dashboard.pelanggan'),
+                'admin' => redirect()->route('dashboard.admin'),
+                'operator' => redirect()->route('dashboard.operator'),
+                default => redirect()->route('dashboard.pelanggan'),
             };
         }
 
@@ -48,26 +48,26 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         $request->validate([
-            'name'        => 'required|string|max:100',
-            'email'       => 'required|email|unique:users,email',
-            'password'    => 'required|min:6|confirmed',
-            'no_telepon'  => 'nullable|string|max:20',
-            'alamat'      => 'nullable|string',
+            'name' => 'required|string|max:100',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:6|confirmed',
+            'no_telepon' => 'nullable|string|max:20',
+            'alamat' => 'nullable|string',
         ]);
 
         $user = User::create([
-            'name'        => $request->name,
-            'email'       => $request->email,
-            'password'    => Hash::make($request->password),
-            'role'        => 'pelanggan',
-            'no_telepon'  => $request->no_telepon,
-            'alamat'      => $request->alamat,
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'role' => 'pelanggan',
+            'no_telepon' => $request->no_telepon,
+            'alamat' => $request->alamat,
         ]);
 
         Auth::login($user);
 
         return redirect()->route('dashboard.pelanggan')
-                         ->with('success', 'Registrasi berhasil! Selamat datang, ' . $user->name);
+            ->with('success', 'Registrasi berhasil! Selamat datang, ' . $user->name);
     }
 
     public function logout(Request $request)

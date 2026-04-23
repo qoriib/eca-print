@@ -10,8 +10,8 @@ class NotifikasiController extends Controller
     public function index()
     {
         $notifikasi = Notifikasi::where('user_id', Auth::id())
-                                ->latest()
-                                ->paginate(20);
+            ->latest()
+            ->paginate(20);
 
         return view('notifikasi.index', compact('notifikasi'));
     }
@@ -30,8 +30,8 @@ class NotifikasiController extends Controller
     public function markAllAsRead()
     {
         Notifikasi::where('user_id', Auth::id())
-                  ->where('is_read', false)
-                  ->update(['is_read' => true]);
+            ->where('is_read', false)
+            ->update(['is_read' => true]);
 
         return back()->with('success', 'Semua notifikasi ditandai sudah dibaca.');
     }
@@ -51,8 +51,8 @@ class NotifikasiController extends Controller
     public function unreadCount()
     {
         $count = Notifikasi::where('user_id', Auth::id())
-                           ->where('is_read', false)
-                           ->count();
+            ->where('is_read', false)
+            ->count();
 
         return response()->json(['count' => $count]);
     }

@@ -19,16 +19,16 @@ class DetailPesananController extends Controller
     public function store(Request $request, Pesanan $pesanan)
     {
         $request->validate([
-            'produk_id'   => 'required|exists:produk,id',
-            'jumlah'      => 'required|integer|min:1',
-            'ukuran'      => 'nullable|string|max:50',
-            'bahan'       => 'nullable|string|max:100',
-            'finishing'   => 'nullable|string|max:100',
-            'keterangan'  => 'nullable|string',
+            'produk_id' => 'required|exists:produk,id',
+            'jumlah' => 'required|integer|min:1',
+            'ukuran' => 'nullable|string|max:50',
+            'bahan' => 'nullable|string|max:100',
+            'finishing' => 'nullable|string|max:100',
+            'keterangan' => 'nullable|string',
             'file_desain' => 'nullable|file|mimes:jpg,jpeg,png,pdf,ai,cdr|max:10240',
         ]);
 
-        $produk   = Produk::findOrFail($request->produk_id);
+        $produk = Produk::findOrFail($request->produk_id);
         $subtotal = $produk->harga_satuan * $request->jumlah;
 
         $fileDesain = null;
@@ -37,15 +37,15 @@ class DetailPesananController extends Controller
         }
 
         $pesanan->detailPesanan()->create([
-            'produk_id'    => $request->produk_id,
-            'jumlah'       => $request->jumlah,
-            'ukuran'       => $request->ukuran,
-            'bahan'        => $request->bahan,
-            'finishing'    => $request->finishing,
+            'produk_id' => $request->produk_id,
+            'jumlah' => $request->jumlah,
+            'ukuran' => $request->ukuran,
+            'bahan' => $request->bahan,
+            'finishing' => $request->finishing,
             'harga_satuan' => $produk->harga_satuan,
-            'subtotal'     => $subtotal,
-            'file_desain'  => $fileDesain,
-            'keterangan'   => $request->keterangan,
+            'subtotal' => $subtotal,
+            'file_desain' => $fileDesain,
+            'keterangan' => $request->keterangan,
         ]);
 
         // Update total harga pesanan
@@ -59,11 +59,11 @@ class DetailPesananController extends Controller
     public function update(Request $request, DetailPesanan $detailPesanan)
     {
         $request->validate([
-            'jumlah'      => 'required|integer|min:1',
-            'ukuran'      => 'nullable|string|max:50',
-            'bahan'       => 'nullable|string|max:100',
-            'finishing'   => 'nullable|string|max:100',
-            'keterangan'  => 'nullable|string',
+            'jumlah' => 'required|integer|min:1',
+            'ukuran' => 'nullable|string|max:50',
+            'bahan' => 'nullable|string|max:100',
+            'finishing' => 'nullable|string|max:100',
+            'keterangan' => 'nullable|string',
             'file_desain' => 'nullable|file|mimes:jpg,jpeg,png,pdf,ai,cdr|max:10240',
         ]);
 

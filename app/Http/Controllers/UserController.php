@@ -22,25 +22,25 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name'       => 'required|string|max:100',
-            'email'      => 'required|email|unique:users,email',
-            'password'   => 'required|min:6|confirmed',
-            'role'       => 'required|in:admin,operator,pelanggan',
+            'name' => 'required|string|max:100',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:6|confirmed',
+            'role' => 'required|in:admin,operator,pelanggan',
             'no_telepon' => 'nullable|string|max:20',
-            'alamat'     => 'nullable|string',
+            'alamat' => 'nullable|string',
         ]);
 
         User::create([
-            'name'       => $request->name,
-            'email'      => $request->email,
-            'password'   => Hash::make($request->password),
-            'role'       => $request->role,
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'role' => $request->role,
             'no_telepon' => $request->no_telepon,
-            'alamat'     => $request->alamat,
+            'alamat' => $request->alamat,
         ]);
 
         return redirect()->route('users.index')
-                         ->with('success', 'Pengguna berhasil ditambahkan.');
+            ->with('success', 'Pengguna berhasil ditambahkan.');
     }
 
     public function show(User $user)
@@ -57,12 +57,12 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $request->validate([
-            'name'       => 'required|string|max:100',
-            'email'      => 'required|email|unique:users,email,' . $user->id,
-            'role'       => 'required|in:admin,operator,pelanggan',
+            'name' => 'required|string|max:100',
+            'email' => 'required|email|unique:users,email,' . $user->id,
+            'role' => 'required|in:admin,operator,pelanggan',
             'no_telepon' => 'nullable|string|max:20',
-            'alamat'     => 'nullable|string',
-            'password'   => 'nullable|min:6|confirmed',
+            'alamat' => 'nullable|string',
+            'password' => 'nullable|min:6|confirmed',
         ]);
 
         $data = $request->only('name', 'email', 'role', 'no_telepon', 'alamat');
@@ -74,7 +74,7 @@ class UserController extends Controller
         $user->update($data);
 
         return redirect()->route('users.index')
-                         ->with('success', 'Data pengguna berhasil diperbarui.');
+            ->with('success', 'Data pengguna berhasil diperbarui.');
     }
 
     public function destroy(User $user)
@@ -86,6 +86,6 @@ class UserController extends Controller
         $user->delete();
 
         return redirect()->route('users.index')
-                         ->with('success', 'Pengguna berhasil dihapus.');
+            ->with('success', 'Pengguna berhasil dihapus.');
     }
 }

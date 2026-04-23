@@ -43,16 +43,16 @@ class PesananController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'tanggal_deadline'           => 'nullable|date|after_or_equal:today',
-            'catatan_pelanggan'          => 'nullable|string',
-            'items'                      => 'required|array|min:1',
-            'items.*.produk_id'          => 'required|exists:produk,id',
-            'items.*.jumlah'             => 'required|integer|min:1',
-            'items.*.ukuran'             => 'nullable|string|max:50',
-            'items.*.bahan'              => 'nullable|string|max:100',
-            'items.*.finishing'          => 'nullable|string|max:100',
-            'items.*.keterangan'         => 'nullable|string',
-            'items.*.file_desain'        => 'nullable|file|mimes:jpg,jpeg,png,pdf,ai,cdr|max:10240',
+            'tanggal_deadline' => 'nullable|date|after_or_equal:today',
+            'catatan_pelanggan' => 'nullable|string',
+            'items' => 'required|array|min:1',
+            'items.*.produk_id' => 'required|exists:produk,id',
+            'items.*.jumlah' => 'required|integer|min:1',
+            'items.*.ukuran' => 'nullable|string|max:50',
+            'items.*.bahan' => 'nullable|string|max:100',
+            'items.*.finishing' => 'nullable|string|max:100',
+            'items.*.keterangan' => 'nullable|string',
+            'items.*.file_desain' => 'nullable|file|mimes:jpg,jpeg,png,pdf,ai,cdr|max:10240',
         ]);
 
         DB::beginTransaction();
@@ -60,24 +60,26 @@ class PesananController extends Controller
         try {
             $kodePesanan = 'ECA-' . date('Ymd') . '-' . str_pad(
                 Pesanan::whereDate('created_at', today())->count() + 1,
-                3, '0', STR_PAD_LEFT
+                3,
+                '0',
+                STR_PAD_LEFT
             );
 
             $pesanan = Pesanan::create([
-                'kode_pesanan'      => $kodePesanan,
-                'user_id'           => Auth::id(),
-                'tanggal_pesan'     => today(),
-                'tanggal_deadline'  => $request->tanggal_deadline,
-                'status'            => 'menunggu_konfirmasi',
+                'kode_pesanan' => $kodePesanan,
+                'user_id' => Auth::id(),
+                'tanggal_pesan' => today(),
+                'tanggal_deadline' => $request->tanggal_deadline,
+                'status' => 'menunggu_konfirmasi',
                 'catatan_pelanggan' => $request->catatan_pelanggan,
-                'total_harga'       => 0,
+                'total_harga' => 0,
             ]);
 
             $totalHarga = 0;
 
             foreach ($request->items as $index => $item) {
-                $produk      = Produk::findOrFail($item['produk_id']);
-                $subtotal    = $produk->harga_satuan * $item['jumlah'];
+                $produk = Produk::findOrFail($item['produk_id']);
+                $subtotal = $produk->harga_satuan * $item['jumlah'];
                 $totalHarga += $subtotal;
 
                 $fileDesain = null;
@@ -86,15 +88,15 @@ class PesananController extends Controller
                 }
 
                 $pesanan->detailPesanan()->create([
-                    'produk_id'    => $item['produk_id'],
-                    'jumlah'       => $item['jumlah'],
-                    'ukuran'       => $item['ukuran'] ?? null,
-                    'bahan'        => $item['bahan'] ?? null,
-                    'finishing'    => $item['finishing'] ?? null,
+                    'produk_id' => $item['produk_id'],
+                    'jumlah' => $item['jumlah'],
+                    'ukuran' => $item['ukuran'] ?? null,
+                    'bahan' => $item['bahan'] ?? null,
+                    'finishing' => $item['finishing'] ?? null,
                     'harga_satuan' => $produk->harga_satuan,
-                    'subtotal'     => $subtotal,
-                    'file_desain'  => $fileDesain,
-                    'keterangan'   => $item['keterangan'] ?? null,
+                    'subtotal' => $subtotal,
+                    'file_desain' => $fileDesain,
+                    'keterangan' => $item['keterangan'] ?? null,
                 ]);
             }
 
@@ -102,8 +104,8 @@ class PesananController extends Controller
 
             // Buat entri produksi awal
             Produksi::create([
-                'pesanan_id'       => $pesanan->id,
-                'status_produksi'  => 'antrian',
+                'pesanan_id' => $pesanan->id,
+                'status_produksi' => 'antrian',
             ]);
 
             // Notifikasi ke admin
@@ -115,7 +117,7 @@ class PesananController extends Controller
             DB::commit();
 
             return redirect()->route('pesanan.show', $pesanan)
-                             ->with('success', "Pesanan {$kodePesanan} berhasil dibuat!");
+                ->with('success', "Pesanan {$kodePesanan} berhasil dibuat!");
 
         } catch (\Exception $e) {
             DB::rollBack();
@@ -152,9 +154,9 @@ class PesananController extends Controller
         // Hanya admin yang bisa update status
         if (Auth::user()->role === 'admin') {
             $request->validate([
-                'status'          => 'required|in:menunggu_konfirmasi,dikonfirmasi,dalam_produksi,selesai_produksi,siap_diambil,selesai,dibatalkan',
-                'catatan_admin'   => 'nullable|string',
-                'tanggal_deadline'=> 'nullable|date',
+                'status' => 'required|in:menunggu_konfirmasi,dikonfirmasi,dalam_produksi,selesai_produksi,siap_diambil,selesai,dibatalkan',
+                'catatan_admin' => 'nullable|string',
+                'tanggal_deadline' => 'nullable|date',
             ]);
 
             $pesanan->update($request->only('status', 'catatan_admin', 'tanggal_deadline'));
@@ -162,13 +164,13 @@ class PesananController extends Controller
             // Notifikasi ke pelanggan saat status berubah
             Notifikasi::create([
                 'user_id' => $pesanan->user_id,
-                'judul'   => 'Status Pesanan Diperbarui',
-                'pesan'   => "Pesanan {$pesanan->kode_pesanan} kini berstatus: " . ucwords(str_replace('_', ' ', $pesanan->status)),
-                'tipe'    => 'info',
+                'judul' => 'Status Pesanan Diperbarui',
+                'pesan' => "Pesanan {$pesanan->kode_pesanan} kini berstatus: " . ucwords(str_replace('_', ' ', $pesanan->status)),
+                'tipe' => 'info',
             ]);
 
             return redirect()->route('pesanan.show', $pesanan)
-                             ->with('success', 'Status pesanan berhasil diperbarui.');
+                ->with('success', 'Status pesanan berhasil diperbarui.');
         }
 
         abort(403);
@@ -183,7 +185,7 @@ class PesananController extends Controller
         $pesanan->delete();
 
         return redirect()->route('pesanan.index')
-                         ->with('success', 'Pesanan berhasil dihapus.');
+            ->with('success', 'Pesanan berhasil dihapus.');
     }
 
     public function batalkan(Request $request, Pesanan $pesanan)
@@ -196,13 +198,13 @@ class PesananController extends Controller
 
         Notifikasi::create([
             'user_id' => $pesanan->user_id,
-            'judul'   => 'Pesanan Dibatalkan',
-            'pesan'   => "Pesanan {$pesanan->kode_pesanan} telah dibatalkan.",
-            'tipe'    => 'peringatan',
+            'judul' => 'Pesanan Dibatalkan',
+            'pesan' => "Pesanan {$pesanan->kode_pesanan} telah dibatalkan.",
+            'tipe' => 'peringatan',
         ]);
 
         return redirect()->route('pesanan.index')
-                         ->with('success', 'Pesanan berhasil dibatalkan.');
+            ->with('success', 'Pesanan berhasil dibatalkan.');
     }
 
     private function notifikasiAdmin(string $judul, string $pesan): void
@@ -211,9 +213,9 @@ class PesananController extends Controller
         foreach ($admins as $admin) {
             Notifikasi::create([
                 'user_id' => $admin->id,
-                'judul'   => $judul,
-                'pesan'   => $pesan,
-                'tipe'    => 'info',
+                'judul' => $judul,
+                'pesan' => $pesan,
+                'tipe' => 'info',
             ]);
         }
     }

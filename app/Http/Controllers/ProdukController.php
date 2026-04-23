@@ -21,7 +21,7 @@ class ProdukController extends Controller
             $query->where('nama_produk', 'like', '%' . $request->search . '%');
         }
 
-        $produk   = $query->latest()->paginate(12);
+        $produk = $query->latest()->paginate(12);
         $kategori = KategoriProduk::all();
 
         return view('produk.index', compact('produk', 'kategori'));
@@ -37,12 +37,12 @@ class ProdukController extends Controller
     {
         $request->validate([
             'kategori_produk_id' => 'required|exists:kategori_produk,id',
-            'nama_produk'        => 'required|string|max:150',
-            'deskripsi'          => 'nullable|string',
-            'harga_satuan'       => 'required|numeric|min:0',
-            'satuan'             => 'required|string|max:30',
-            'gambar'             => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
-            'is_aktif'           => 'boolean',
+            'nama_produk' => 'required|string|max:150',
+            'deskripsi' => 'nullable|string',
+            'harga_satuan' => 'required|numeric|min:0',
+            'satuan' => 'required|string|max:30',
+            'gambar' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'is_aktif' => 'boolean',
         ]);
 
         $data = $request->except('gambar');
@@ -55,7 +55,7 @@ class ProdukController extends Controller
         Produk::create($data);
 
         return redirect()->route('produk.index')
-                         ->with('success', 'Produk berhasil ditambahkan.');
+            ->with('success', 'Produk berhasil ditambahkan.');
     }
 
     public function show(Produk $produk)
@@ -74,12 +74,12 @@ class ProdukController extends Controller
     {
         $request->validate([
             'kategori_produk_id' => 'required|exists:kategori_produk,id',
-            'nama_produk'        => 'required|string|max:150',
-            'deskripsi'          => 'nullable|string',
-            'harga_satuan'       => 'required|numeric|min:0',
-            'satuan'             => 'required|string|max:30',
-            'gambar'             => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
-            'is_aktif'           => 'boolean',
+            'nama_produk' => 'required|string|max:150',
+            'deskripsi' => 'nullable|string',
+            'harga_satuan' => 'required|numeric|min:0',
+            'satuan' => 'required|string|max:30',
+            'gambar' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'is_aktif' => 'boolean',
         ]);
 
         $data = $request->except('gambar');
@@ -95,7 +95,7 @@ class ProdukController extends Controller
         $produk->update($data);
 
         return redirect()->route('produk.index')
-                         ->with('success', 'Produk berhasil diperbarui.');
+            ->with('success', 'Produk berhasil diperbarui.');
     }
 
     public function destroy(Produk $produk)
@@ -111,6 +111,6 @@ class ProdukController extends Controller
         $produk->delete();
 
         return redirect()->route('produk.index')
-                         ->with('success', 'Produk berhasil dihapus.');
+            ->with('success', 'Produk berhasil dihapus.');
     }
 }
