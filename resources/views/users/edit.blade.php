@@ -7,7 +7,7 @@
     <div class="row justify-content-center">
         <div class="col-lg-8">
             <div class="d-flex align-items-center mb-4">
-                <a href="{{ route('users.index') }}" class="btn btn-light rounded-circle me-3">
+                <a href="{{ route('users.index') }}" class="btn btn-light me-3">
                     <i class="bi bi-arrow-left"></i>
                 </a>
                 <h3 class="fs-5 fw-semibold mb-0">Edit Data Pengguna</h3>
@@ -96,7 +96,7 @@
                             </div>
                         </div>
 
-                        <div class="mt-3 d-flex gap-2">
+                        <div class="mt-4 d-flex gap-2">
                             <button type="submit" class="btn btn-primary px-5 py-2 fw-semibold">
                                 <i class="bi bi-save me-2"></i>Perbarui Pengguna
                             </button>

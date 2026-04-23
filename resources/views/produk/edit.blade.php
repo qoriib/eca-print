@@ -7,7 +7,7 @@
 <div class="row justify-content-center">
     <div class="col-lg-10">
         <div class="d-flex align-items-center mb-4">
-            <a href="{{ route('produk.index') }}" class="btn btn-light rounded-circle me-3">
+            <a href="{{ route('produk.index') }}" class="btn btn-light me-3">
                 <i class="bi bi-arrow-left"></i>
             </a>
             <h3 class="fs-5 fw-semibold mb-0">Edit Produk: {{ $produk->nama_produk }}</h3>
@@ -20,7 +20,7 @@
                 <!-- Informasi Produk -->
                 <div class="col-md-8">
                     <div class="card">
-                        <div class="card-body p-4 p-md-5">
+                        <div class="card-body">
                             <div class="row g-3">
                                 <div class="col-12">
                                     <label for="nama_produk" class="form-label">Nama Produk</label>

@@ -5,7 +5,7 @@
 
 @section('content')
 <div class="d-flex align-items-center mb-4">
-    <a href="{{ route('pesanan.show', $pesanan) }}" class="btn btn-light rounded-circle me-3">
+    <a href="{{ route('pesanan.show', $pesanan) }}" class="btn btn-light me-3">
         <i class="bi bi-arrow-left"></i>
     </a>
     <h3 class="fs-5 fw-semibold mb-0">Detail Item Pesanan: {{ $pesanan->kode_pesanan }}</h3>

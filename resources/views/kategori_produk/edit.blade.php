@@ -7,14 +7,14 @@
 <div class="row justify-content-center">
     <div class="col-lg-6">
         <div class="d-flex align-items-center mb-4">
-            <a href="{{ route('kategori-produk.index') }}" class="btn btn-light rounded-circle me-3">
+            <a href="{{ route('kategori-produk.index') }}" class="btn btn-light me-3">
                 <i class="bi bi-arrow-left"></i>
             </a>
             <h3 class="fs-5 fw-semibold mb-0">Edit Kategori Produk</h3>
         </div>
 
         <div class="card">
-            <div class="card-body p-4 p-md-5">
+            <div class="card-body">
                 <form action="{{ route('kategori-produk.update', $kategoriProduk) }}" method="POST">
                     @csrf
                     @method('PUT')

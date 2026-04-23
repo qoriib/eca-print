@@ -7,7 +7,7 @@
 <div class="row justify-content-center">
     <div class="col-lg-10">
         <div class="d-flex align-items-center mb-4">
-            <a href="{{ route('produk.index') }}" class="btn btn-light rounded-circle me-3">
+            <a href="{{ route('produk.index') }}" class="btn btn-light me-3">
                 <i class="bi bi-arrow-left"></i>
             </a>
             <h3 class="fs-5 fw-semibold mb-0">Detail Produk</h3>
@@ -30,7 +30,7 @@
                     @endif
                 </div>
                 <div class="col-md-7">
-                    <div class="card-body p-4 p-md-5">
+                    <div class="card-body">
                         <div class="mb-4">
                             <span class="badge bg-primary-subtle text-primary px-3 mb-2 text-uppercase fw-semibold">{{ $produk->kategoriProduk->nama_kategori }}</span>
                             <h2 class="fw-semibold mb-1">{{ $produk->nama_produk }}</h2>
