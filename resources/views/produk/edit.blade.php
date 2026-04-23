@@ -1,0 +1,132 @@
+@extends('layouts.dashboard')
+
+@section('title', 'Edit Produk')
+@section('role_name', 'Administrator')
+
+@section('content')
+<div class="row justify-content-center">
+    <div class="col-lg-10">
+        <div class="d-flex align-items-center mb-4">
+            <a href="{{ route('produk.index') }}" class="btn btn-light rounded-circle me-3">
+                <i class="bi bi-arrow-left"></i>
+            </a>
+            <h3 class="fw-bold mb-0">Edit Produk: {{ $produk->nama_produk }}</h3>
+        </div>
+
+        <form action="{{ route('produk.update', $produk) }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            @method('PUT')
+            <div class="row g-4">
+                <!-- Informasi Produk -->
+                <div class="col-md-8">
+                    <div class="card border-0 shadow-sm rounded-4">
+                        <div class="card-body p-4 p-md-5">
+                            <div class="row g-3">
+                                <div class="col-12">
+                                    <label for="nama_produk" class="form-label fw-bold">Nama Produk</label>
+                                    <input type="text" class="form-control @error('nama_produk') is-invalid @enderror" id="nama_produk" name="nama_produk" value="{{ old('nama_produk', $produk->nama_produk) }}" required>
+                                    @error('nama_produk')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="kategori_produk_id" class="form-label fw-bold">Kategori</label>
+                                    <select class="form-select @error('kategori_produk_id') is-invalid @enderror" id="kategori_produk_id" name="kategori_produk_id" required>
+                                        @foreach($kategori as $kat)
+                                            <option value="{{ $kat->id }}" {{ old('kategori_produk_id', $produk->kategori_produk_id) == $kat->id ? 'selected' : '' }}>{{ $kat->nama_kategori }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('kategori_produk_id')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="satuan" class="form-label fw-bold">Satuan</label>
+                                    <input type="text" class="form-control @error('satuan') is-invalid @enderror" id="satuan" name="satuan" value="{{ old('satuan', $produk->satuan) }}" required>
+                                    @error('satuan')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <div class="col-md-12">
+                                    <label for="harga_satuan" class="form-label fw-bold">Harga Satuan</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-white">Rp</span>
+                                        <input type="number" class="form-control @error('harga_satuan') is-invalid @enderror" id="harga_satuan" name="harga_satuan" value="{{ old('harga_satuan', $produk->harga_satuan) }}" required min="0">
+                                    </div>
+                                    @error('harga_satuan')
+                                        <div class="invalid-feedback d-block">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <div class="col-12">
+                                    <label for="deskripsi" class="form-label fw-bold">Deskripsi Produk</label>
+                                    <textarea class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi" name="deskripsi" rows="5">{{ old('deskripsi', $produk->deskripsi) }}</textarea>
+                                    @error('deskripsi')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gambar & Pengaturan -->
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm rounded-4 mb-4">
+                        <div class="card-body p-4">
+                            <label class="form-label fw-bold d-block mb-3">Gambar Produk</label>
+                            <div class="text-center mb-3">
+                                <div id="imagePreview" class="bg-light rounded-4 d-flex align-items-center justify-content-center overflow-hidden" style="height: 200px; border: none;">
+                                    @if($produk->gambar)
+                                        <img src="{{ asset('storage/' . $produk->gambar) }}" class="w-100 h-100" style="object-fit: cover;">
+                                    @else
+                                        <i class="bi bi-image text-muted fs-1 opacity-25"></i>
+                                    @endif
+                                </div>
+                            </div>
+                            <input type="file" class="form-control @error('gambar') is-invalid @enderror" id="gambar" name="gambar" accept="image/*" onchange="previewImage(this)">
+                            <small class="text-muted d-block mt-2">Maksimal 2MB (JPG, PNG, WebP)</small>
+                            @error('gambar')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <div class="card border-0 shadow-sm rounded-4">
+                        <div class="card-body p-4">
+                            <label class="form-label fw-bold d-block mb-3">Pengaturan</label>
+                            <div class="form-check form-switch mb-0">
+                                <input class="form-check-input" type="checkbox" role="switch" id="is_aktif" name="is_aktif" value="1" {{ old('is_aktif', $produk->is_aktif) ? 'checked' : '' }}>
+                                <label class="form-check-label fw-semibold" for="is_aktif">Produk Aktif</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-grid gap-2 mt-4">
+                        <button type="submit" class="btn btn-primary btn-lg rounded-pill fw-bold">Simpan Perubahan</button>
+                        <a href="{{ route('produk.index') }}" class="btn btn-light btn-lg rounded-pill">Batal</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@push('scripts')
+<script>
+    function previewImage(input) {
+        const preview = document.getElementById('imagePreview');
+        if (input.files && input.files[0]) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                preview.innerHTML = `<img src="${e.target.result}" class="w-100 h-100" style="object-fit: cover;">`;
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+@endpush
+@endsection
