@@ -106,8 +106,8 @@
                     </div>
 
                     <div class="d-grid gap-2 mt-4">
-                        <button type="submit" class="btn btn-primary btn-lg fw-semibold">Simpan Perubahan</button>
-                        <a href="{{ route('produk.index') }}" class="btn btn-light btn-lg">Batal</a>
+                        <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+                        <a href="{{ route('produk.index') }}" class="btn btn-outline-dark">Batal</a>
                     </div>
                 </div>
             </div>
