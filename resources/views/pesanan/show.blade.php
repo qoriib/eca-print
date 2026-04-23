@@ -254,7 +254,7 @@
                 @method('PUT')
                 <div class="modal-body">
                     <div class="mb-3">
-                        <label class="form-label fw-semibold">Status Pesanan</label>
+                        <label class="form-label">Status Pesanan</label>
                         <select name="status" class="form-select">
                             @foreach($steps as $key => $label)
                                 <option value="{{ $key }}" {{ $pesanan->status == $key ? 'selected' : '' }}>{{ $label }}</option>
@@ -263,11 +263,11 @@
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label fw-semibold">Tanggal Deadline</label>
+                        <label class="form-label">Tanggal Deadline</label>
                         <input type="date" name="tanggal_deadline" class="form-control" value="{{ $pesanan->tanggal_deadline ? $pesanan->tanggal_deadline->format('Y-m-d') : '' }}">
                     </div>
                     <div class="mb-0">
-                        <label class="form-label fw-semibold">Catatan Admin</label>
+                        <label class="form-label">Catatan Admin</label>
                         <textarea name="catatan_admin" class="form-control" rows="3">{{ $pesanan->catatan_admin }}</textarea>
                     </div>
                 </div>

@@ -28,7 +28,7 @@
                             <div class="card-body p-4">
                                 <div class="row g-3">
                                     <div class="col-md-12">
-                                        <label class="form-label fw-semibold small">Pilih Produk</label>
+                                        <label class="form-label small">Pilih Produk</label>
                                         <select name="items[0][produk_id]" class="form-select produk-select" required>
                                             <option value="" disabled selected>Pilih produk yang ingin dicetak</option>
                                             @foreach($produk as $p)
@@ -39,31 +39,31 @@
                                         </select>
                                     </div>
                                     <div class="col-md-4">
-                                        <label class="form-label fw-semibold small">Jumlah (Qty)</label>
+                                        <label class="form-label small">Jumlah (Qty)</label>
                                         <div class="input-group">
                                             <input type="number" name="items[0][jumlah]" class="form-control item-qty" min="1" value="1" required>
                                             <span class="input-group-text bg-white satuan-label">unit</span>
                                         </div>
                                     </div>
                                     <div class="col-md-8">
-                                        <label class="form-label fw-semibold small">Ukuran (Opsional)</label>
+                                        <label class="form-label small">Ukuran (Opsional)</label>
                                         <input type="text" name="items[0][ukuran]" class="form-control" placeholder="Contoh: A4, 2x3 meter, 9x5 cm">
                                     </div>
                                     <div class="col-md-6">
-                                        <label class="form-label fw-semibold small">Bahan (Opsional)</label>
+                                        <label class="form-label small">Bahan (Opsional)</label>
                                         <input type="text" name="items[0][bahan]" class="form-control" placeholder="Contoh: Art Paper 260gr, Flexy 280gr">
                                     </div>
                                     <div class="col-md-6">
-                                        <label class="form-label fw-semibold small">Finishing (Opsional)</label>
+                                        <label class="form-label small">Finishing (Opsional)</label>
                                         <input type="text" name="items[0][finishing]" class="form-control" placeholder="Contoh: Laminating Glossy, Mata Ayam">
                                     </div>
                                     <div class="col-12">
-                                        <label class="form-label fw-semibold small">Upload Desain (Opsional)</label>
+                                        <label class="form-label small">Upload Desain (Opsional)</label>
                                         <input type="file" name="items[0][file_desain]" class="form-control" accept=".jpg,.jpeg,.png,.pdf,.ai,.cdr">
                                         <small class="text-muted">Format: JPG, PNG, PDF, AI, CDR (Maks. 10MB)</small>
                                     </div>
                                     <div class="col-12">
-                                        <label class="form-label fw-semibold small">Keterangan Tambahan</label>
+                                        <label class="form-label small">Keterangan Tambahan</label>
                                         <textarea name="items[0][keterangan]" class="form-control" rows="2" placeholder="Catatan khusus untuk item ini..."></textarea>
                                     </div>
                                 </div>
@@ -84,13 +84,13 @@
                                 <h5 class="fw-semibold mb-4 text-center">Ringkasan Pesanan</h5>
                                 
                                 <div class="mb-4">
-                                    <label for="tanggal_deadline" class="form-label fw-semibold small">Tanggal Deadline (Harapan Selesai)</label>
+                                    <label for="tanggal_deadline" class="form-label small">Tanggal Deadline (Harapan Selesai)</label>
                                     <input type="date" name="tanggal_deadline" id="tanggal_deadline" class="form-control" min="{{ date('Y-m-d') }}">
                                     <small class="text-muted">Kami akan berusaha menyelesaikannya tepat waktu.</small>
                                 </div>
 
                                 <div class="mb-4">
-                                    <label for="catatan_pelanggan" class="form-label fw-semibold small">Catatan Pesanan (Global)</label>
+                                    <label for="catatan_pelanggan" class="form-label small">Catatan Pesanan (Global)</label>
                                     <textarea name="catatan_pelanggan" id="catatan_pelanggan" class="form-control" rows="3" placeholder="Pesan untuk admin..."></textarea>
                                 </div>
 

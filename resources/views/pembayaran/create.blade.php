@@ -61,7 +61,7 @@
                             @csrf
                             <div class="row g-3">
                                 <div class="col-md-12">
-                                    <label for="jumlah_bayar" class="form-label fw-semibold">Jumlah Yang Dibayar</label>
+                                    <label for="jumlah_bayar" class="form-label">Jumlah Yang Dibayar</label>
                                     <div class="input-group">
                                         <span class="input-group-text bg-white">Rp</span>
                                         <input type="number" name="jumlah_bayar" id="jumlah_bayar" class="form-control @error('jumlah_bayar') is-invalid @enderror" value="{{ old('jumlah_bayar', $pesanan->total_harga) }}" required>
@@ -72,7 +72,7 @@
                                 </div>
 
                                 <div class="col-md-6">
-                                    <label for="jenis_pembayaran" class="form-label fw-semibold">Jenis Pembayaran</label>
+                                    <label for="jenis_pembayaran" class="form-label">Jenis Pembayaran</label>
                                     <select name="jenis_pembayaran" id="jenis_pembayaran" class="form-select @error('jenis_pembayaran') is-invalid @enderror" required>
                                         <option value="full" {{ old('jenis_pembayaran') == 'full' ? 'selected' : '' }}>Pelunasan Penuh (100%)</option>
                                         <option value="dp" {{ old('jenis_pembayaran') == 'dp' ? 'selected' : '' }}>Uang Muka (DP)</option>
@@ -84,7 +84,7 @@
                                 </div>
 
                                 <div class="col-md-6">
-                                    <label for="metode_pembayaran" class="form-label fw-semibold">Metode</label>
+                                    <label for="metode_pembayaran" class="form-label">Metode</label>
                                     <select name="metode_pembayaran" id="metode_pembayaran" class="form-select @error('metode_pembayaran') is-invalid @enderror" required>
                                         <option value="transfer" {{ old('metode_pembayaran') == 'transfer' ? 'selected' : '' }}>Transfer Bank</option>
                                         <option value="qris" {{ old('metode_pembayaran') == 'qris' ? 'selected' : '' }}>QRIS</option>
@@ -96,7 +96,7 @@
                                 </div>
 
                                 <div class="col-md-12">
-                                    <label for="tanggal_bayar" class="form-label fw-semibold">Tanggal Bayar</label>
+                                    <label for="tanggal_bayar" class="form-label">Tanggal Bayar</label>
                                     <input type="date" name="tanggal_bayar" id="tanggal_bayar" class="form-control @error('tanggal_bayar') is-invalid @enderror" value="{{ old('tanggal_bayar', date('Y-m-d')) }}" required>
                                     @error('tanggal_bayar')
                                         <div class="invalid-feedback">{{ $message }}</div>
@@ -104,7 +104,7 @@
                                 </div>
 
                                 <div class="col-md-12">
-                                    <label for="bukti_pembayaran" class="form-label fw-semibold">Unggah Bukti Transfer</label>
+                                    <label for="bukti_pembayaran" class="form-label">Unggah Bukti Transfer</label>
                                     <input type="file" name="bukti_pembayaran" id="bukti_pembayaran" class="form-control @error('bukti_pembayaran') is-invalid @enderror" accept="image/*,application/pdf">
                                     <small class="text-muted">JPG, PNG, atau PDF (Maks. 5MB)</small>
                                     @error('bukti_pembayaran')
@@ -113,7 +113,7 @@
                                 </div>
 
                                 <div class="col-md-12">
-                                    <label for="catatan" class="form-label fw-semibold">Catatan Tambahan (Opsional)</label>
+                                    <label for="catatan" class="form-label">Catatan Tambahan (Opsional)</label>
                                     <textarea name="catatan" id="catatan" class="form-control" rows="3" placeholder="Contoh: Transfer dari rekening a.n Budi">{{ old('catatan') }}</textarea>
                                 </div>
                             </div>

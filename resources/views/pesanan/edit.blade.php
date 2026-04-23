@@ -24,14 +24,14 @@
                     @method('PUT')
                     
                     <div class="mb-4">
-                        <label for="tanggal_deadline" class="form-label fw-semibold">Harapan Tanggal Selesai</label>
+                        <label for="tanggal_deadline" class="form-label">Harapan Tanggal Selesai</label>
                         <input type="date" name="tanggal_deadline" id="tanggal_deadline" class="form-control" 
                                value="{{ old('tanggal_deadline', $pesanan->tanggal_deadline ? $pesanan->tanggal_deadline->format('Y-m-d') : '') }}"
                                min="{{ date('Y-m-d') }}">
                     </div>
 
                     <div class="mb-4">
-                        <label for="catatan_pelanggan" class="form-label fw-semibold">Catatan Untuk Admin</label>
+                        <label for="catatan_pelanggan" class="form-label">Catatan Untuk Admin</label>
                         <textarea name="catatan_pelanggan" id="catatan_pelanggan" class="form-control" rows="4">{{ old('catatan_pelanggan', $pesanan->catatan_pelanggan) }}</textarea>
                     </div>
 
