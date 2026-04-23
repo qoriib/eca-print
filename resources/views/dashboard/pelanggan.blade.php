@@ -65,8 +65,8 @@
                 </thead>
                 <tbody>
                     @forelse($data['pesanan_terbaru'] as $pesanan)
-                    <tr>
-                        <td class="ps-4 fw-semibold text-primary">{{ $pesanan->kode_pesanan }}</td>
+                    <tr class="text-nowrap">
+                        <td class="ps-4 fw-medium text-primary">{{ $pesanan->kode_pesanan }}</td>
                         <td>{{ $pesanan->tanggal_pesan->format('d M Y') }}</td>
                         <td>
                             @foreach($pesanan->detailPesanan as $detail)
@@ -107,20 +107,6 @@
                     @endforelse
                 </tbody>
             </table>
-        </div>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-lg-12">
-        <div class="card border-0 bg-primary text-white shadow-sm">
-            <div class="card-body p-5 d-flex align-items-center justify-content-between">
-                <div>
-                    <h3 class="fw-semibold mb-2">Butuh Bantuan Cetak?</h3>
-                    <p class="mb-0 opacity-75">Hubungi customer service kami jika Anda memiliki pertanyaan tentang pesanan atau produk.</p>
-                </div>
-                <a href="https://wa.me/{{ Auth::user()->no_telepon }}" class="btn btn-light btn-lg rounded-pill px-4 fw-semibold text-primary">Chat via WhatsApp</a>
-            </div>
         </div>
     </div>
 </div>
