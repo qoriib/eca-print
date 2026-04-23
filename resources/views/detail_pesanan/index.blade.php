@@ -30,7 +30,7 @@
                     @foreach($pesanan->detailPesanan as $detail)
                     <tr>
                         <td class="ps-4">
-                            <div class="fw-semibold">{{ $detail->produk->nama_produk }}</div>
+                            <div class="fw-semibold font-monospace">{{ $detail->produk->nama_produk }}</div>
                             <small class="text-muted">@Rp {{ number_format($detail->harga_satuan, 0, ',', '.') }}</small>
                         </td>
                         <td>{{ $detail->ukuran ?? '-' }}</td>

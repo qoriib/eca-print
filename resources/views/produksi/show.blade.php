@@ -154,25 +154,25 @@
                             <div class="col-6 col-md-3">
                                 <div class="p-3 bg-light">
                                     <div class="text-muted small mb-1 text-uppercase fw-semibold">Tanggal Masuk</div>
-                                    <div class="fw-semibold">{{ $produksi->pesanan->tanggal_pesan->format('d/m/Y') }}</div>
+                                    <div class="fw-semibold font-monospace">{{ $produksi->pesanan->tanggal_pesan->format('d/m/Y') }}</div>
                                 </div>
                             </div>
                             <div class="col-6 col-md-3">
                                 <div class="p-3 bg-light">
                                     <div class="text-muted small mb-1 text-uppercase fw-semibold">Deadline</div>
-                                    <div class="fw-semibold text-danger">{{ $produksi->pesanan->tanggal_deadline ? $produksi->pesanan->tanggal_deadline->format('d/m/Y') : '-' }}</div>
+                                    <div class="fw-semibold font-monospace text-danger">{{ $produksi->pesanan->tanggal_deadline ? $produksi->pesanan->tanggal_deadline->format('d/m/Y') : '-' }}</div>
                                 </div>
                             </div>
                             <div class="col-6 col-md-3">
                                 <div class="p-3 bg-light">
                                     <div class="text-muted small mb-1 text-uppercase fw-semibold">Mulai Kerja</div>
-                                    <div class="fw-semibold">{{ $produksi->tanggal_mulai ? $produksi->tanggal_mulai->format('d/m/Y') : '-' }}</div>
+                                    <div class="fw-semibold font-monospace">{{ $produksi->tanggal_mulai ? $produksi->tanggal_mulai->format('d/m/Y') : '-' }}</div>
                                 </div>
                             </div>
                             <div class="col-6 col-md-3">
                                 <div class="p-3 bg-light">
                                     <div class="text-muted small mb-1 text-uppercase fw-semibold">Selesai</div>
-                                    <div class="fw-semibold text-success">{{ $produksi->tanggal_selesai ? $produksi->tanggal_selesai->format('d/m/Y') : '-' }}</div>
+                                    <div class="fw-semibold font-monospace text-success">{{ $produksi->tanggal_selesai ? $produksi->tanggal_selesai->format('d/m/Y') : '-' }}</div>
                                 </div>
                             </div>
                         </div>

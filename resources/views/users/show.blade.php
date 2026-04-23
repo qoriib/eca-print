@@ -67,7 +67,7 @@
                                     <tbody>
                                         @forelse($user->pesanan as $pesanan)
                                             <tr class="text-nowrap">
-                                                <td class="ps-4 fw-semibold text-primary">{{ $pesanan->kode_pesanan }}</td>
+                                                <td class="ps-4 fw-semibold font-monospace text-primary">{{ $pesanan->kode_pesanan }}</td>
                                                 <td class="font-monospace">{{ $pesanan->tanggal_pesan->format('d/m/Y') }}</td>
                                                 <td class="font-monospace">Rp
                                                     {{ number_format($pesanan->total_harga, 0, ',', '.') }}</td>

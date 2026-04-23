@@ -65,7 +65,7 @@
                     <tbody>
                         @forelse($data['daftar_antrian'] as $produksi)
                             <tr class="text-nowrap">
-                                <td class="ps-4 fw-medium text-primary">{{ $produksi->pesanan->kode_pesanan }}</td>
+                                <td class="ps-4 fw-medium font-monospace text-primary">{{ $produksi->pesanan->kode_pesanan }}</td>
                                 <td>{{ $produksi->pesanan->user->name }}</td>
                                 <td>
                                     @foreach($produksi->pesanan->detailPesanan as $detail)
