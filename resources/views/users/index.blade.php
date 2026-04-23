@@ -5,7 +5,7 @@
 
 @section('content')
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h3 class="fs-5 fw-semibold">Manajemen Pengguna</h3>
+        <h3 class="fs-5 fw-semibold mb-0">Manajemen Pengguna</h3>
         <a href="{{ route('users.create') }}" class="btn btn-primary">
             <i class="bi bi-person-plus me-2"></i>Tambah Pengguna
         </a>

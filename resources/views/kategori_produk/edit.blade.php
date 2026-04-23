@@ -27,7 +27,7 @@
                         @enderror
                     </div>
 
-                    <div class="mb-4">
+                    <div class="mb-3">
                         <label for="deskripsi" class="form-label">Deskripsi (Opsional)</label>
                         <textarea class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi" name="deskripsi" rows="4">{{ old('deskripsi', $kategoriProduk->deskripsi) }}</textarea>
                         @error('deskripsi')
@@ -35,7 +35,7 @@
                         @enderror
                     </div>
 
-                    <div class="d-flex gap-2 mt-5">
+                    <div class="d-flex gap-2 mt-4">
                         <button type="submit" class="btn btn-primary px-5 py-2 fw-semibold">
                             <i class="bi bi-save me-2"></i>Perbarui Kategori
                         </button>
