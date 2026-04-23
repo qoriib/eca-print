@@ -13,7 +13,7 @@
             <h3 class="fw-bold mb-0">Edit Data Pengguna</h3>
         </div>
 
-        <div class="card border-0 shadow-sm rounded-4">
+        <div class="card">
             <div class="card-body p-4 p-md-5">
                 <form action="{{ route('users.update', $user) }}" method="POST">
                     @csrf

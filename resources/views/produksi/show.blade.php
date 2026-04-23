@@ -17,7 +17,7 @@
             <!-- Sidebar Informasi -->
             <div class="col-md-4">
                 <!-- Status & Update Form -->
-                <div class="card border-0 shadow-sm rounded-4 mb-4">
+                <div class="card mb-4">
                     <div class="card-body p-4">
                         <h5 class="fw-bold mb-3">Update Status</h5>
                         
@@ -72,7 +72,7 @@
                 </div>
 
                 <!-- Info Pelanggan -->
-                <div class="card border-0 shadow-sm rounded-4">
+                <div class="card">
                     <div class="card-body p-4">
                         <h5 class="fw-bold mb-3">Informasi Pelanggan</h5>
                         <div class="d-flex align-items-center mb-3">
@@ -94,7 +94,7 @@
 
             <!-- Detail Item Pesanan -->
             <div class="col-md-8">
-                <div class="card border-0 shadow-sm rounded-4 mb-4">
+                <div class="card mb-4">
                     <div class="card-header bg-white border-0 py-3">
                         <h5 class="fw-bold mb-0">Item Cetakan</h5>
                     </div>
@@ -147,30 +147,30 @@
                     </div>
                 </div>
 
-                <div class="card border-0 shadow-sm rounded-4">
+                <div class="card">
                     <div class="card-body p-4">
                         <h5 class="fw-bold mb-3">Linimasa Produksi</h5>
                         <div class="row text-center g-3">
                             <div class="col-6 col-md-3">
-                                <div class="p-3 bg-light rounded-4">
+                                <div class="p-3 bg-light">
                                     <div class="text-muted small mb-1 text-uppercase fw-bold">Tanggal Masuk</div>
                                     <div class="fw-bold">{{ $produksi->pesanan->tanggal_pesan->format('d/m/Y') }}</div>
                                 </div>
                             </div>
                             <div class="col-6 col-md-3">
-                                <div class="p-3 bg-light rounded-4">
+                                <div class="p-3 bg-light">
                                     <div class="text-muted small mb-1 text-uppercase fw-bold">Deadline</div>
                                     <div class="fw-bold text-danger">{{ $produksi->pesanan->tanggal_deadline ? $produksi->pesanan->tanggal_deadline->format('d/m/Y') : '-' }}</div>
                                 </div>
                             </div>
                             <div class="col-6 col-md-3">
-                                <div class="p-3 bg-light rounded-4">
+                                <div class="p-3 bg-light">
                                     <div class="text-muted small mb-1 text-uppercase fw-bold">Mulai Kerja</div>
                                     <div class="fw-bold">{{ $produksi->tanggal_mulai ? $produksi->tanggal_mulai->format('d/m/Y') : '-' }}</div>
                                 </div>
                             </div>
                             <div class="col-6 col-md-3">
-                                <div class="p-3 bg-light rounded-4">
+                                <div class="p-3 bg-light">
                                     <div class="text-muted small mb-1 text-uppercase fw-bold">Selesai</div>
                                     <div class="fw-bold text-success">{{ $produksi->tanggal_selesai ? $produksi->tanggal_selesai->format('d/m/Y') : '-' }}</div>
                                 </div>

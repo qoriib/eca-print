@@ -20,7 +20,7 @@
             @endif
         </div>
 
-        <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+        <div class="card overflow-hidden">
             <div class="row g-0">
                 <div class="col-md-5 bg-light d-flex align-items-center justify-content-center" style="min-height: 400px;">
                     @if($produk->gambar)
@@ -43,7 +43,7 @@
                             </div>
                         </div>
 
-                        <div class="mb-4 bg-light p-4 rounded-4">
+                        <div class="mb-4 bg-light p-4">
                             <label class="text-muted small text-uppercase fw-bold d-block mb-1">Harga Satuan</label>
                             <h3 class="fw-bold text-primary mb-0">Rp {{ number_format($produk->harga_satuan, 0, ',', '.') }} <small class="text-muted fs-6 fw-normal">/ {{ $produk->satuan }}</small></h3>
                         </div>

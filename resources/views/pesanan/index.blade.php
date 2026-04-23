@@ -13,7 +13,7 @@
     @endif
 </div>
 
-<div class="card border-0 shadow-sm rounded-4 mb-4">
+<div class="card mb-4">
     <div class="card-body p-4">
         <form action="{{ route('pesanan.index') }}" method="GET" class="row g-3">
             <div class="col-md-4">
@@ -41,7 +41,7 @@
     </div>
 </div>
 
-<div class="card border-0 shadow-sm rounded-4">
+<div class="card">
     <div class="card-body p-0">
         <div class="table-responsive">
             <table class="table table-hover align-middle mb-0">

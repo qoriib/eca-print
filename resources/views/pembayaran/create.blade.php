@@ -16,10 +16,10 @@
         <div class="row g-4">
             <!-- Instruksi Pembayaran -->
             <div class="col-md-5">
-                <div class="card border-0 shadow-sm rounded-4 mb-4">
+                <div class="card mb-4">
                     <div class="card-body p-4">
                         <h5 class="fw-bold mb-4">Instruksi Pembayaran</h5>
-                        <div class="alert alert-primary border-0 rounded-4 mb-4">
+                        <div class="alert alert-primary border-0 mb-4">
                             <div class="small mb-1">Total yang harus dibayar:</div>
                             <h3 class="fw-bold mb-0">Rp {{ number_format($pesanan->total_harga, 0, ',', '.') }}</h3>
                         </div>
@@ -44,7 +44,7 @@
 
                         <div class="mb-0">
                             <h6 class="fw-bold small text-uppercase text-muted">QRIS (Otomatis)</h6>
-                            <div class="text-center p-3 border rounded-4 bg-white">
+                            <div class="text-center p-3 border bg-white">
                                 <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=ECAPRINT-PAYMENT" alt="QRIS" class="img-fluid mb-2">
                                 <div class="small fw-bold">SCAN UNTUK BAYAR</div>
                             </div>
@@ -55,7 +55,7 @@
 
             <!-- Form Upload -->
             <div class="col-md-7">
-                <div class="card border-0 shadow-sm rounded-4">
+                <div class="card">
                     <div class="card-body p-4 p-md-5">
                         <form action="{{ route('pembayaran.store', $pesanan) }}" method="POST" enctype="multipart/form-data">
                             @csrf

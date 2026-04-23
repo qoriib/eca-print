@@ -21,7 +21,7 @@
         <div class="row g-4">
             <!-- Informasi Utama -->
             <div class="col-md-4">
-                <div class="card border-0 shadow-sm rounded-4 text-center p-4">
+                <div class="card text-center p-4">
                     <div class="mb-3">
                         <img src="https://ui-avatars.com/api/?name={{ urlencode($user->name) }}&size=128&background=random" class="rounded-circle shadow-sm" width="120">
                     </div>
@@ -46,7 +46,7 @@
 
             <!-- Riwayat Pesanan -->
             <div class="col-md-8">
-                <div class="card border-0 shadow-sm rounded-4 h-100">
+                <div class="card h-100">
                     <div class="card-header bg-white border-0 py-3">
                         <h5 class="fw-bold mb-0">Riwayat Pesanan</h5>
                     </div>

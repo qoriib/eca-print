@@ -18,7 +18,7 @@
             @endif
         </div>
 
-        <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+        <div class="card overflow-hidden">
             <div class="list-group list-group-flush">
                 @forelse($notifikasi as $notif)
                     <div class="list-group-item p-4 border-start border-4 {{ $notif->is_read ? 'border-light bg-white' : ($notif->tipe === 'sukses' ? 'border-success bg-success-subtle' : ($notif->tipe === 'peringatan' ? 'border-warning bg-warning-subtle' : 'border-primary bg-primary-subtle')) }}">

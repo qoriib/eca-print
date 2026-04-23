@@ -21,7 +21,7 @@
         <div class="row g-4">
             <!-- Informasi Kategori -->
             <div class="col-md-4">
-                <div class="card border-0 shadow-sm rounded-4 p-4">
+                <div class="card p-4">
                     <div class="mb-4">
                         <label class="text-muted small text-uppercase fw-bold d-block mb-1">Nama Kategori</label>
                         <h4 class="fw-bold text-primary">{{ $kategoriProduk->nama_kategori }}</h4>
@@ -40,7 +40,7 @@
 
             <!-- Daftar Produk dalam Kategori -->
             <div class="col-md-8">
-                <div class="card border-0 shadow-sm rounded-4 h-100">
+                <div class="card h-100">
                     <div class="card-header bg-white border-0 py-3">
                         <h5 class="fw-bold mb-0">Daftar Produk Terkait</h5>
                     </div>

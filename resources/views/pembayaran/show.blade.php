@@ -16,7 +16,7 @@
         <div class="row g-4">
             <!-- Rincian Pembayaran -->
             <div class="col-md-6">
-                <div class="card border-0 shadow-sm rounded-4 h-100">
+                <div class="card h-100">
                     <div class="card-body p-4">
                         <div class="d-flex justify-content-between align-items-center mb-4">
                             <h5 class="fw-bold mb-0">Informasi Transaksi</h5>
@@ -109,7 +109,7 @@
 
             <!-- Bukti Pembayaran -->
             <div class="col-md-6">
-                <div class="card border-0 shadow-sm rounded-4 h-100 overflow-hidden">
+                <div class="card h-100 overflow-hidden">
                     <div class="card-header bg-white border-0 py-3">
                         <h5 class="fw-bold mb-0">Bukti Pembayaran</h5>
                     </div>

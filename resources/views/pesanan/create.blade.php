@@ -21,7 +21,7 @@
                 <div class="col-md-8">
                     <div id="items-container">
                         <!-- Item Template (Item Pertama) -->
-                        <div class="card border-0 shadow-sm rounded-4 mb-4 item-card">
+                        <div class="card mb-4 item-card">
                             <div class="card-header bg-white border-0 py-3 d-flex justify-content-between align-items-center">
                                 <h6 class="fw-bold mb-0">Item #1</h6>
                             </div>
@@ -79,7 +79,7 @@
                 <!-- Kanan: Ringkasan & Deadline -->
                 <div class="col-md-4">
                     <div class="sticky-top" style="top: 2rem; z-index: 1;">
-                        <div class="card border-0 shadow-sm rounded-4 mb-4">
+                        <div class="card mb-4">
                             <div class="card-body p-4">
                                 <h5 class="fw-bold mb-4 text-center">Ringkasan Pesanan</h5>
                                 
@@ -109,7 +109,7 @@
                             </div>
                         </div>
 
-                        <div class="card border-0 bg-primary-subtle text-primary rounded-4">
+                        <div class="card border-0 bg-primary-subtle text-primary">
                             <div class="card-body p-4">
                                 <div class="d-flex">
                                     <i class="bi bi-info-circle-fill fs-4 me-3"></i>

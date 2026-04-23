@@ -13,11 +13,11 @@
             <h3 class="fw-bold mb-0">Edit Pesanan: {{ $pesanan->kode_pesanan }}</h3>
         </div>
 
-        <div class="alert alert-info border-0 rounded-4 shadow-sm mb-4">
+        <div class="alert alert-info border-0 shadow-sm mb-4">
             <i class="bi bi-info-circle-fill me-2"></i> Anda hanya dapat mengubah informasi dasar pesanan. Untuk mengubah daftar item cetakan, silakan hubungi admin atau buat pesanan baru.
         </div>
 
-        <div class="card border-0 shadow-sm rounded-4">
+        <div class="card">
             <div class="card-body p-4 p-md-5">
                 <form action="{{ route('pesanan.update', $pesanan) }}" method="POST">
                     @csrf

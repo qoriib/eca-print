@@ -13,7 +13,7 @@
     @endif
 </div>
 
-<div class="card border-0 shadow-sm rounded-4 mb-4">
+<div class="card mb-4">
     <div class="card-body p-4">
         <form action="{{ route('produk.index') }}" method="GET" class="row g-3">
             <div class="col-md-4">
@@ -45,7 +45,7 @@
 <div class="row g-4">
     @forelse($produk as $item)
     <div class="col-xl-3 col-lg-4 col-md-6">
-        <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden position-relative stat-card">
+        <div class="card h-100 border-0 shadow-sm overflow-hidden position-relative stat-card">
             <div class="position-absolute top-0 end-0 m-3 z-3">
                 @if($item->is_aktif)
                     <span class="badge bg-success rounded-pill px-3">Aktif</span>

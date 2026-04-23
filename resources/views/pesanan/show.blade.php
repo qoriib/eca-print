@@ -43,7 +43,7 @@
             <!-- Kolom Utama -->
             <div class="col-md-8">
                 <!-- Status Pesanan (Progress Stepper) -->
-                <div class="card border-0 shadow-sm rounded-4 mb-4">
+                <div class="card mb-4">
                     <div class="card-body p-4">
                         <h5 class="fw-bold mb-4">Status Transaksi</h5>
                         <div class="d-flex justify-content-between position-relative mb-5 px-md-5">
@@ -92,7 +92,7 @@
                 </div>
 
                 <!-- Daftar Item -->
-                <div class="card border-0 shadow-sm rounded-4 mb-4">
+                <div class="card mb-4">
                     <div class="card-header bg-white border-0 py-3">
                         <h5 class="fw-bold mb-0">Rincian Item Cetakan</h5>
                     </div>
@@ -149,7 +149,7 @@
                 <!-- Catatan & Pesan -->
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="card border-0 shadow-sm rounded-4 h-100">
+                        <div class="card h-100">
                             <div class="card-body p-4">
                                 <h6 class="fw-bold mb-3"><i class="bi bi-chat-left-text me-2 text-primary"></i>Catatan Pelanggan</h6>
                                 <p class="small text-muted mb-0">{{ $pesanan->catatan_pelanggan ?? 'Tidak ada catatan.' }}</p>
@@ -157,7 +157,7 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="card border-0 shadow-sm rounded-4 h-100">
+                        <div class="card h-100">
                             <div class="card-body p-4">
                                 <h6 class="fw-bold mb-3"><i class="bi bi-reply-all me-2 text-primary"></i>Catatan Admin</h6>
                                 <p class="small text-muted mb-0">{{ $pesanan->catatan_admin ?? 'Belum ada catatan dari admin.' }}</p>
@@ -171,7 +171,7 @@
             <div class="col-md-4">
                 <!-- Info Pelanggan (Hanya Admin) -->
                 @if(Auth::user()->role !== 'pelanggan')
-                <div class="card border-0 shadow-sm rounded-4 mb-4">
+                <div class="card mb-4">
                     <div class="card-body p-4">
                         <h6 class="fw-bold mb-3">Data Pemesan</h6>
                         <div class="d-flex align-items-center mb-3">
@@ -188,7 +188,7 @@
                 @endif
 
                 <!-- Deadline & Produksi -->
-                <div class="card border-0 shadow-sm rounded-4 mb-4">
+                <div class="card mb-4">
                     <div class="card-body p-4 text-center">
                         <div class="mb-3">
                             <div class="text-muted small text-uppercase fw-bold mb-1">Target Selesai</div>
@@ -210,7 +210,7 @@
                 </div>
 
                 <!-- Pembayaran -->
-                <div class="card border-0 shadow-sm rounded-4">
+                <div class="card">
                     <div class="card-body p-4">
                         <h6 class="fw-bold mb-3">Status Pembayaran</h6>
                         @if($pesanan->pembayaran)

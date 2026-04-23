@@ -7,7 +7,7 @@
     <title>@yield('title') - Eca Print Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -127,6 +127,15 @@
             box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
             border-radius: 0.5rem;
             margin-bottom: 1.5rem;
+        }
+
+        .font-monospace {
+            font-family: 'JetBrains Mono', monospace !important;
+            letter-spacing: -0.5px;
+        }
+
+        .card {
+            border: none;
         }
     </style>
 </head>

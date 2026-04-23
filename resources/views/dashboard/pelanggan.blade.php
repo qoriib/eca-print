@@ -46,7 +46,7 @@
     </div>
 </div>
 
-<div class="card border-0 shadow-sm rounded-4 mb-4">
+<div class="card mb-4">
     <div class="card-header bg-white border-0 py-3 d-flex justify-content-between align-items-center">
         <h5 class="fw-bold mb-0">Pesanan Terbaru Saya</h5>
         <a href="{{ route('pesanan.create') }}" class="btn btn-primary rounded-pill"><i class="bi bi-plus-lg me-2"></i>Buat Pesanan Baru</a>
@@ -113,7 +113,7 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <div class="card border-0 bg-primary text-white rounded-4 shadow-sm">
+        <div class="card border-0 bg-primary text-white shadow-sm">
             <div class="card-body p-5 d-flex align-items-center justify-content-between">
                 <div>
                     <h3 class="fw-bold mb-2">Butuh Bantuan Cetak?</h3>

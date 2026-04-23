@@ -18,7 +18,7 @@
             <div class="row g-4">
                 <!-- Informasi Produk -->
                 <div class="col-md-8">
-                    <div class="card border-0 shadow-sm rounded-4">
+                    <div class="card">
                         <div class="card-body p-4 p-md-5">
                             <div class="row g-3">
                                 <div class="col-12">
@@ -75,11 +75,11 @@
 
                 <!-- Gambar & Pengaturan -->
                 <div class="col-md-4">
-                    <div class="card border-0 shadow-sm rounded-4 mb-4">
+                    <div class="card mb-4">
                         <div class="card-body p-4">
                             <label class="form-label fw-bold d-block mb-3">Gambar Produk</label>
                             <div class="text-center mb-3">
-                                <div id="imagePreview" class="bg-light rounded-4 d-flex align-items-center justify-content-center overflow-hidden" style="height: 200px; border: 2px dashed #dee2e6;">
+                                <div id="imagePreview" class="bg-light d-flex align-items-center justify-content-center overflow-hidden" style="height: 200px; border: 2px dashed #dee2e6;">
                                     <i class="bi bi-image text-muted fs-1 opacity-25"></i>
                                 </div>
                             </div>
@@ -91,7 +91,7 @@
                         </div>
                     </div>
 
-                    <div class="card border-0 shadow-sm rounded-4">
+                    <div class="card">
                         <div class="card-body p-4">
                             <label class="form-label fw-bold d-block mb-3">Pengaturan</label>
                             <div class="form-check form-switch mb-0">
