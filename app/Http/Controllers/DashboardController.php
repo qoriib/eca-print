@@ -58,23 +58,6 @@ class DashboardController extends Controller
 
     public function pelanggan()
     {
-        $user = Auth::user();
-
-        $data = [
-            'total_pesanan' => Pesanan::where('user_id', $user->id)->count(),
-            'pesanan_aktif' => Pesanan::where('user_id', $user->id)
-                ->whereNotIn('status', ['selesai', 'dibatalkan'])
-                ->count(),
-            'pesanan_selesai' => Pesanan::where('user_id', $user->id)
-                ->where('status', 'selesai')
-                ->count(),
-            'pesanan_terbaru' => Pesanan::where('user_id', $user->id)
-                ->with('detailPesanan.produk')
-                ->latest()
-                ->take(5)
-                ->get(),
-        ];
-
-        return view('dashboard.pelanggan', compact('data'));
+        return redirect()->route('pesanan.index');
     }
 }

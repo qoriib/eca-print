@@ -21,21 +21,12 @@ class PengaturanController extends Controller
             'alamat' => 'nullable|string',
             'no_hp' => 'nullable|string|max:20',
             'email' => 'nullable|email|max:255',
-            'logo' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
             'catatan_footer' => 'nullable|string',
         ]);
 
         $pengaturan = Pengaturan::first() ?? new Pengaturan();
         
-        $data = $request->except('logo');
-
-        if ($request->hasFile('logo')) {
-            // Delete old logo
-            if ($pengaturan->logo) {
-                Storage::disk('public')->delete($pengaturan->logo);
-            }
-            $data['logo'] = $request->file('logo')->store('logo', 'public');
-        }
+        $data = $request->all();
 
         $pengaturan->fill($data)->save();
 

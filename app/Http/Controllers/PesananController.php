@@ -29,9 +29,18 @@ class PesananController extends Controller
             $query->where('kode_pesanan', 'like', '%' . $request->search . '%');
         }
 
-        $pesanan = $query->latest()->paginate(15);
+        if ($request->filled('start_date')) {
+            $query->whereDate('tanggal_pesan', '>=', $request->start_date);
+        }
 
-        return view('pesanan.index', compact('pesanan'));
+        if ($request->filled('end_date')) {
+            $query->whereDate('tanggal_pesan', '<=', $request->end_date);
+        }
+
+        $pesanan = $query->latest()->paginate(15);
+        $total_nominal = (clone $query)->sum('total_harga');
+
+        return view('pesanan.index', compact('pesanan', 'total_nominal'));
     }
 
     public function create()

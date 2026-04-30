@@ -31,7 +31,7 @@ class AuthController extends Controller
             return match ($role) {
                 'admin' => redirect()->route('dashboard.admin'),
                 'operator' => redirect()->route('dashboard.operator'),
-                default => redirect()->route('dashboard.pelanggan'),
+                default => redirect()->route('home'),
             };
         }
 
@@ -66,7 +66,7 @@ class AuthController extends Controller
 
         Auth::login($user);
 
-        return redirect()->route('dashboard.pelanggan')
+        return redirect()->route('home')
             ->with('success', 'Registrasi berhasil! Selamat datang, ' . $user->name);
     }
 

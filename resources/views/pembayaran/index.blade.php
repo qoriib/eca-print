@@ -4,21 +4,49 @@
 @section('role_name', Auth::user()->role === 'admin' ? 'Administrator' : 'Pelanggan')
 
 @section('content')
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <h3 class="fs-5 fw-semibold mb-0">Daftar Pembayaran</h3>
-        <div class="d-flex gap-2">
-            <form action="{{ route('pembayaran.index') }}" method="GET" class="d-flex gap-2">
-                <select name="status" class="form-select" onchange="this.form.submit()">
-                    <option value="">Semua Status</option>
-                    <option value="menunggu" {{ request('status') == 'menunggu' ? 'selected' : '' }}>Menunggu Konfirmasi
-                    </option>
-                    <option value="dikonfirmasi" {{ request('status') == 'dikonfirmasi' ? 'selected' : '' }}>Dikonfirmasi
-                    </option>
-                    <option value="ditolak" {{ request('status') == 'ditolak' ? 'selected' : '' }}>Ditolak</option>
-                </select>
+    <div class="card mb-4">
+        <div class="card-body p-4">
+            <form action="{{ route('pembayaran.index') }}" method="GET" class="row g-3">
+                <div class="col-md-3">
+                    <label class="form-label small fw-bold">Status</label>
+                    <select name="status" class="form-select">
+                        <option value="">Semua Status</option>
+                        <option value="menunggu" {{ request('status') == 'menunggu' ? 'selected' : '' }}>Menunggu Konfirmasi</option>
+                        <option value="dikonfirmasi" {{ request('status') == 'dikonfirmasi' ? 'selected' : '' }}>Dikonfirmasi</option>
+                        <option value="ditolak" {{ request('status') == 'ditolak' ? 'selected' : '' }}>Ditolak</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label small fw-bold">Mulai Tgl</label>
+                    <input type="date" name="start_date" class="form-control" value="{{ request('start_date') }}">
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label small fw-bold">Sampai Tgl</label>
+                    <input type="date" name="end_date" class="form-control" value="{{ request('end_date') }}">
+                </div>
+                <div class="col-md-3 d-flex align-items-end gap-2">
+                    <button type="submit" class="btn btn-primary w-100">Filter</button>
+                    @if(request()->anyFilled(['status', 'start_date', 'end_date']))
+                        <a href="{{ route('pembayaran.index') }}" class="btn btn-light border" title="Reset"><i class="bi bi-arrow-clockwise"></i></a>
+                    @endif
+                </div>
             </form>
         </div>
     </div>
+
+    @if(request()->filled('start_date') || request()->filled('end_date'))
+        <div class="row mb-4">
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm bg-success text-white">
+                    <div class="card-body p-4 text-center">
+                        <h6 class="text-uppercase small fw-bold opacity-75 mb-2">Total Pembayaran Masuk (Filter)</h6>
+                        <h3 class="fw-bold mb-0 font-monospace">Rp {{ number_format($total_nominal, 0, ',', '.') }}</h3>
+                        <small class="opacity-75">{{ $pembayaran->total() }} transaksi ditemukan</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
 
     <div class="card">
         <div class="card-body p-0">

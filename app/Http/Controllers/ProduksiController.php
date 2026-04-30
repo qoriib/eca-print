@@ -26,9 +26,18 @@ class ProduksiController extends Controller
             $query->where('status_produksi', $request->status);
         }
 
-        $produksi = $query->latest()->paginate(15);
+        if ($request->filled('start_date')) {
+            $query->whereDate('created_at', '>=', $request->start_date);
+        }
 
-        return view('produksi.index', compact('produksi'));
+        if ($request->filled('end_date')) {
+            $query->whereDate('created_at', '<=', $request->end_date);
+        }
+
+        $produksi = $query->latest()->paginate(15);
+        $total_produksi = (clone $query)->count();
+
+        return view('produksi.index', compact('produksi', 'total_produksi'));
     }
 
     public function show(Produksi $produksi)

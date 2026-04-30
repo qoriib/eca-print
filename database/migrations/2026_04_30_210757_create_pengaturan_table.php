@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('alamat')->nullable();
             $table->string('no_hp')->nullable();
             $table->string('email')->nullable();
-            $table->string('logo')->nullable();
             $table->text('catatan_footer')->nullable();
             $table->timestamps();
         });

@@ -12,20 +12,12 @@ use App\Http\Controllers\DetailPesananController;
 use App\Http\Controllers\ProduksiController;
 use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\NotifikasiController;
-use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\PengaturanController;
+use App\Http\Controllers\HomeController;
 
-Route::get('/', function () {
-    if (Auth::check()) {
-        $role = Auth::user()->role;
-        return match ($role) {
-            'admin' => redirect()->route('dashboard.admin'),
-            'operator' => redirect()->route('dashboard.operator'),
-            default => redirect()->route('dashboard.pelanggan'),
-        };
-    }
-    return redirect()->route('login');
-});
+// === PUBLIC ROUTES ===
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/produk/{produk}', [ProdukController::class, 'show'])->name('produk.show');
 
 // === AUTH ===
 Route::middleware('guest')->group(function () {
@@ -37,10 +29,10 @@ Route::middleware('guest')->group(function () {
 
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
 
-// === DASHBOARD & SHARED ===
+// === DASHBOARD & SHARED (Protected) ===
 Route::middleware('auth')->group(function () {
 
-    // Dashboard redirects are handled in AuthController, but we protect the routes here too
+    // Dashboard routes
     Route::get('/dashboard/admin', [DashboardController::class, 'admin'])->middleware('role:admin')->name('dashboard.admin');
     Route::get('/dashboard/operator', [DashboardController::class, 'operator'])->middleware('role:operator,admin')->name('dashboard.operator');
     Route::get('/dashboard/pelanggan', [DashboardController::class, 'pelanggan'])->middleware('role:pelanggan')->name('dashboard.pelanggan');
@@ -51,6 +43,13 @@ Route::middleware('auth')->group(function () {
         Route::resource('kategori-produk', KategoriProdukController::class);
         Route::post('pembayaran/{pembayaran}/konfirmasi', [PembayaranController::class, 'konfirmasi'])->name('pembayaran.konfirmasi');
 
+        // CRUD PRODUK (Admin Only)
+        Route::get('/admin/produk', [ProdukController::class, 'index'])->name('produk.index');
+        Route::get('/produk/create', [ProdukController::class, 'create'])->name('produk.create');
+        Route::post('/produk', [ProdukController::class, 'store'])->name('produk.store');
+        Route::get('/produk/{produk}/edit', [ProdukController::class, 'edit'])->name('produk.edit');
+        Route::put('/produk/{produk}', [ProdukController::class, 'update'])->name('produk.update');
+        Route::delete('/produk/{produk}', [ProdukController::class, 'destroy'])->name('produk.destroy');
     });
 
     // === OPERATOR & ADMIN ===
@@ -59,20 +58,7 @@ Route::middleware('auth')->group(function () {
         Route::post('produksi/{produksi}/ambil', [ProduksiController::class, 'ambilPekerjaan'])->name('produksi.ambil');
     });
 
-    // === PRODUK (Semua bisa lihat, Admin bisa kelola) ===
-    Route::get('/produk', [ProdukController::class, 'index'])->name('produk.index');
-
-    Route::middleware('role:admin')->group(function () {
-        Route::get('/produk/create', [ProdukController::class, 'create'])->name('produk.create');
-        Route::post('/produk', [ProdukController::class, 'store'])->name('produk.store');
-        Route::get('/produk/{produk}/edit', [ProdukController::class, 'edit'])->name('produk.edit');
-        Route::put('/produk/{produk}', [ProdukController::class, 'update'])->name('produk.update');
-        Route::delete('/produk/{produk}', [ProdukController::class, 'destroy'])->name('produk.destroy');
-    });
-
-    Route::get('/produk/{produk}', [ProdukController::class, 'show'])->name('produk.show');
-
-    // === PESANAN (Pelanggan buat, Admin/Operator lihat) ===
+    // === PESANAN ===
     Route::resource('pesanan', PesananController::class);
     Route::post('pesanan/{pesanan}/batalkan', [PesananController::class, 'batalkan'])->name('pesanan.batalkan');
 
@@ -90,17 +76,14 @@ Route::middleware('auth')->group(function () {
     // === NOTIFIKASI ===
     Route::get('notifikasi', [NotifikasiController::class, 'index'])->name('notifikasi.index');
     Route::post('notifikasi/{notifikasi}/read', [NotifikasiController::class, 'markAsRead'])->name('notifikasi.read');
+    // ... other notification routes ...
+});
+
+// === NOTIFIKASI (Continued) ===
+Route::middleware('auth')->group(function() {
     Route::post('notifikasi/read-all', [NotifikasiController::class, 'markAllAsRead'])->name('notifikasi.read-all');
     Route::delete('notifikasi/{notifikasi}', [NotifikasiController::class, 'destroy'])->name('notifikasi.destroy');
     Route::get('notifikasi/unread-count', [NotifikasiController::class, 'unreadCount'])->name('notifikasi.unread-count');
-
-    // === LAPORAN (Admin Only) ===
-    Route::middleware('role:admin')->prefix('laporan')->name('laporan.')->group(function () {
-        Route::get('/', [LaporanController::class, 'index'])->name('index');
-        Route::get('/pesanan', [LaporanController::class, 'pesanan'])->name('pesanan');
-        Route::get('/pembayaran', [LaporanController::class, 'pembayaran'])->name('pembayaran');
-        Route::get('/produksi', [LaporanController::class, 'produksi'])->name('produksi');
-    });
 
     // === PENGATURAN (Admin Only) ===
     Route::middleware('role:admin')->group(function () {

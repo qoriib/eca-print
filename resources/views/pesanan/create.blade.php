@@ -1,9 +1,9 @@
-@extends('layouts.dashboard')
+@extends('layouts.store')
 
 @section('title', 'Buat Pesanan Baru')
-@section('role_name', 'Pelanggan')
 
 @section('content')
+<div class="container py-5">
     <div class="row justify-content-center">
         <div class="col-lg-11">
             <div class="d-flex align-items-center mb-4">
@@ -34,7 +34,7 @@
                                                 <option value="" disabled selected>Pilih produk yang ingin dicetak</option>
                                                 @foreach($produk as $p)
                                                     <option value="{{ $p->id }}" data-harga="{{ $p->harga_satuan }}"
-                                                        data-satuan="{{ $p->satuan }}">
+                                                        data-satuan="{{ $p->satuan }}" {{ request('produk_id') == $p->id ? 'selected' : '' }}>
                                                         {{ $p->nama_produk }} - Rp
                                                         {{ number_format($p->harga_satuan, 0, ',', '.') }}/{{ $p->satuan }}
                                                     </option>
@@ -161,83 +161,84 @@
             </form>
         </div>
     </div>
+</div>
 
-    <style>
-        .border-dashed {
-            border-style: dashed !important;
+<style>
+    .border-dashed {
+        border-style: dashed !important;
+    }
+</style>
+
+@push('scripts')
+<script>
+    let itemCount = 1;
+
+    document.getElementById('add-item').addEventListener('click', function () {
+        const container = document.getElementById('items-container');
+        const template = container.querySelector('.item-card').cloneNode(true);
+
+        // Reset values and update names
+        template.querySelector('h6').textContent = `Item #${itemCount + 1}`;
+
+        template.querySelectorAll('[name]').forEach(input => {
+            const name = input.getAttribute('name');
+            input.setAttribute('name', name.replace(/\[\d+\]/, `[${itemCount}]`));
+            if (input.tagName === 'SELECT' || input.tagName === 'INPUT' || input.tagName === 'TEXTAREA') {
+                input.value = (input.type === 'number') ? 1 : '';
+            }
+        });
+
+        // Add remove button if not exists
+        if (!template.querySelector('.btn-remove-item')) {
+            const removeBtn = document.createElement('button');
+            removeBtn.type = 'button';
+            removeBtn.className = 'btn btn-sm btn-link text-danger btn-remove-item';
+            removeBtn.innerHTML = '<i class="bi bi-trash"></i> Hapus';
+            removeBtn.onclick = function () {
+                template.remove();
+                calculateTotal();
+            };
+            template.querySelector('.card-header').appendChild(removeBtn);
         }
-    </style>
 
-    @push('scripts')
-        <script>
-            let itemCount = 1;
+        container.appendChild(template);
+        itemCount++;
 
-            document.getElementById('add-item').addEventListener('click', function () {
-                const container = document.getElementById('items-container');
-                const template = container.querySelector('.item-card').cloneNode(true);
+        // Re-attach listeners for new elements
+        attachListeners();
+    });
 
-                // Reset values and update names
-                template.querySelector('h6').textContent = `Item #${itemCount + 1}`;
+    function attachListeners() {
+        document.querySelectorAll('.produk-select, .item-qty').forEach(el => {
+            el.onchange = calculateTotal;
+            el.onkeyup = calculateTotal;
 
-                template.querySelectorAll('[name]').forEach(input => {
-                    const name = input.getAttribute('name');
-                    input.setAttribute('name', name.replace(/\[\d+\]/, `[${itemCount}]`));
-                    if (input.tagName === 'SELECT' || input.tagName === 'INPUT' || input.tagName === 'TEXTAREA') {
-                        input.value = (input.type === 'number') ? 1 : '';
-                    }
-                });
-
-                // Add remove button if not exists
-                if (!template.querySelector('.btn-remove-item')) {
-                    const removeBtn = document.createElement('button');
-                    removeBtn.type = 'button';
-                    removeBtn.className = 'btn btn-sm btn-link text-danger btn-remove-item';
-                    removeBtn.innerHTML = '<i class="bi bi-trash"></i> Hapus';
-                    removeBtn.onclick = function () {
-                        template.remove();
-                        calculateTotal();
-                    };
-                    template.querySelector('.card-header').appendChild(removeBtn);
-                }
-
-                container.appendChild(template);
-                itemCount++;
-
-                // Re-attach listeners for new elements
-                attachListeners();
-            });
-
-            function attachListeners() {
-                document.querySelectorAll('.produk-select, .item-qty').forEach(el => {
-                    el.onchange = calculateTotal;
-                    el.onkeyup = calculateTotal;
-
-                    if (el.classList.contains('produk-select')) {
-                        el.addEventListener('change', function () {
-                            const selected = this.options[this.selectedIndex];
-                            const satuan = selected.getAttribute('data-satuan') || 'unit';
-                            this.closest('.card-body').querySelector('.satuan-label').textContent = satuan;
-                        });
-                    }
+            if (el.classList.contains('produk-select')) {
+                el.addEventListener('change', function () {
+                    const selected = this.options[this.selectedIndex];
+                    const satuan = selected.getAttribute('data-satuan') || 'unit';
+                    this.closest('.card-body').querySelector('.satuan-label').textContent = satuan;
                 });
             }
+        });
+    }
 
-            function calculateTotal() {
-                let total = 0;
-                document.querySelectorAll('.item-card').forEach(card => {
-                    const select = card.querySelector('.produk-select');
-                    const qty = card.querySelector('.item-qty').value || 0;
+    function calculateTotal() {
+        let total = 0;
+        document.querySelectorAll('.item-card').forEach(card => {
+            const select = card.querySelector('.produk-select');
+            const qty = card.querySelector('.item-qty').value || 0;
 
-                    if (select.selectedIndex > 0) {
-                        const harga = select.options[select.selectedIndex].getAttribute('data-harga') || 0;
-                        total += (harga * qty);
-                    }
-                });
-                document.getElementById('total-estimasi').textContent = 'Rp ' + new Intl.NumberFormat('id-ID').format(total);
+            if (select.selectedIndex > 0) {
+                const harga = select.options[select.selectedIndex].getAttribute('data-harga') || 0;
+                total += (harga * qty);
             }
+        });
+        document.getElementById('total-estimasi').textContent = 'Rp ' + new Intl.NumberFormat('id-ID').format(total);
+    }
 
-            attachListeners();
-            calculateTotal();
-        </script>
-    @endpush
+    attachListeners();
+    calculateTotal();
+</script>
+@endpush
 @endsection

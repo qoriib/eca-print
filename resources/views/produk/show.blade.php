@@ -1,17 +1,20 @@
-@extends('layouts.dashboard')
+@extends(Auth::check() && Auth::user()->role !== 'pelanggan' ? 'layouts.dashboard' : 'layouts.store')
 
 @section('title', 'Detail Produk')
-@section('role_name', 'Administrator')
+@if(Auth::check() && Auth::user()->role !== 'pelanggan')
+    @section('role_name', Auth::user()->role === 'admin' ? 'Administrator' : 'Operator')
+@endif
 
 @section('content')
+    <div class="{{ Auth::check() && Auth::user()->role !== 'pelanggan' ? 'container-fluid' : 'container py-5' }}">
     <div class="row justify-content-center">
         <div class="col-lg-10">
             <div class="d-flex align-items-center mb-4">
-                <a href="{{ route('produk.index') }}" class="btn btn-light me-3">
+                <a href="{{ route('home') }}#katalog" class="btn btn-light me-3">
                     <i class="bi bi-arrow-left"></i>
                 </a>
                 <h3 class="fs-5 fw-semibold mb-0">Detail Produk</h3>
-                @if(Auth::user()->role === 'admin')
+                @if(Auth::check() && Auth::user()->role === 'admin')
                     <div class="ms-auto">
                         <a href="{{ route('produk.edit', $produk) }}" class="btn btn-primary px-4">
                             <i class="bi bi-pencil me-2"></i>Edit Produk
@@ -88,6 +91,15 @@
                                     </div>
                                 </div>
                             </div>
+
+                            @if(!Auth::check() || Auth::user()->role === 'pelanggan')
+                                <div class="mt-5 d-grid">
+                                    <a href="{{ route('pesanan.create', ['produk_id' => $produk->id]) }}" class="btn btn-primary btn-lg py-3 fw-bold rounded-pill">
+                                        <i class="bi bi-cart-plus me-2"></i>Mulai Pesan Sekarang
+                                    </a>
+                                </div>
+                            @endif
+                        </div>
                         </div>
                     </div>
                 </div>

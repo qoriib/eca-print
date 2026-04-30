@@ -5,8 +5,8 @@
 
 @section('content')
     <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 gap-3">
-        <h3 class="fs-5 fw-semibold mb-0">Manajemen Produk</h3>
-        @if(Auth::user()->role === 'admin')
+        <h3 class="fs-5 fw-semibold mb-0">Katalog Produk</h3>
+        @if(Auth::check() && Auth::user()->role === 'admin')
             <a href="{{ route('produk.create') }}" class="btn btn-primary">
                 <i class="bi bi-plus-lg me-2"></i>Tambah Produk
             </a>
@@ -82,7 +82,7 @@
                     <div class="card-footer bg-white border-0 p-3 pt-0">
                         <div class="d-grid gap-2 d-flex">
                             <a href="{{ route('produk.show', $item) }}" class="btn btn-light flex-grow-1">Detail</a>
-                            @if(Auth::user()->role === 'admin')
+                            @if(Auth::check() && Auth::user()->role === 'admin')
                                 <a href="{{ route('produk.edit', $item) }}" class="btn btn-outline-primary">
                                     <i class="bi bi-pencil"></i>
                                 </a>
@@ -95,7 +95,7 @@
                     </div>
                 </div>
 
-                @if(Auth::user()->role === 'admin')
+                @if(Auth::check() && Auth::user()->role === 'admin')
                     <!-- Delete Modal -->
                     <div class="modal fade" id="deleteModal{{ $item->id }}" tabindex="-1" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
@@ -129,7 +129,6 @@
             </div>
         @endforelse
     </div>
-
     <div class="mt-4">
         {{ $produk->appends(request()->query())->links() }}
     </div>

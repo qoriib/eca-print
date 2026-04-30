@@ -1,9 +1,12 @@
-@extends('layouts.dashboard')
+@extends(Auth::user()->role === 'pelanggan' ? 'layouts.store' : 'layouts.dashboard')
 
 @section('title', 'Detail Pembayaran')
-@section('role_name', Auth::user()->role === 'admin' ? 'Administrator' : 'Pelanggan')
+@if(Auth::user()->role !== 'pelanggan')
+    @section('role_name', Auth::user()->role === 'admin' ? 'Administrator' : 'Operator')
+@endif
 
 @section('content')
+<div class="{{ Auth::user()->role === 'pelanggan' ? 'container py-5' : '' }}">
 <div class="row justify-content-center">
     <div class="col-lg-11">
         <div class="d-flex align-items-center mb-4">

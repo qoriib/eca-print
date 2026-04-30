@@ -205,10 +205,6 @@
 
             @if($role === 'admin')
                 <div class="sidebar-heading">Sistem</div>
-                <a href="{{ route('laporan.index') }}"
-                    class="nav-link {{ request()->routeIs('laporan.*') ? 'active' : '' }}">
-                    <i class="bi bi-file-earmark-bar-graph"></i> Laporan
-                </a>
                 <a href="{{ route('pengaturan.index') }}"
                     class="nav-link {{ request()->routeIs('pengaturan.*') ? 'active' : '' }}">
                     <i class="bi bi-shop"></i> Profil Usaha

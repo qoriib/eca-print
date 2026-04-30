@@ -13,7 +13,6 @@ class Pengaturan extends Model
         'alamat',
         'no_hp',
         'email',
-        'logo',
         'catatan_footer',
     ];
 }

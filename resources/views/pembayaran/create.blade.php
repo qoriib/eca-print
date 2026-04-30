@@ -1,9 +1,9 @@
-@extends('layouts.dashboard')
+@extends('layouts.store')
 
 @section('title', 'Kirim Bukti Pembayaran')
-@section('role_name', 'Pelanggan')
 
 @section('content')
+<div class="container py-5">
     <div class="row justify-content-center">
         <div class="col-lg-10">
             <div class="d-flex align-items-center mb-4">
@@ -145,4 +145,5 @@
             </div>
         </div>
     </div>
+</div>
 @endsection

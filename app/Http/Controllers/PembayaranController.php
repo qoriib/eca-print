@@ -23,9 +23,18 @@ class PembayaranController extends Controller
             $query->where('status_konfirmasi', $request->status);
         }
 
-        $pembayaran = $query->latest()->paginate(15);
+        if ($request->filled('start_date')) {
+            $query->whereDate('tanggal_bayar', '>=', $request->start_date);
+        }
 
-        return view('pembayaran.index', compact('pembayaran'));
+        if ($request->filled('end_date')) {
+            $query->whereDate('tanggal_bayar', '<=', $request->end_date);
+        }
+
+        $pembayaran = $query->latest()->paginate(15);
+        $total_nominal = (clone $query)->where('status_konfirmasi', 'dikonfirmasi')->sum('jumlah_bayar');
+
+        return view('pembayaran.index', compact('pembayaran', 'total_nominal'));
     }
 
     public function create(Pesanan $pesanan)
