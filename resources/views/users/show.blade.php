@@ -24,7 +24,7 @@
                     <div class="card text-center p-4">
                         <div class="mb-3">
                             <img src="https://ui-avatars.com/api/?name={{ urlencode($user->name) }}&size=128&background=random"
-                                class="rounded-circle shadow-sm" width="120">
+                                class="rounded shadow-sm" width="120">
                         </div>
                         <h4 class="fw-semibold mb-1">{{ $user->name }}</h4>
                         <p class="text-muted mb-3">{{ $user->email }}</p>

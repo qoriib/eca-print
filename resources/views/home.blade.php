@@ -65,27 +65,23 @@
                 <div class="row g-4">
                     @foreach($produk as $item)
                         <div class="col-md-4 col-lg-3">
-                            <div class="card h-100 overflow-hidden border-0 shadow-sm">
-                                <div class="position-relative">
+                            <div class="card h-100 border-0 shadow-sm overflow-hidden position-relative stat-card">
+                                <div class="bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
                                     @if($item->gambar)
-                                        <img src="{{ asset('storage/' . $item->gambar) }}" class="card-img-top" alt="{{ $item->nama_produk }}" style="height: 200px; object-fit: cover;">
+                                        <img src="{{ asset('storage/' . $item->gambar) }}" class="w-100 h-100" style="object-fit: cover;">
                                     @else
-                                        <img src="https://placehold.co/600x400?text={{ urlencode($item->nama_produk) }}" class="card-img-top" alt="{{ $item->nama_produk }}" style="height: 200px; object-fit: cover;">
+                                        <i class="bi bi-image text-muted fs-1 opacity-25"></i>
                                     @endif
-                                    <div class="position-absolute top-0 start-0 m-2">
-                                        <span class="badge bg-white text-primary shadow-sm px-3 py-2 rounded-pill small fw-bold">
-                                            {{ $item->kategoriProduk->nama_kategori }}
-                                        </span>
-                                    </div>
                                 </div>
-                                <div class="card-body p-4">
-                                    <h6 class="fw-bold mb-2 text-truncate">{{ $item->nama_produk }}</h6>
-                                    <div class="mb-3">
-                                        <span class="text-muted small d-block">Harga mulai</span>
-                                        <span class="fw-bold fs-5 text-primary">Rp {{ number_format($item->harga_satuan, 0, ',', '.') }}</span>
-                                        <small class="text-muted">/{{ $item->satuan }}</small>
+
+                                <div class="card-body">
+                                    <small class="text-primary fw-semibold text-uppercase" style="font-size: 0.7rem;">{{ $item->kategoriProduk->nama_kategori }}</small>
+                                    <h6 class="fw-semibold mb-2 text-truncate" title="{{ $item->nama_produk }}">{{ $item->nama_produk }}</h6>
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <h5 class="text-primary fw-bold font-monospace mb-0">Rp {{ number_format($item->harga_satuan, 0, ',', '.') }}</h5>
+                                        <small class="text-muted">/ {{ $item->satuan }}</small>
                                     </div>
-                                    <a href="{{ route('produk.show', $item) }}" class="btn btn-outline-primary btn-sm w-100 rounded-pill py-2 fw-bold">Lihat Detail</a>
+                                    <a href="{{ route('produk.show', $item) }}" class="btn btn-light btn-sm w-100 py-2">Lihat Detail</a>
                                 </div>
                             </div>
                         </div>
@@ -96,44 +92,6 @@
                     {{ $produk->appends(request()->query())->links() }}
                 </div>
             @endif
-        </div>
-    </section>
-
-    <!-- Services / Features -->
-    <section class="py-5 bg-light">
-        <div class="container text-center mb-5">
-            <h2 class="fw-bold">Mengapa Memilih Kami?</h2>
-        </div>
-        <div class="container">
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="card h-100 p-4 border-0 text-center">
-                        <div class="bg-primary-subtle text-primary rounded-circle d-inline-flex p-3 mb-3 mx-auto" style="width: 70px; height: 70px; align-items: center; justify-content: center;">
-                            <i class="bi bi-lightning-fill fs-3"></i>
-                        </div>
-                        <h5 class="fw-bold">Cepat & Tepat</h5>
-                        <p class="text-muted mb-0 small">Pengerjaan tepat waktu sesuai deadline yang disepakati dengan kualitas terjaga.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card h-100 p-4 border-0 text-center">
-                        <div class="bg-success-subtle text-success rounded-circle d-inline-flex p-3 mb-3 mx-auto" style="width: 70px; height: 70px; align-items: center; justify-content: center;">
-                            <i class="bi bi-shield-check fs-3"></i>
-                        </div>
-                        <h5 class="fw-bold">Kualitas Premium</h5>
-                        <p class="text-muted mb-0 small">Menggunakan mesin cetak terbaru dan bahan berkualitas tinggi untuk hasil maksimal.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card h-100 p-4 border-0 text-center">
-                        <div class="bg-warning-subtle text-warning rounded-circle d-inline-flex p-3 mb-3 mx-auto" style="width: 70px; height: 70px; align-items: center; justify-content: center;">
-                            <i class="bi bi-wallet2 fs-3"></i>
-                        </div>
-                        <h5 class="fw-bold">Harga Terjangkau</h5>
-                        <p class="text-muted mb-0 small">Harga kompetitif dengan berbagai pilihan paket yang bisa disesuaikan dengan budget Anda.</p>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
 

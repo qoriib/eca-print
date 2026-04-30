@@ -56,9 +56,20 @@
 
         .card {
             border: none;
-            border-radius: 20px;
+            border-radius: 12px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
             transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .stat-card {
+            border: none;
+            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+            border-radius: 12px !important;
+        }
+
+        .font-monospace {
+            font-family: 'JetBrains Mono', monospace !important;
+            letter-spacing: -0.5px;
         }
 
         @media (max-width: 768px) {
@@ -121,7 +132,7 @@
                         @endif
                         <li class="nav-item dropdown ms-lg-3">
                             <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown">
-                                <img src="https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->name) }}&background=4e73df&color=fff" class="rounded-circle me-2" width="32">
+                                <img src="https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->name) }}&background=4e73df&color=fff" class="rounded me-2" width="32">
                                 <span>{{ Auth::user()->name }}</span>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end border-0 shadow-sm mt-3">

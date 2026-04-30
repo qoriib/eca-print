@@ -77,7 +77,7 @@
                     <div class="card-body p-4">
                         <h5 class="fw-semibold mb-3">Informasi Pelanggan</h5>
                         <div class="d-flex align-items-center mb-3">
-                            <img src="https://ui-avatars.com/api/?name={{ urlencode($produksi->pesanan->nama_pelanggan ?? $produksi->pesanan->user->name) }}&background=random" class="rounded-circle me-3" width="45">
+                            <img src="https://ui-avatars.com/api/?name={{ urlencode($produksi->pesanan->nama_pelanggan ?? $produksi->pesanan->user->name) }}&background=random" class="rounded me-3" width="45">
                             <div>
                                 <div class="fw-semibold">{{ $produksi->pesanan->nama_pelanggan ?? $produksi->pesanan->user->name }}</div>
                                 <small class="text-muted">{{ $produksi->pesanan->user->email }}</small>

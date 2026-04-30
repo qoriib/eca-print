@@ -86,7 +86,7 @@
                                     @if($item->operator)
                                         <div class="d-flex align-items-center">
                                             <img src="https://ui-avatars.com/api/?name={{ urlencode($item->operator->name) }}&size=30&background=random"
-                                                class="rounded-circle me-2">
+                                                class="rounded me-2">
                                             <small>{{ $item->operator->name }}</small>
                                         </div>
                                     @else

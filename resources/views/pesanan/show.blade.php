@@ -68,7 +68,7 @@
 
                                     @foreach($steps as $key => $label)
                                         <div class="text-center z-1 stepper-item">
-                                            <div class="rounded-circle d-flex align-items-center justify-content-center mx-auto mb-2 {{ array_search($key, array_keys($steps)) <= $currentIdx ? 'bg-primary text-white' : 'bg-light text-muted' }}"
+                                            <div class="rounded d-flex align-items-center justify-content-center mx-auto mb-2 {{ array_search($key, array_keys($steps)) <= $currentIdx ? 'bg-primary text-white' : 'bg-light text-muted' }}"
                                                 style="width: 40px; height: 40px;">
                                                 @if(array_search($key, array_keys($steps)) < $currentIdx)
                                                     <i class="bi bi-check-lg"></i>
@@ -206,7 +206,7 @@
                             <h6 class="fw-semibold mb-3">Data Pemesan</h6>
                             <div class="d-flex align-items-center mb-3">
                                 <img src="https://ui-avatars.com/api/?name={{ urlencode($pesanan->nama_pelanggan ?? $pesanan->user->name) }}&background=random"
-                                    class="rounded-circle me-3" width="45">
+                                    class="rounded me-3" width="45">
                                 <div>
                                     <div class="fw-semibold">{{ $pesanan->nama_pelanggan ?? $pesanan->user->name }}</div>
                                     <small class="text-muted">{{ $pesanan->user->email }}</small>

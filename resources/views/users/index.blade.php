@@ -30,7 +30,7 @@
                                 <td class="ps-4">
                                     <div class="d-flex align-items-center">
                                         <img src="https://ui-avatars.com/api/?name={{ urlencode($user->name) }}&background=random"
-                                            class="rounded-circle me-3" width="40">
+                                            class="rounded me-3" width="40">
                                         <div>
                                             <div class="fw-semibold">{{ $user->name }}</div>
                                             <small class="text-muted">Terdaftar: <span
