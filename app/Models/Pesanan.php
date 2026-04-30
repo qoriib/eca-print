@@ -9,6 +9,9 @@ use Illuminate\Database\Eloquent\Model;
 #[Fillable([
     'kode_pesanan',
     'user_id',
+    'nama_pelanggan',
+    'no_hp_pelanggan',
+    'alamat_pelanggan',
     'tanggal_pesan',
     'tanggal_deadline',
     'status',

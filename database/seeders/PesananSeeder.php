@@ -18,6 +18,9 @@ class PesananSeeder extends Seeder
             Pesanan::create([
                 'kode_pesanan' => 'ECA-20260423-00' . ($index + 1),
                 'user_id' => $user->id,
+                'nama_pelanggan' => $user->name,
+                'no_hp_pelanggan' => $user->no_telepon ?? '08123456789',
+                'alamat_pelanggan' => $user->alamat ?? 'Alamat Pelanggan',
                 'tanggal_pesan' => now()->subDays(5 - $index),
                 'tanggal_deadline' => now()->addDays(2 + $index),
                 'status' => $statuses[$index],

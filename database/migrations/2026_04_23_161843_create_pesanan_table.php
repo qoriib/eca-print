@@ -15,6 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('kode_pesanan')->unique(); // e.g. ECA-20240101-001
             $table->foreignId('user_id')->constrained('users')->onDelete('restrict'); // pelanggan
+            $table->string('nama_pelanggan')->nullable();
+            $table->string('no_hp_pelanggan')->nullable();
+            $table->text('alamat_pelanggan')->nullable();
             $table->date('tanggal_pesan');
             $table->date('tanggal_deadline')->nullable();
             $table->enum('status', [

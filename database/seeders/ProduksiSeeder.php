@@ -16,8 +16,9 @@ class ProduksiSeeder extends Seeder
 
         foreach ($pesanan as $index => $p) {
             $status = 'antrian';
-            if ($p->status === 'dalam_produksi') $status = 'proses';
-            if ($p->status === 'selesai_produksi' || $p->status === 'selesai') $status = 'selesai';
+            if ($p->status === 'dalam_produksi') $status = 'desain';
+            if ($p->status === 'selesai_produksi' || $p->status === 'siap_diambil') $status = 'finishing';
+            if ($p->status === 'selesai') $status = 'selesai';
 
             Produksi::create([
                 'pesanan_id' => $p->id,

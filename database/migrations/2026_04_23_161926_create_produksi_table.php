@@ -19,8 +19,9 @@ return new class extends Migration
             $table->date('tanggal_selesai')->nullable();
             $table->enum('status_produksi', [
                 'antrian',
-                'proses',
-                'quality_check',
+                'desain',
+                'cetak',
+                'finishing',
                 'selesai'
             ])->default('antrian');
             $table->text('catatan_produksi')->nullable();
