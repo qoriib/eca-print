@@ -23,9 +23,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: radial-gradient(circle at top right, #4e73df, transparent),
-                radial-gradient(circle at bottom left, #224abe, transparent);
-            background-color: #4e73df;
+            background-color: var(--bs-primary);
             padding: 2rem 1rem;
         }
 
@@ -48,14 +46,6 @@
         .form-control:focus {
             box-shadow: 0 0 0 0.25rem rgba(78, 115, 223, 0.15);
             border-color: #4e73df;
-        }
-
-        .btn-primary {
-            background-color: #4e73df;
-        }
-
-        .btn-primary:hover {
-            background-color: #2e59d9;
         }
 
         @media (max-width: 576px) {

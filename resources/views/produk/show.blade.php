@@ -36,8 +36,6 @@
                     <div class="col-md-7">
                         <div class="card-body">
                             <div class="mb-4">
-                                <span
-                                    class="badge bg-primary-subtle text-primary px-3 mb-2 text-uppercase fw-semibold">{{ $produk->kategoriProduk->nama_kategori }}</span>
                                 <h2 class="fw-semibold mb-1">{{ $produk->nama_produk }}</h2>
                                 <div class="text-muted">Status:
                                     @if($produk->is_aktif)
@@ -94,8 +92,8 @@
 
                             @if(!Auth::check() || Auth::user()->role === 'pelanggan')
                                 <div class="mt-5 d-grid">
-                                    <a href="{{ route('pesanan.create', ['produk_id' => $produk->id]) }}" class="btn btn-primary btn-lg py-3 fw-bold rounded-pill">
-                                        <i class="bi bi-cart-plus me-2"></i>Mulai Pesan Sekarang
+                                    <a href="{{ route('pesanan.create', ['produk_id' => $produk->id]) }}" class="btn btn-primary btn-lg rounded-pill">
+                                        Mulai Pesan Sekarang
                                     </a>
                                 </div>
                             @endif

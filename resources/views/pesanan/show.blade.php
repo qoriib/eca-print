@@ -51,41 +51,43 @@
                     <div class="card mb-4">
                         <div class="card-body p-4">
                             <h5 class="fw-semibold mb-4">Status Transaksi</h5>
-                            <div class="d-flex justify-content-between position-relative mb-5 px-md-5">
-                                @php
-                                    $steps = [
-                                        'menunggu_konfirmasi' => 'Dipesan',
-                                        'dikonfirmasi' => 'Dikonfirmasi',
-                                        'dalam_produksi' => 'Produksi',
-                                        'siap_diambil' => 'Siap',
-                                        'selesai' => 'Selesai'
-                                    ];
-                                    $currentIdx = array_search($pesanan->status, array_keys($steps));
-                                    if ($pesanan->status === 'dibatalkan')
-                                        $currentIdx = -1;
-                                @endphp
+                            <div class="stepper-container">
+                                <div class="d-flex justify-content-between position-relative mb-5 px-md-5" style="min-width: 500px;">
+                                    @php
+                                        $steps = [
+                                            'menunggu_konfirmasi' => 'Dipesan',
+                                            'dikonfirmasi' => 'Dikonfirmasi',
+                                            'dalam_produksi' => 'Produksi',
+                                            'siap_diambil' => 'Siap',
+                                            'selesai' => 'Selesai'
+                                        ];
+                                        $currentIdx = array_search($pesanan->status, array_keys($steps));
+                                        if ($pesanan->status === 'dibatalkan')
+                                            $currentIdx = -1;
+                                    @endphp
 
-                                @foreach($steps as $key => $label)
-                                    <div class="text-center z-1">
-                                        <div class="rounded-circle d-flex align-items-center justify-content-center mx-auto mb-2 {{ array_search($key, array_keys($steps)) <= $currentIdx ? 'bg-primary text-white' : 'bg-light text-muted' }}"
-                                            style="width: 40px; height: 40px;">
-                                            @if(array_search($key, array_keys($steps)) < $currentIdx)
-                                                <i class="bi bi-check-lg"></i>
-                                            @else
-                                                <small>{{ $loop->iteration }}</small>
-                                            @endif
+                                    @foreach($steps as $key => $label)
+                                        <div class="text-center z-1 stepper-item">
+                                            <div class="rounded-circle d-flex align-items-center justify-content-center mx-auto mb-2 {{ array_search($key, array_keys($steps)) <= $currentIdx ? 'bg-primary text-white' : 'bg-light text-muted' }}"
+                                                style="width: 40px; height: 40px;">
+                                                @if(array_search($key, array_keys($steps)) < $currentIdx)
+                                                    <i class="bi bi-check-lg"></i>
+                                                @else
+                                                    <small>{{ $loop->iteration }}</small>
+                                                @endif
+                                            </div>
+                                            <div
+                                                class="small fw-semibold {{ array_search($key, array_keys($steps)) <= $currentIdx ? 'text-primary' : 'text-muted' }}">
+                                                {{ $label }}</div>
                                         </div>
-                                        <div
-                                            class="small fw-semibold {{ array_search($key, array_keys($steps)) <= $currentIdx ? 'text-primary' : 'text-muted' }}">
-                                            {{ $label }}</div>
-                                    </div>
-                                @endforeach
-                                <!-- Progress Line -->
-                                <div class="position-absolute top-0 start-0 w-100 mt-4 translate-middle-y z-0"
-                                    style="height: 2px; padding: 0 10%;">
-                                    <div class="bg-light w-100 h-100 position-relative">
-                                        <div class="bg-primary h-100 transition-all"
-                                            style="width: {{ $currentIdx >= 0 ? ($currentIdx / (count($steps) - 1) * 100) : 0 }}%;">
+                                    @endforeach
+                                    <!-- Progress Line -->
+                                    <div class="position-absolute top-0 start-0 w-100 mt-4 translate-middle-y z-0"
+                                        style="height: 2px; padding: 0 10%;">
+                                        <div class="bg-light w-100 h-100 position-relative">
+                                            <div class="bg-primary h-100 transition-all"
+                                                style="width: {{ $currentIdx >= 0 ? ($currentIdx / (count($steps) - 1) * 100) : 0 }}%;">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

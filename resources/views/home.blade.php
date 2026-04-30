@@ -6,18 +6,14 @@
     <!-- Hero Section -->
     <header class="hero-section">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <span class="badge bg-primary-subtle text-primary px-3 py-2 rounded-pill mb-3 fw-bold">Solusi Cetak Profesional</span>
-                    <h1 class="display-3 fw-bolder mb-4" style="letter-spacing: -2px; line-height: 1.1;">Cetak Impian Anda Jadi <span class="text-primary">Kenyataan.</span></h1>
-                    <p class="lead text-muted mb-5">Kami melayani berbagai kebutuhan cetak digital, offset, dan merchandise dengan kualitas terbaik dan pengerjaan cepat.</p>
-                    <div class="d-flex gap-3">
-                        <a href="#katalog" class="btn btn-primary btn-lg px-5">Mulai Belanja</a>
-                        <a href="https://wa.me/{{ $pengaturan->no_hp ?? '' }}" target="_blank" class="btn btn-outline-dark btn-lg px-5">Tanya Admin</a>
+            <div class="row justify-content-center text-center">
+                <div class="col-lg-10">
+                    <span class="badge bg-primary-subtle text-primary px-3 py-2 rounded-pill mb-4 fw-bold">Solusi Cetak Profesional & Terpercaya</span>
+                    <h1 class="display-2 fw-bolder mb-4" style="letter-spacing: -2px; line-height: 1.1;">Cetak Impian Anda Jadi <span class="text-primary">Kenyataan.</span></h1>
+                    <p class="lead text-muted mb-5 mx-auto" style="max-width: 700px;">Kami melayani berbagai kebutuhan cetak digital, offset, dan merchandise dengan kualitas premium, harga terjangkau, dan pengerjaan tepat waktu.</p>
+                    <div class="d-flex justify-content-center gap-3">
+                        <a href="https://wa.me/{{ $pengaturan->no_hp ?? '' }}" target="_blank" class="btn btn-outline-dark btn-lg px-4 rounded-pill">Hubungi Admin</a>
                     </div>
-                </div>
-                <div class="col-lg-6 d-none d-lg-block">
-                    <img src="https://images.unsplash.com/photo-1562654501-a0ccc0fc3fb1?q=80&w=1932&auto=format&fit=crop" alt="Printing" class="img-fluid rounded-4 shadow-lg">
                 </div>
             </div>
         </div>
@@ -141,25 +137,9 @@
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="py-5 bg-white">
-        <div class="container">
-            <div class="bg-primary rounded-4 p-5 text-center text-white shadow-lg">
-                <h2 class="fw-bold display-6 mb-4">Siap Mencetak Pesanan Anda?</h2>
-                <p class="lead mb-5 opacity-75">Daftar sekarang dan nikmati kemudahan memesan cetakan secara online.</p>
-                <div class="d-flex justify-content-center flex-wrap gap-3">
-                    <a href="{{ route('register') }}" class="btn btn-light btn-lg px-5 text-primary fw-bold">Daftar Gratis</a>
-                    <a href="https://wa.me/{{ $pengaturan->no_hp ?? '' }}" target="_blank" class="btn btn-outline-light btn-lg px-5 fw-bold">
-                        <i class="bi bi-whatsapp me-2"></i>Hubungi Kami
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <style>
         .hero-section {
-            padding: 100px 0 80px;
+            padding: 160px 0 140px;
             background: linear-gradient(135deg, #fff 0%, #f4f7ff 100%);
         }
     </style>

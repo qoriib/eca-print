@@ -9,14 +9,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary-color: #4e73df;
-            --secondary-color: #f8f9fc;
-            --accent-color: #1cc88a;
-            --text-dark: #2d3436;
-            --text-muted: #636e72;
-        }
-
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: #f8fbff;
@@ -35,7 +27,7 @@
         .navbar-brand {
             font-weight: 800;
             letter-spacing: -1px;
-            color: var(--primary-color) !important;
+            color: var(--bs-primary) !important;
             font-size: 1.5rem;
         }
 
@@ -48,7 +40,7 @@
         }
 
         .nav-link:hover {
-            color: var(--primary-color) !important;
+            color: var(--bs-primary) !important;
         }
 
         .hero-section {
@@ -58,7 +50,7 @@
 
         .footer {
             background: #fff;
-            padding: 60px 0 30px;
+            padding: 30px 0;
             border-top: 1px solid rgba(0, 0, 0, 0.05);
         }
 
@@ -69,11 +61,32 @@
             transition: transform 0.3s, box-shadow 0.3s;
         }
 
-        .badge-status {
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 0.75rem;
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 80px 0 60px;
+                text-align: center;
+            }
+
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-section .d-flex {
+                justify-content: center;
+            }
+
+            .table-responsive {
+                border-radius: 10px;
+            }
+
+            .stepper-container {
+                overflow-x: auto;
+                padding-bottom: 10px;
+            }
+
+            .stepper-item {
+                min-width: 80px;
+            }
         }
     </style>
 </head>
@@ -142,14 +155,8 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container text-center">
-            <h5 class="fw-bold mb-4">{{ \App\Models\Pengaturan::first()->nama_usaha ?? 'Eca Print' }}</h5>
-            <p class="text-muted mb-4">{{ \App\Models\Pengaturan::first()->alamat ?? 'Jl. Percetakan No. 123' }}</p>
-            <div class="social-links mb-4">
-                <a href="#" class="text-muted mx-2 fs-5"><i class="bi bi-instagram"></i></a>
-                <a href="#" class="text-muted mx-2 fs-5"><i class="bi bi-facebook"></i></a>
-                <a href="#" class="text-muted mx-2 fs-5"><i class="bi bi-whatsapp"></i></a>
-            </div>
-            <hr class="my-4 opacity-50">
+            <h5 class="fw-bold mb-2">{{ \App\Models\Pengaturan::first()->nama_usaha ?? 'Eca Print' }}</h5>
+            <p class="text-muted mb-2">{{ \App\Models\Pengaturan::first()->alamat ?? 'Jl. Percetakan No. 123' }}</p>
             <p class="small text-muted mb-0">&copy; {{ date('Y') }} {{ \App\Models\Pengaturan::first()->nama_usaha ?? 'Eca Print' }}. {{ \App\Models\Pengaturan::first()->catatan_footer ?? 'Seluruh hak cipta dilindungi.' }}</p>
         </div>
     </footer>
