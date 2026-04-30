@@ -195,24 +195,22 @@
 
                 <!-- Kolom Samping -->
                 <div class="col-md-4">
-                    <!-- Info Pelanggan (Hanya Admin) -->
-                    @if(Auth::user()->role !== 'pelanggan')
-                        <div class="card mb-4">
-                            <div class="card-body p-4">
-                                <h6 class="fw-semibold mb-3">Data Pemesan</h6>
-                                <div class="d-flex align-items-center mb-3">
-                                    <img src="https://ui-avatars.com/api/?name={{ urlencode($pesanan->user->name) }}&background=random"
-                                        class="rounded-circle me-3" width="45">
-                                    <div>
-                                        <div class="fw-semibold">{{ $pesanan->user->name }}</div>
-                                        <small class="text-muted">{{ $pesanan->user->email }}</small>
-                                    </div>
+                    <!-- Data Pelanggan -->
+                    <div class="card mb-4">
+                        <div class="card-body p-4">
+                            <h6 class="fw-semibold mb-3">Data Pemesan</h6>
+                            <div class="d-flex align-items-center mb-3">
+                                <img src="https://ui-avatars.com/api/?name={{ urlencode($pesanan->nama_pelanggan ?? $pesanan->user->name) }}&background=random"
+                                    class="rounded-circle me-3" width="45">
+                                <div>
+                                    <div class="fw-semibold">{{ $pesanan->nama_pelanggan ?? $pesanan->user->name }}</div>
+                                    <small class="text-muted">{{ $pesanan->user->email }}</small>
                                 </div>
-                                <div class="small mb-1"><strong>WhatsApp:</strong> {{ $pesanan->user->no_telepon ?? '-' }}</div>
-                                <div class="small"><strong>Alamat:</strong> {{ $pesanan->user->alamat ?? '-' }}</div>
                             </div>
+                            <div class="small mb-1"><strong>WhatsApp:</strong> {{ $pesanan->no_hp_pelanggan ?? '-' }}</div>
+                            <div class="small"><strong>Alamat:</strong> {{ $pesanan->alamat_pelanggan ?? '-' }}</div>
                         </div>
-                    @endif
+                    </div>
 
                     <!-- Deadline & Produksi -->
                     <div class="card mb-4">

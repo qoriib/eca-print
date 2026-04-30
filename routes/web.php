@@ -12,6 +12,8 @@ use App\Http\Controllers\DetailPesananController;
 use App\Http\Controllers\ProduksiController;
 use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\NotifikasiController;
+use App\Http\Controllers\LaporanController;
+use App\Http\Controllers\PengaturanController;
 
 Route::get('/', function () {
     if (Auth::check()) {
@@ -91,4 +93,18 @@ Route::middleware('auth')->group(function () {
     Route::post('notifikasi/read-all', [NotifikasiController::class, 'markAllAsRead'])->name('notifikasi.read-all');
     Route::delete('notifikasi/{notifikasi}', [NotifikasiController::class, 'destroy'])->name('notifikasi.destroy');
     Route::get('notifikasi/unread-count', [NotifikasiController::class, 'unreadCount'])->name('notifikasi.unread-count');
+
+    // === LAPORAN (Admin Only) ===
+    Route::middleware('role:admin')->prefix('laporan')->name('laporan.')->group(function () {
+        Route::get('/', [LaporanController::class, 'index'])->name('index');
+        Route::get('/pesanan', [LaporanController::class, 'pesanan'])->name('pesanan');
+        Route::get('/pembayaran', [LaporanController::class, 'pembayaran'])->name('pembayaran');
+        Route::get('/produksi', [LaporanController::class, 'produksi'])->name('produksi');
+    });
+
+    // === PENGATURAN (Admin Only) ===
+    Route::middleware('role:admin')->group(function () {
+        Route::get('/pengaturan', [PengaturanController::class, 'index'])->name('pengaturan.index');
+        Route::post('/pengaturan', [PengaturanController::class, 'update'])->name('pengaturan.update');
+    });
 });

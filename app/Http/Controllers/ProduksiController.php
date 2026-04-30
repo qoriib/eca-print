@@ -40,7 +40,7 @@ class ProduksiController extends Controller
     public function update(Request $request, Produksi $produksi)
     {
         $request->validate([
-            'status_produksi' => 'required|in:antrian,proses,quality_check,selesai',
+            'status_produksi' => 'required|in:antrian,desain,cetak,finishing,selesai',
             'operator_id' => 'nullable|exists:users,id',
             'tanggal_mulai' => 'nullable|date',
             'tanggal_selesai' => 'nullable|date|after_or_equal:tanggal_mulai',
@@ -55,8 +55,8 @@ class ProduksiController extends Controller
             'catatan_produksi'
         );
 
-        // Otomatis set tanggal mulai saat mulai proses
-        if ($request->status_produksi === 'proses' && !$produksi->tanggal_mulai) {
+        // Otomatis set tanggal mulai saat mulai proses (desain)
+        if (in_array($request->status_produksi, ['desain', 'cetak']) && !$produksi->tanggal_mulai) {
             $data['tanggal_mulai'] = today();
         }
 
@@ -88,7 +88,7 @@ class ProduksiController extends Controller
 
         $produksi->update([
             'operator_id' => Auth::id(),
-            'status_produksi' => 'proses',
+            'status_produksi' => 'desain',
             'tanggal_mulai' => today(),
         ]);
 

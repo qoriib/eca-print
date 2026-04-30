@@ -90,6 +90,27 @@
                         <div class="sticky-top" style="top: 2rem; z-index: 1;">
                             <div class="card mb-4">
                                 <div class="card-body p-4">
+                                    <h5 class="fw-semibold mb-4 text-center">Data Pelanggan</h5>
+                                    <div class="mb-3">
+                                        <label class="form-label small">Nama Lengkap</label>
+                                        <input type="text" name="nama_pelanggan" class="form-control" 
+                                            value="{{ Auth::user()->name }}" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label small">No. WhatsApp</label>
+                                        <input type="text" name="no_hp_pelanggan" class="form-control" 
+                                            value="{{ Auth::user()->no_telepon }}" required placeholder="Contoh: 08123456789">
+                                    </div>
+                                    <div class="mb-0">
+                                        <label class="form-label small">Alamat Pengiriman / Detail</label>
+                                        <textarea name="alamat_pelanggan" class="form-control" rows="2" 
+                                            required placeholder="Alamat lengkap...">{{ Auth::user()->alamat }}</textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card mb-4">
+                                <div class="card-body p-4">
                                     <h5 class="fw-semibold mb-4 text-center">Ringkasan Pesanan</h5>
 
                                     <div class="mb-4">

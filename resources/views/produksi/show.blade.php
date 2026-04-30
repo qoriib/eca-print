@@ -37,8 +37,9 @@
                                     <label class="form-label small fw-semibold text-muted text-uppercase">Status Produksi</label>
                                     <select name="status_produksi" class="form-select @error('status_produksi') is-invalid @enderror">
                                         <option value="antrian" {{ $produksi->status_produksi == 'antrian' ? 'selected' : '' }}>Antrian</option>
-                                        <option value="proses" {{ $produksi->status_produksi == 'proses' ? 'selected' : '' }}>Proses</option>
-                                        <option value="quality_check" {{ $produksi->status_produksi == 'quality_check' ? 'selected' : '' }}>Quality Check</option>
+                                        <option value="desain" {{ $produksi->status_produksi == 'desain' ? 'selected' : '' }}>Desain</option>
+                                        <option value="cetak" {{ $produksi->status_produksi == 'cetak' ? 'selected' : '' }}>Cetak</option>
+                                        <option value="finishing" {{ $produksi->status_produksi == 'finishing' ? 'selected' : '' }}>Finishing</option>
                                         <option value="selesai" {{ $produksi->status_produksi == 'selesai' ? 'selected' : '' }}>Selesai</option>
                                     </select>
                                 </div>
@@ -76,17 +77,17 @@
                     <div class="card-body p-4">
                         <h5 class="fw-semibold mb-3">Informasi Pelanggan</h5>
                         <div class="d-flex align-items-center mb-3">
-                            <img src="https://ui-avatars.com/api/?name={{ urlencode($produksi->pesanan->user->name) }}&background=random" class="rounded-circle me-3" width="45">
+                            <img src="https://ui-avatars.com/api/?name={{ urlencode($produksi->pesanan->nama_pelanggan ?? $produksi->pesanan->user->name) }}&background=random" class="rounded-circle me-3" width="45">
                             <div>
-                                <div class="fw-semibold">{{ $produksi->pesanan->user->name }}</div>
+                                <div class="fw-semibold">{{ $produksi->pesanan->nama_pelanggan ?? $produksi->pesanan->user->name }}</div>
                                 <small class="text-muted">{{ $produksi->pesanan->user->email }}</small>
                             </div>
                         </div>
                         <div class="mb-2">
-                            <i class="bi bi-whatsapp text-success me-2"></i> {{ $produksi->pesanan->user->no_telepon ?? '-' }}
+                            <i class="bi bi-whatsapp text-success me-2"></i> {{ $produksi->pesanan->no_hp_pelanggan ?? '-' }}
                         </div>
                         <div class="small text-muted">
-                            <i class="bi bi-geo-alt me-2"></i> {{ $produksi->pesanan->user->alamat ?? '-' }}
+                            <i class="bi bi-geo-alt me-2"></i> {{ $produksi->pesanan->alamat_pelanggan ?? '-' }}
                         </div>
                     </div>
                 </div>

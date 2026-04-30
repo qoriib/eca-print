@@ -197,12 +197,23 @@
             <div class="sidebar-heading">Layanan</div>
             <a href="{{ route('notifikasi.index') }}"
                 class="nav-link {{ request()->routeIs('notifikasi.*') ? 'active' : '' }}">
-                <i class="bi bi-bell"></i>
-                Notifikasi
+                <i class="bi bi-bell"></i> Notifikasi
                 @if(isset($unreadCount) && $unreadCount > 0)
                     <span class="badge bg-danger ms-auto">{{ $unreadCount }}</span>
                 @endif
             </a>
+
+            @if($role === 'admin')
+                <div class="sidebar-heading">Sistem</div>
+                <a href="{{ route('laporan.index') }}"
+                    class="nav-link {{ request()->routeIs('laporan.*') ? 'active' : '' }}">
+                    <i class="bi bi-file-earmark-bar-graph"></i> Laporan
+                </a>
+                <a href="{{ route('pengaturan.index') }}"
+                    class="nav-link {{ request()->routeIs('pengaturan.*') ? 'active' : '' }}">
+                    <i class="bi bi-shop"></i> Profil Usaha
+                </a>
+            @endif
         </nav>
 
         <div class="p-3 border-top">

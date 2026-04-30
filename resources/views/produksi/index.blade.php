@@ -11,9 +11,9 @@
                 <select name="status" class="form-select" onchange="this.form.submit()">
                     <option value="">Semua Status</option>
                     <option value="antrian" {{ request('status') == 'antrian' ? 'selected' : '' }}>Antrian</option>
-                    <option value="proses" {{ request('status') == 'proses' ? 'selected' : '' }}>Proses</option>
-                    <option value="quality_check" {{ request('status') == 'quality_check' ? 'selected' : '' }}>Quality Check
-                    </option>
+                    <option value="desain" {{ request('status') == 'desain' ? 'selected' : '' }}>Desain</option>
+                    <option value="cetak" {{ request('status') == 'cetak' ? 'selected' : '' }}>Cetak</option>
+                    <option value="finishing" {{ request('status') == 'finishing' ? 'selected' : '' }}>Finishing</option>
                     <option value="selesai" {{ request('status') == 'selesai' ? 'selected' : '' }}>Selesai</option>
                 </select>
             </form>
@@ -67,8 +67,9 @@
                                     @php
                                         $badges = [
                                             'antrian' => 'bg-danger',
-                                            'proses' => 'bg-primary',
-                                            'quality_check' => 'bg-info',
+                                            'desain' => 'bg-warning text-dark',
+                                            'cetak' => 'bg-primary',
+                                            'finishing' => 'bg-info',
                                             'selesai' => 'bg-success'
                                         ];
                                     @endphp

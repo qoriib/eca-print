@@ -43,6 +43,9 @@ class PesananController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'nama_pelanggan' => 'required|string|max:255',
+            'no_hp_pelanggan' => 'required|string|max:20',
+            'alamat_pelanggan' => 'nullable|string',
             'tanggal_deadline' => 'nullable|date|after_or_equal:today',
             'catatan_pelanggan' => 'nullable|string',
             'items' => 'required|array|min:1',
@@ -68,6 +71,9 @@ class PesananController extends Controller
             $pesanan = Pesanan::create([
                 'kode_pesanan' => $kodePesanan,
                 'user_id' => Auth::id(),
+                'nama_pelanggan' => $request->nama_pelanggan,
+                'no_hp_pelanggan' => $request->no_hp_pelanggan,
+                'alamat_pelanggan' => $request->alamat_pelanggan,
                 'tanggal_pesan' => today(),
                 'tanggal_deadline' => $request->tanggal_deadline,
                 'status' => 'menunggu_konfirmasi',
