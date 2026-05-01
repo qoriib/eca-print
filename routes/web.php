@@ -38,18 +38,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard/pelanggan', [DashboardController::class, 'pelanggan'])->middleware('role:pelanggan')->name('dashboard.pelanggan');
 
     // === ADMIN ONLY ===
-    Route::middleware('role:admin')->group(function () {
+    Route::middleware('role:admin')->prefix('admin')->group(function () {
         Route::resource('users', UserController::class);
         Route::resource('kategori-produk', KategoriProdukController::class);
         Route::post('pembayaran/{pembayaran}/konfirmasi', [PembayaranController::class, 'konfirmasi'])->name('pembayaran.konfirmasi');
 
         // CRUD PRODUK (Admin Only)
-        Route::get('/admin/produk', [ProdukController::class, 'index'])->name('produk.index');
-        Route::get('/produk/create', [ProdukController::class, 'create'])->name('produk.create');
-        Route::post('/produk', [ProdukController::class, 'store'])->name('produk.store');
-        Route::get('/produk/{produk}/edit', [ProdukController::class, 'edit'])->name('produk.edit');
-        Route::put('/produk/{produk}', [ProdukController::class, 'update'])->name('produk.update');
-        Route::delete('/produk/{produk}', [ProdukController::class, 'destroy'])->name('produk.destroy');
+        Route::resource('produk', ProdukController::class)->names('produk')->except('show');
     });
 
     // === OPERATOR & ADMIN ===

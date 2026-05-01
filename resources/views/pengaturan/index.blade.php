@@ -11,8 +11,8 @@
             <p class="text-muted">Informasi ini akan ditampilkan pada laporan, invoice, dan identitas sistem.</p>
         </div>
 
-        <div class="card border-0 shadow-sm">
-            <div class="card-body p-4 p-md-5">
+        <div class="card">
+            <div class="card-body">
                 <form action="{{ route('pengaturan.update') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     
