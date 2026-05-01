@@ -50,6 +50,39 @@
                                 <small class="text-muted">Pesan ini akan muncul di bagian bawah dokumen cetak.</small>
                             </div>
 
+                            <hr class="my-4">
+                            <h5 class="fs-6 fw-bold mb-3">Informasi Rekening Bank 1</h5>
+                            <div class="row g-3 mb-4">
+                                <div class="col-md-4">
+                                    <label class="form-label fw-semibold small">Nama Bank</label>
+                                    <input type="text" name="bank_1" class="form-control" value="{{ old('bank_1', $pengaturan->bank_1 ?? '') }}" placeholder="Contoh: Bank BCA">
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label fw-semibold small">Nomor Rekening</label>
+                                    <input type="text" name="norek_1" class="form-control font-monospace" value="{{ old('norek_1', $pengaturan->norek_1 ?? '') }}" placeholder="123456789">
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label fw-semibold small">Atas Nama</label>
+                                    <input type="text" name="atas_nama_1" class="form-control" value="{{ old('atas_nama_1', $pengaturan->atas_nama_1 ?? '') }}" placeholder="Nama Pemilik Rekening">
+                                </div>
+                            </div>
+
+                            <h5 class="fs-6 fw-bold mb-3">Informasi Rekening Bank 2 (Opsional)</h5>
+                            <div class="row g-3 mb-4">
+                                <div class="col-md-4">
+                                    <label class="form-label fw-semibold small">Nama Bank</label>
+                                    <input type="text" name="bank_2" class="form-control" value="{{ old('bank_2', $pengaturan->bank_2 ?? '') }}" placeholder="Contoh: Bank Mandiri">
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label fw-semibold small">Nomor Rekening</label>
+                                    <input type="text" name="norek_2" class="form-control font-monospace" value="{{ old('norek_2', $pengaturan->norek_2 ?? '') }}" placeholder="987654321">
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label fw-semibold small">Atas Nama</label>
+                                    <input type="text" name="atas_nama_2" class="form-control" value="{{ old('atas_nama_2', $pengaturan->atas_nama_2 ?? '') }}" placeholder="Nama Pemilik Rekening">
+                                </div>
+                            </div>
+
                             <div class="d-grid">
                                 <button type="submit" class="btn btn-primary py-2 fw-semibold">
                                     <i class="bi bi-check-circle me-2"></i>Simpan Perubahan

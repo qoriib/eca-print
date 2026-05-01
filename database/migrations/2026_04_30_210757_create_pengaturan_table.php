@@ -18,6 +18,12 @@ return new class extends Migration
             $table->string('alamat')->nullable();
             $table->string('no_hp')->nullable();
             $table->string('email')->nullable();
+            $table->string('bank_1')->nullable();
+            $table->string('norek_1')->nullable();
+            $table->string('atas_nama_1')->nullable();
+            $table->string('bank_2')->nullable();
+            $table->string('norek_2')->nullable();
+            $table->string('atas_nama_2')->nullable();
             $table->text('catatan_footer')->nullable();
             $table->timestamps();
         });
@@ -28,6 +34,12 @@ return new class extends Migration
             'alamat' => 'Jl. Percetakan No. 123',
             'no_hp' => '08123456789',
             'email' => 'contact@eca-print.com',
+            'bank_1' => 'Bank BCA',
+            'norek_1' => '1234567890',
+            'atas_nama_1' => 'Eca Print Mandiri',
+            'bank_2' => 'Bank Mandiri',
+            'norek_2' => '0987654321',
+            'atas_nama_2' => 'Eca Print Mandiri',
             'catatan_footer' => 'Terima kasih telah memesan di Eca-Print.',
         ]);
     }

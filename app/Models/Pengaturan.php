@@ -14,5 +14,11 @@ class Pengaturan extends Model
         'no_hp',
         'email',
         'catatan_footer',
+        'bank_1',
+        'norek_1',
+        'atas_nama_1',
+        'bank_2',
+        'norek_2',
+        'atas_nama_2',
     ];
 }

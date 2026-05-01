@@ -22,6 +22,12 @@ class PengaturanController extends Controller
             'no_hp' => 'nullable|string|max:20',
             'email' => 'nullable|email|max:255',
             'catatan_footer' => 'nullable|string',
+            'bank_1' => 'nullable|string|max:255',
+            'norek_1' => 'nullable|string|max:255',
+            'atas_nama_1' => 'nullable|string|max:255',
+            'bank_2' => 'nullable|string|max:255',
+            'norek_2' => 'nullable|string|max:255',
+            'atas_nama_2' => 'nullable|string|max:255',
         ]);
 
         $pengaturan = Pengaturan::first() ?? new Pengaturan();

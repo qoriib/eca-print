@@ -25,31 +25,27 @@
                                 </h3>
                             </div>
 
-                            <div class="mb-4">
+                            <div>
                                 <h6 class="fw-semibold small text-uppercase text-muted">Transfer Bank (Manual)</h6>
+                                @if($pengaturan?->bank_1)
                                 <div class="d-flex align-items-center p-3 bg-light rounded mb-2">
-                                    <div class="fw-semibold">Bank BCA</div>
+                                    <div class="fw-semibold">{{ $pengaturan->bank_1 }}</div>
                                     <div class="ms-auto text-end">
-                                        <div class="fw-semibold font-monospace">1234567890</div>
-                                        <small class="text-muted">a.n Eca Print Mandiri</small>
+                                        <div class="fw-semibold font-monospace">{{ $pengaturan->norek_1 }}</div>
+                                        <small class="text-muted">a.n {{ $pengaturan->atas_nama_1 }}</small>
                                     </div>
                                 </div>
-                                <div class="d-flex align-items-center p-3 bg-light rounded">
-                                    <div class="fw-semibold">Bank Mandiri</div>
-                                    <div class="ms-auto text-end">
-                                        <div class="fw-semibold font-monospace">0987654321</div>
-                                        <small class="text-muted">a.n Eca Print Mandiri</small>
-                                    </div>
-                                </div>
-                            </div>
+                                @endif
 
-                            <div class="mb-0">
-                                <h6 class="fw-semibold small text-uppercase text-muted">QRIS (Otomatis)</h6>
-                                <div class="text-center p-3 border bg-white">
-                                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=ECAPRINT-PAYMENT"
-                                        alt="QRIS" class="img-fluid mb-2">
-                                    <div class="small fw-semibold">SCAN UNTUK BAYAR</div>
+                                @if($pengaturan?->bank_2)
+                                <div class="d-flex align-items-center p-3 bg-light rounded">
+                                    <div class="fw-semibold">{{ $pengaturan->bank_2 }}</div>
+                                    <div class="ms-auto text-end">
+                                        <div class="fw-semibold font-monospace">{{ $pengaturan->norek_2 }}</div>
+                                        <small class="text-muted">a.n {{ $pengaturan->atas_nama_2 }}</small>
+                                    </div>
                                 </div>
+                                @endif
                             </div>
                         </div>
                     </div>

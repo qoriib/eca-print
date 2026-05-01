@@ -8,6 +8,7 @@ use App\Models\Notifikasi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Pengaturan;
 
 class PembayaranController extends Controller
 {
@@ -44,7 +45,9 @@ class PembayaranController extends Controller
             abort(403);
         }
 
-        return view('pembayaran.create', compact('pesanan'));
+        $pengaturan = Pengaturan::first();
+
+        return view('pembayaran.create', compact('pesanan', 'pengaturan'));
     }
 
     public function store(Request $request, Pesanan $pesanan)
