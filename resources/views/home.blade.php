@@ -8,11 +8,11 @@
         <div class="container">
             <div class="row justify-content-center text-center">
                 <div class="col-lg-10">
-                    <span class="badge bg-primary-subtle text-primary px-3 py-2 rounded-pill mb-4 fw-bold">Solusi Cetak Profesional & Terpercaya</span>
+                    <span class="badge bg-primary-subtle text-primary px-3 py-2 mb-4 fw-bold">Solusi Cetak Profesional & Terpercaya</span>
                     <h1 class="display-2 fw-bolder mb-4" style="letter-spacing: -2px; line-height: 1.1;">Cetak Impian Anda Jadi <span class="text-primary">Kenyataan.</span></h1>
                     <p class="lead text-muted mb-5 mx-auto" style="max-width: 700px;">Kami melayani berbagai kebutuhan cetak digital, offset, dan merchandise dengan kualitas premium, harga terjangkau, dan pengerjaan tepat waktu.</p>
                     <div class="d-flex justify-content-center gap-3">
-                        <a href="https://wa.me/{{ $pengaturan->no_hp ?? '' }}" target="_blank" class="btn btn-outline-dark btn-lg px-4 rounded-pill">Hubungi Admin</a>
+                        <a href="https://wa.me/{{ $pengaturan->no_hp ?? '' }}" target="_blank" class="btn btn-outline-dark btn-lg px-4">Hubungi Admin</a>
                     </div>
                 </div>
             </div>
@@ -59,7 +59,7 @@
                     <i class="bi bi-search fs-1 text-muted mb-3 opacity-25"></i>
                     <h4 class="text-muted">Produk tidak ditemukan</h4>
                     <p>Coba gunakan kata kunci atau kategori lain.</p>
-                    <a href="{{ route('home') }}#katalog" class="btn btn-outline-primary rounded-pill mt-3">Reset Filter</a>
+                    <a href="{{ route('home') }}#katalog" class="btn btn-outline-primary mt-3">Reset Filter</a>
                 </div>
             @else
                 <div class="row g-4">

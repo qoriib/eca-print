@@ -92,7 +92,7 @@
 
                             @if(!Auth::check() || Auth::user()->role === 'pelanggan')
                                 <div class="mt-5 d-grid">
-                                    <a href="{{ route('pesanan.create', ['produk_id' => $produk->id]) }}" class="btn btn-primary btn-lg rounded-pill">
+                                    <a href="{{ route('pesanan.create', ['produk_id' => $produk->id]) }}" class="btn btn-primary btn-lg">
                                         Mulai Pesan Sekarang
                                     </a>
                                 </div>
